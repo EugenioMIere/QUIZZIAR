@@ -28,6 +28,12 @@ class RegistroController
             $repitePassword = $usuarioValido['repitePassword'];
             $fotoDePerfil = $usuarioValido['fotoDePerfil'];
 
+            if (!$this->elEmailEsValido($email)) {
+                $error = "El correo electrónico no es válido";
+                $this->presenter->render("view/registroView.mustache", ['error' => $error]);
+                return;
+            }
+
             if ($this->passwordsIguales($password, $repitePassword)){
                 try {
                     $this->model->add($nombreCompleto, $email, $fechaDeNacimiento, $genero, $pais, $ciudad, $nombreDeUsuario,
@@ -67,8 +73,16 @@ class RegistroController
         } return false;
     }
 
-    private function passwordsIguales($password, $repitePassword){
+    private function passwordsIguales($password, $repitePassword): bool
+    {
         if ($password === $repitePassword){
+            return true;
+        } return false;
+    }
+
+    private function elEmailEsValido($email): bool
+    {
+        if (filter_var($email, FILTER_VALIDATE_EMAIL)){
             return true;
         } return false;
     }
