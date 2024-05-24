@@ -2,6 +2,10 @@
 
 namespace helper;
 
+use Mustache_Autoloader;
+use Mustache_Engine;
+use Mustache_Loader_FilesystemLoader;
+
 class MustachePresenter
 {
     private $mustache;
