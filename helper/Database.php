@@ -1,6 +1,6 @@
 <?php
 
-namespace helper;
+/*namespace helper;*/
 
 class Database
 {

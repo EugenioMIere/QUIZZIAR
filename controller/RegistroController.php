@@ -1,6 +1,6 @@
 <?php
 
-namespace controller;
+/*namespace controller;*/
 
 use exception\UsuarioExistente;
 
