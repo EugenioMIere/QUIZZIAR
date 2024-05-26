@@ -44,7 +44,7 @@ class RegistroController
 
             if ($this->passwordsIguales($password, $repitePassword)){
                 try {
-                    $this->model->add($nombreCompleto, $email, $fechaDeNacimiento, $genero, $pais, $ciudad, $nombreDeUsuario, $password, $fotoDePerfil);
+                    $this->model->add($nombreCompleto, $email, $fechaDeNacimiento, $genero, $pais, $ciudad, $nombreDeUsuario, $password, "prueba"/*$fotoDePerfil*/);
                     header("Location: view/login.mustache");
                     exit();
                 } catch (UsuarioExistente $ex){
