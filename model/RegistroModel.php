@@ -18,7 +18,7 @@ class RegistroModel
         if (!$this->elUsuarioYaExiste($email)){
             $sql = "INSERT INTO `usuario`(`nombreCompleto`, `email`, `fechaDeNacimiento`, `genero`, `pais`, `ciudad`, `nombreDeUsuario`, `password`, `fotoDePerfil`, `rol`)
             VALUES ('$nombreCompleto','$email','$fechaDeNacimiento','$genero','$pais','$ciudad','$nombreDeUsuario','$password','$fotoDePerfil','jugador')";
-            $this->database->query($sql);
+            $this->database->execute($sql);
         } else {
 
             throw new UsuarioExistente();
@@ -42,14 +42,19 @@ class RegistroModel
     } */
 
     private function elUsuarioYaExiste($email){
-        $sql= "SELECT COUNT(*) FROM usuario WHERE email = '$email'";
+        /*$sql= "SELECT COUNT(*) FROM usuario WHERE email = '$email'";
 
         $count = $this->database->query($sql);
 
 
+
         if ($count >0){
             return true;
-        } return false;
+        } return false;*/
+
+
+        $sql = "SELECT * from usuario WHERE email = '$email'";
+        return $this->database->query($sql);
 
 
 

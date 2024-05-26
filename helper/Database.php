@@ -20,7 +20,7 @@ class Database
 
     public function execute($sql)
     {
-        mysqli_query($this->conn, $sql);
+       return mysqli_query($this->conn, $sql);
     }
 
     public function __destruct(){
