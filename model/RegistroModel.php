@@ -2,6 +2,8 @@
 
 /*use exception\UsuarioExistente;*/
 
+use exception\UsuarioExistente;
+
 class RegistroModel
 {
     private $database;
@@ -25,9 +27,6 @@ class RegistroModel
 
         }
 
-        /*$this->database->execute("INSERT INTO `usuario`(`nombreCompleto`, `email`, `fechaDeNacimiento`, `genero`, `pais`, `ciudad`, `nombreDeUsuario`, `password`, `fotoDePerfil`, `rol`)
-        VALUES ('$nombreCompleto','$email','$fechaDeNacimiento','$genero','$pais','$ciudad','$nombreDeUsuario','$password','$fotoDePerfil','jugador')");*/
-
     }
 
     /* funcion del admin
@@ -42,16 +41,6 @@ class RegistroModel
     } */
 
     private function elUsuarioYaExiste($email){
-        /*$sql= "SELECT COUNT(*) FROM usuario WHERE email = '$email'";
-
-        $count = $this->database->query($sql);
-
-
-
-        if ($count >0){
-            return true;
-        } return false;*/
-
 
         $sql = "SELECT * from usuario WHERE email = '$email'";
         return $this->database->query($sql);
