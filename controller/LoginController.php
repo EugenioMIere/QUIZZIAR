@@ -18,8 +18,7 @@ class LoginController
             $passwordLogin = $usuarioBuscado['passwordLogin'];
 
             $result = $this->model->logIn($emailLogin, $passwordLogin);
-            if ($result && count($result) > 0) {
-                session_start();
+            if (count($result) > 0) {
                 $_SESSION['id'] = $result[0]['id'];
                 $_SESSION['rol'] = $result[0]['rol'];
                 $rol = $_SESSION['rol'];
