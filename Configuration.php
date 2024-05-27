@@ -18,9 +18,17 @@ class Configuration {
         return new RegistroController(self::getRegistroModel(), self::getPresenter());
     }
 
+    public static function getLoginController(){
+        return new LoginController(self::getLoginModel(), self::getPresenter());
+    }
+
     // MODELS
-    public static function getRegistroModel(){
+    private static function getRegistroModel(){
         return new RegistroModel(self::getDatabase());
+    }
+
+    private static function getLoginModel(){
+        return new LoginModel(self::getDatabase());
     }
 
     // HELPERS
