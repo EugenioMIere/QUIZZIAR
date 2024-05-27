@@ -6,6 +6,7 @@
 
 use exception\UsuarioExistente;
 
+
 class RegistroController
 {
     private $model;

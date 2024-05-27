@@ -5,24 +5,22 @@ class LoginController
     private $model;
     private $presenter;
 
-    public function __constructor($model, $presenter){
+    public function __construct($model, $presenter) {
         $this->model = $model;
         $this->presenter = $presenter;
     }
 
-    public function login(){
+    public function login() {
         $usuarioBuscado = $this->datosLoginCompletos();
-
-        if ($usuarioBuscado){
+        if ($usuarioBuscado) {
             $emailLogin = $usuarioBuscado['emailLogin'];
             $passwordLogin = $usuarioBuscado['passwordLogin'];
 
             $result = $this->model->logIn($emailLogin, $passwordLogin);
-            if (count($result) > 0){
+            if (count($result) > 0) {
                 session_start();
                 $_SESSION['id'] = $result[0]['id'];
                 $_SESSION['rol'] = $result[0]['rol'];
-                // Segun el rol del usuario, redirijo:
                 $rol = $_SESSION['rol'];
                 $url = $this->manejoDeUrls($rol);
                 $this->redirect($url);
@@ -33,11 +31,10 @@ class LoginController
         }
     }
 
-    private function manejoDeUrls($rol): string
-    {
+    private function manejoDeUrls($rol): string {
         $url = "";
 
-        switch ($rol){
+        switch ($rol) {
             case 'administrador':
                 $url = "view/adminView.mustache";
                 break;
@@ -51,19 +48,18 @@ class LoginController
         return $url;
     }
 
-    private function datosLoginCompletos(){
-        if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])){
-            return $datosLogin = [
-                "email" => $_POST['emailLogin'],
-               "password" => $_POST['passwordLogin']
+    private function datosLoginCompletos() {
+        if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
+            return [
+                "emailLogin" => $_POST['emailLogin'],
+                "passwordLogin" => $_POST['passwordLogin']
             ];
-        } return false;
+        }
+        return false;
     }
 
     private function redirect($url) {
-        // Redirige al usuario
-        header("Location: ".$url);
-        exit(); // Asegura que el script se detenga después de la redirección
+        header("Location: " . $url);
+        exit();
     }
-
 }
