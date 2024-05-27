@@ -19,7 +19,7 @@ class RegistroModel
         // Si el usuario no existe (buscando por email), lo guarda:
         if (!$this->elUsuarioYaExiste($email)){
             $sql = "INSERT INTO `usuario`(`nombreCompleto`, `email`, `fechaDeNacimiento`, `genero`, `pais`, `ciudad`, `nombreDeUsuario`, `password`, `fotoDePerfil`, `rol`)
-            VALUES ('$nombreCompleto','$email','$fechaDeNacimiento','$genero','$pais','$ciudad','$nombreDeUsuario','$password','$fotoDePerfil','jugador')";
+            VALUES ('$nombreCompleto','$email','$fechaDeNacimiento','$genero','$pais','$ciudad','$nombreDeUsuario','$password','$fotoDePerfil','usuario')";
             $this->database->execute($sql);
         } else {
 

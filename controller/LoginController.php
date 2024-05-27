@@ -14,10 +14,10 @@ class LoginController
         $usuarioBuscado = $this->datosLoginCompletos();
 
         if ($usuarioBuscado){
-            $email = $usuarioBuscado['email'];
-            $password = $usuarioBuscado['email'];
+            $emailLogin = $usuarioBuscado['emailLogin'];
+            $passwordLogin = $usuarioBuscado['passwordLogin'];
 
-            $result = $this->model->logIn($email, $password);
+            $result = $this->model->logIn($emailLogin, $passwordLogin);
             if (count($result) > 0){
                 session_start();
                 $_SESSION['id'] = $result[0]['id'];
@@ -25,11 +25,11 @@ class LoginController
                 // Segun el rol del usuario, redirijo:
                 $rol = $_SESSION['rol'];
                 $url = $this->manejoDeUrls($rol);
-                header("Location: $url");
+                $this->redirect($url);
             }
         } else {
             $error = "Email o contraseña incorrectos";
-            $this->presenter->render("view/loginView.mustache", [$error => $error]);
+            $this->presenter->render("view/loginView.mustache", ['error' => $error]);
         }
     }
 
@@ -38,11 +38,11 @@ class LoginController
         $url = "";
 
         switch ($rol){
-            case 'admin':
+            case 'administrador':
                 $url = "view/adminView.mustache";
                 break;
-            case 'jugador':
-                $url = "view/jugadorView.mustache";
+            case 'usuario':
+                $url = "view/usuarioView.mustache";
                 break;
             case 'editor':
                 $url = "view/editorView.mustache";
@@ -52,13 +52,18 @@ class LoginController
     }
 
     private function datosLoginCompletos(){
-        if (isset($_POST['email']) && isset($_POST['password'])){
+        if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])){
             return $datosLogin = [
-                "email" => $_POST['email'],
-               "password" => $_POST['password']
+                "email" => $_POST['emailLogin'],
+               "password" => $_POST['passwordLogin']
             ];
         } return false;
     }
 
+    private function redirect($url) {
+        // Redirige al usuario
+        header("Location: ".$url);
+        exit(); // Asegura que el script se detenga después de la redirección
+    }
 
 }
