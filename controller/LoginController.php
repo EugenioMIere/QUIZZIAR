@@ -11,22 +11,26 @@ class LoginController
     }
 
     public function login() {
+        session_start();
         $usuarioBuscado = $this->datosLoginCompletos();
         if ($usuarioBuscado) {
             $emailLogin = $usuarioBuscado['emailLogin'];
             $passwordLogin = $usuarioBuscado['passwordLogin'];
 
             $result = $this->model->logIn($emailLogin, $passwordLogin);
-            if (count($result) > 0) {
+            if ($result && count($result) > 0) {
                 session_start();
                 $_SESSION['id'] = $result[0]['id'];
                 $_SESSION['rol'] = $result[0]['rol'];
                 $rol = $_SESSION['rol'];
                 $url = $this->manejoDeUrls($rol);
                 $this->redirect($url);
+            } else {
+                $error = "Email o contraseña incorrectos";
+                $this->presenter->render("view/loginView.mustache", ['error' => $error]);
             }
         } else {
-            $error = "Email o contraseña incorrectos";
+            $error = "Complete todos los campos";
             $this->presenter->render("view/loginView.mustache", ['error' => $error]);
         }
     }
@@ -43,6 +47,9 @@ class LoginController
                 break;
             case 'editor':
                 $url = "view/editorView.mustache";
+                break;
+            default:
+                $url = "view/loginView.mustache";
                 break;
         }
         return $url;
@@ -63,3 +70,4 @@ class LoginController
         exit();
     }
 }
+

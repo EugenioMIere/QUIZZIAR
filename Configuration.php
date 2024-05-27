@@ -14,20 +14,24 @@ include_once('vendor/mustache/src/Mustache/Autoloader.php');
 class Configuration {
     // CONTROLLERS
 
-    public static function getRegistroController(){
+    public static function getRegistroController(): RegistroController
+    {
         return new RegistroController(self::getRegistroModel(), self::getPresenter());
     }
 
-    public static function getLoginController(){
+    public static function getLoginController(): LoginController
+    {
         return new LoginController(self::getLoginModel(), self::getPresenter());
     }
 
     // MODELS
-    private static function getRegistroModel(){
+    private static function getRegistroModel(): RegistroModel
+    {
         return new RegistroModel(self::getDatabase());
     }
 
-    private static function getLoginModel(){
+    private static function getLoginModel(): LoginModel
+    {
         return new LoginModel(self::getDatabase());
     }
 
@@ -40,12 +44,12 @@ class Configuration {
         return parse_ini_file("config/config.ini");
     }
 
-    public static function getRouter()
+    public static function getRouter(): Router
     {
         return new Router("getRegistroController", "registrar" );
     }
 
-    private static function getPresenter()
+    private static function getPresenter(): MustachePresenter
     {
         return new MustachePresenter("view/template");
     }
