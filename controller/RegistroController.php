@@ -2,7 +2,7 @@
 
 /*namespace controller;*/
 
-/*use exception\UsuarioExistente;*/
+include_once 'exception/UsuarioExistente.php';
 
 use exception\UsuarioExistente;
 
@@ -48,7 +48,7 @@ class RegistroController
             if ($this->passwordsIguales($password, $repitePassword)){
                 try {
                     $this->model->add($nombreCompleto, $email, $fechaDeNacimiento, $genero, $pais, $ciudad, $nombreDeUsuario, $password, "prueba"/*$fotoDePerfil*/);
-                    header("Location: view/loginView.mustache");
+                    header("Location: /login/login");
                     exit();
                 } catch (UsuarioExistente $ex){
                     $error = "El usuario ya existe";

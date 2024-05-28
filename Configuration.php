@@ -1,8 +1,10 @@
 <?php
 
 include_once 'controller/RegistroController.php';
+include_once 'controller/LoginController.php';
 
 include_once 'model/RegistroModel.php';
+include_once 'model/LoginModel.php';
 
 include_once 'helper/Database.php';
 include_once 'helper/Router.php';
@@ -46,7 +48,7 @@ class Configuration {
 
     public static function getRouter(): Router
     {
-        return new Router("getRegistroController", "registrar" );
+        return new Router("getRegistroController", "home" );
     }
 
     private static function getPresenter(): MustachePresenter

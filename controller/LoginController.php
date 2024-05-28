@@ -5,12 +5,18 @@ class LoginController
     private $model;
     private $presenter;
 
+
     public function __construct($model, $presenter) {
         $this->model = $model;
         $this->presenter = $presenter;
     }
 
+    public function home()
+    {
+        $this->presenter->render("view/usuarioView.mustache");
+    }
     public function login() {
+        $url="";
         session_start();
         $usuarioBuscado = $this->datosLoginCompletos();
         if ($usuarioBuscado) {
@@ -32,6 +38,7 @@ class LoginController
             $error = "Complete todos los campos";
             $this->presenter->render("view/loginView.mustache", ['error' => $error]);
         }
+        return $url;
     }
 
     private function manejoDeUrls($rol): string {
