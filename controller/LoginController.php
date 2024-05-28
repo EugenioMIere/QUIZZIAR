@@ -13,11 +13,18 @@ class LoginController
 
     public function home()
     {
-        $this->presenter->render("view/usuarioView.mustache");
+        if ($_SESSION['rol'] === "usuario"){
+            $this->presenter->render("view/usuarioView.mustache");
+        }elseif ($_SESSION['rol'] === "editor"){
+            $this->presenter->render("view/editorView.mustache");
+        }elseif ($_SESSION['rol'] === "admin"){
+            $this->presenter->render("view/adminView.mustache");
+        }
+
     }
     public function login() {
         $url="";
-        session_start();
+        /*session_start();*/
         $usuarioBuscado = $this->datosLoginCompletos();
         if ($usuarioBuscado) {
             $emailLogin = $usuarioBuscado['emailLogin'];
