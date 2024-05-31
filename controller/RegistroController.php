@@ -65,9 +65,9 @@ class RegistroController
 
             if ($this->passwordsIguales($password, $repitePassword)){
                 try {
-
-                    $this->model->add($nombreCompleto, $email, $fechaDeNacimiento, $genero, $pais, $ciudad, $nombreDeUsuario, $password, "prueba"/*$fotoDePerfil*/);
                     $token = uniqid();
+                    $this->model->add($nombreCompleto, $email, $fechaDeNacimiento, $genero, $pais, $ciudad, $nombreDeUsuario, $password,"prueba"/*$fotoDePerfil*/, $token);
+
                     if ($this->enviarEmailRegistro($email, $nombreCompleto, $token)) {
 
                         echo 'Se envió un correo de verificación.';
@@ -143,7 +143,7 @@ class RegistroController
     {
 
         // Generar enlace verificacion
-        $enlaceVerificacion = 'http://localhost/login/verificarUsuario?token=' . $token . '&email=' . $email;
+        $enlaceVerificacion = 'http://localhost/registro/verificarUsuario?token=' . $token . '&email=' . $email;
 
         $mailer = new PHPMailer(true);
         /*try {*/
@@ -187,5 +187,27 @@ class RegistroController
             header('Location:/autenticacion?mail=BAD');
             exit();
         }*/
+    }
+    public function verificarUsuario()
+    {
+        $tokenCod = $_GET['token'];
+        $emailCod = $_GET['email'];
+
+
+        if (isset($_GET['token']) && isset($_GET['email'])) {
+
+            $usuarioVerificado = $this->model->verificarToken($tokenCod, $emailCod);
+
+            if ($usuarioVerificado) {
+
+                header('Location: /login/login');/*?EXITO=1*/
+            } else {
+                header('Location:/error?codError=333');
+            }
+            exit();
+        } else {
+            header('Location:/error?codError=222');
+            exit();
+        }
     }
 }

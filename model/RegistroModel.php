@@ -14,17 +14,28 @@ class RegistroModel
     /**
      * @throws UsuarioExistente
      */
-    public function add($nombreCompleto, $email, $fechaDeNacimiento, $genero, $pais, $ciudad, $nombreDeUsuario, $password, $fotoDePerfil) {
+    public function add($nombreCompleto, $email, $fechaDeNacimiento, $genero, $pais, $ciudad, $nombreDeUsuario, $password, $fotoDePerfil, $token) {
 
         // Si el usuario no existe (buscando por email), lo guarda:
         if (!$this->elUsuarioYaExiste($email)){
-            $sql = "INSERT INTO `usuario`(`nombreCompleto`, `email`, `fechaDeNacimiento`, `genero`, `pais`, `ciudad`, `nombreDeUsuario`, `password`, `fotoDePerfil`, `rol`)
-            VALUES ('$nombreCompleto','$email','$fechaDeNacimiento','$genero','$pais','$ciudad','$nombreDeUsuario','$password','$fotoDePerfil','editor')";
+            $sql = "INSERT INTO `usuario`(`nombreCompleto`, `email`, `fechaDeNacimiento`, `genero`, `pais`, `ciudad`, `nombreDeUsuario`, `password` ,`fotoDePerfil`, `rol`, `token`)
+            VALUES ('$nombreCompleto','$email','$fechaDeNacimiento','$genero','$pais','$ciudad','$nombreDeUsuario','$password','$fotoDePerfil','editor','$token')";
             $this->database->execute($sql);
         } else {
 
             throw new UsuarioExistente();
 
+        }
+
+    }
+    public function verificarToken($token,$email){
+
+        $sql = "SELECT token from usuario WHERE email = '$email'";
+        $tokenDB = $this->database->query($sql);
+        if ($token==$tokenDB[0]['token']){
+            return true;
+        }else{
+            return false;
         }
 
     }
@@ -44,9 +55,6 @@ class RegistroModel
 
         $sql = "SELECT * from usuario WHERE email = '$email'";
         return $this->database->query($sql);
-
-
-
 
     }
 
