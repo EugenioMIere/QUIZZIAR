@@ -12,6 +12,12 @@ include_once 'helper/MustachePresenter.php';
 include_once 'helper/Presenter.php';
 
 include_once('vendor/mustache/src/Mustache/Autoloader.php');
+include_once('vendor/PHPMailer-master/src/PHPMailer.php');
+include_once('vendor/PHPMailer-master/src/Exception.php');
+include_once('vendor/PHPMailer-master/src/SMTP.php');
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class Configuration {
     // CONTROLLERS
