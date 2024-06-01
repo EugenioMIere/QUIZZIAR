@@ -9,8 +9,12 @@ class LoginModel
     }
 
     public function logIn($email, $password){
-        $sql = "SELECT * from usuario WHERE email = '$email' && password = '$password'";
+
+        $passwordEncriptada = md5($password);
+
+        $sql = "SELECT * from usuario WHERE email = '$email' AND password = '$passwordEncriptada'";
         return $this->database->query($sql);
+
     }
 
 }

@@ -18,8 +18,12 @@ class RegistroModel
 
         // Si el usuario no existe (buscando por email), lo guarda:
         if (!$this->elUsuarioYaExiste($email)){
+
+            // encriptar la contraseña con md5
+            $passwordEncriptada = md5($password);
+
             $sql = "INSERT INTO `usuario`(`nombreCompleto`, `email`, `fechaDeNacimiento`, `genero`, `pais`, `ciudad`, `nombreDeUsuario`, `password` ,`fotoDePerfil`, `rol`, `token`)
-            VALUES ('$nombreCompleto','$email','$fechaDeNacimiento','$genero','$pais','$ciudad','$nombreDeUsuario','$password','$fotoDePerfil','editor','$token')";
+            VALUES ('$nombreCompleto','$email','$fechaDeNacimiento','$genero','$pais','$ciudad','$nombreDeUsuario','$passwordEncriptada','$fotoDePerfil','usuario','$token')";
             $this->database->execute($sql);
         } else {
 
