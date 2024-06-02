@@ -2,11 +2,11 @@
 
 class UserModel
 {
-    private $db;
+    private $database;
 
-    public function __construct($dbConnection)
+    public function __construct($database)
     {
-        $this->db = $dbConnection;
+        $this->database = $database;
     }
 
     public function logIn($email, $password)
@@ -18,8 +18,14 @@ class UserModel
 
     public function getUserDetails($userId)
     {
-        $query = $this->db->prepare("SELECT nombreCompleto, email, fechaDeNacimiento, genero, pais, ciudad, nombreDeUsuario, password FROM usuarios WHERE id = ?");
-        $query->execute([$userId]);
-        return $query->fetch(PDO::FETCH_ASSOC);
+        $sql = "SELECT * from usuario WHERE id = '$userId'";
+        return $this->database->query($sql);
+    }
+
+    public function getUserDetailsLobby($userId)
+    {
+        $sql = "SELECT nombreCompleto from usuario WHERE id = '$userId'";
+
+        return $this->database->query($sql);
     }
 }

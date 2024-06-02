@@ -35,7 +35,7 @@ class LoginController
                 $_SESSION['id'] = $result[0]['id'];
                 $_SESSION['rol'] = $result[0]['rol'];
                 $rol = $_SESSION['rol'];
-                $url = $this->manejoDeUrls($rol, $emailLogin);
+                $url = $this->manejoDeUrls($rol);
                 $this->redirect($url);
             } else {
                 $error = "Email o contraseña incorrectos";
@@ -48,7 +48,7 @@ class LoginController
         return $url;
     }
 
-    private function manejoDeUrls($rol, $emailLogin): string {
+    private function manejoDeUrls($rol): string {
         $url = "";
 
         switch ($rol) {
@@ -65,7 +65,7 @@ class LoginController
                 $url = "view/loginView.mustache";
                 break;
         }
-        return $url . "?emailLogin=" . urlencode($emailLogin);
+        return $url;
     }
 
     private function datosLoginCompletos() {

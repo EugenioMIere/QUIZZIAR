@@ -25,24 +25,6 @@ class RegistroController
     public function registrar(){
         $usuarioValido = $this->tengoLaInfoCompleta();
 
-        /*$nombreCompleto = $usuarioValido['nombreCompleto'];
-        $email = $usuarioValido['email'];
-        $fechaDeNacimiento = $usuarioValido['fechaDeNacimiento'];
-        $genero = $usuarioValido['genero'];
-        $pais = $usuarioValido['pais'];
-        $ciudad = $usuarioValido['ciudad'];
-        $nombreDeUsuario = $usuarioValido['nombreDeUsuario'];
-        $password = $usuarioValido['password'];
-        $repitePassword = $usuarioValido['repitePassword'];*/
-        /*$fotoDePerfil = $usuarioValido['fotoDePerfil'];*/
-
-
-
-
-
-
-
-
         if ($usuarioValido){
             $nombreCompleto = $usuarioValido['nombreCompleto'];
             $email = $usuarioValido['email'];
