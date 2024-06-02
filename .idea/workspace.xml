@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66ed4e9b-8f12-43d8-99bf-807e904a68cd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="66ed4e9b-8f12-43d8-99bf-807e904a68cd" name="Changes" comment="UserModel, UserController, perfilPropioView, usuarioView (lobby)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/Configuration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/RegistroController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/RegistroController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/UserModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/UserModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/loginView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/loginView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/template/footer.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/template/footer.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/template/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/template/header.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/usuarioView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/usuarioView.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +81,7 @@
       <workItem from="1716937710978" duration="3777000" />
       <workItem from="1717111077118" duration="2961000" />
       <workItem from="1717274398343" duration="578000" />
-      <workItem from="1717347240018" duration="4798000" />
+      <workItem from="1717347240018" duration="5715000" />
     </task>
     <task id="LOCAL-00001" summary="Password encriptada con md5">
       <option name="closed" value="true" />
@@ -94,7 +91,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717274346086</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="UserModel, UserController, perfilPropioView, usuarioView (lobby)">
+      <option name="closed" value="true" />
+      <created>1717352237093</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1717352237093</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +107,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Password encriptada con md5" />
-    <option name="LAST_COMMIT_MESSAGE" value="Password encriptada con md5" />
+    <MESSAGE value="UserModel, UserController, perfilPropioView, usuarioView (lobby)" />
+    <option name="LAST_COMMIT_MESSAGE" value="UserModel, UserController, perfilPropioView, usuarioView (lobby)" />
   </component>
 </project>
