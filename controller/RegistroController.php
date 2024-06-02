@@ -163,7 +163,9 @@ class RegistroController
             $mailer->send();
 
             // Redirigir a una vista de éxito
-            header('Location:/autenticacion?mail=OK');
+            header('Location:/registro/pedirConfirmacionDeCorreo');
+
+
             exit();
         /*} catch (Exception $e) {
             header('Location:/autenticacion?mail=BAD');
@@ -191,5 +193,8 @@ class RegistroController
             header('Location:/error?codError=222');
             exit();
         }
+    }
+    public function pedirConfirmacionDeCorreo(){
+        $this->presenter->render("view/verificaTuCorreoView.mustache");
     }
 }
