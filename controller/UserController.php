@@ -26,6 +26,14 @@ class UserController
         }
     }
 
+    public function obtenerInformacionHeader(){
+        if (isset($_SESSION['id'])){
+            $userId = $_SESSION['id'];
+            $usuario = $this->model->getNombreDeUsuarioYFotoDePerfil($userId);
+            $this->presenter->render("view/template/header.mustache", [$usuario => $usuario]);
+        }
+    }
+
     public function redirigirNuevaPartida()
     {
         $this->presenter->render("view/jugarPartidaInicio.mustache");
@@ -39,5 +47,9 @@ class UserController
     public function redirigirRanking()
     {
         $this->presenter->render("view/verRanking.mustache");
+    }
+
+    public function redirigirAMisPartidas(){
+        $this->presenter->render("view/misPartidasView.mustache");
     }
 }

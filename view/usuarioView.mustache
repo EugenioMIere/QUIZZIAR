@@ -26,6 +26,7 @@
         flex-direction: column;
         gap: 20px;
         margin-bottom:1%;
+        margin-top: 2%;
     }
 
     .event-button {
@@ -54,20 +55,15 @@
 </style>
 <body>
 <div class="event-button-container">
-    <div class="event-button" id="nuevaPartida" style="background-image: url('./nuevapartida.png')" action="user/redirigirNuevaPartida">
+    <div class="event-button" id="nuevaPartida" style="background-image: url('resources/images/nuevapartida.png')" action="user/redirigirNuevaPartida">
         <div class="event-title"><a href="/user/redirigirNuevaPartida">NUEVA PARTIDA</a></div>
     </div>
-    <div class="event-button" id="verRanking" style="background-image: url('verranking.png')" action="user/redirigirRanking">
+    <div class="event-button" id="verRanking" style="background-image: url('resources/images/verranking.png')" action="user/redirigirRanking">
         <div class="event-title"><a href="/user/redirigirRanking">VER RANKING</a> </div>
     </div>
-    <div class="event-button" id="misPartidas" style="background-image: url('mispartidas.png')">
-        <div class="event-title"><a href="/user/redirigirDatosUsuario">MIS PARTIDAS</a> </div>
+    <div class="event-button" id="misPartidas" style="background-image: url('resources/images/mispartidas.png')">
+        <div class="event-title"><a href="/user/redirigirAMisPartidas">MIS PARTIDAS</a> </div>
     </div>
 </div>
-<script>
-    function redirigir(url) {
-        window.location.href = url;
-    }
-</script>
 </body>
 </html>
