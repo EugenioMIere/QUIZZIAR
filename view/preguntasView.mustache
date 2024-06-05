@@ -1,0 +1,37 @@
+<style>
+    button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #3498db;
+        color: #fff;
+        cursor: pointer;
+    }
+</style>
+<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+
+
+            <h2>Pregunta:</h2>
+            {{#preguntas}}
+            <p>{{ pregunta }}</p>
+                <form action="/pregunta/validarPregunta&idPregunta={{id}} " method="post">
+
+                <p><button id="respuesta" name="respuesta"  value="1">{{ opcionUno }}</button></p>
+                <p><button id="respuesta" name="respuesta"  value="2">{{ opcionDos }}</button></p>
+                <p><button id="respuesta" name="respuesta"  value="3">{{ opcionTres }}</button></p>
+                <p><button id="respuesta" name="respuesta" value="4">{{ opcionCuatro }}</button></p>
+                </form>
+                {{/preguntas}}
+
+
+    <p>Respuesta: {{respuestaCorrecta}}</p>
+
+
+
+
+
+
+</div>

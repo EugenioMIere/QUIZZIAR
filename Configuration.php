@@ -3,10 +3,12 @@
 include_once 'controller/RegistroController.php';
 include_once 'controller/LoginController.php';
 include_once 'controller/UserController.php';
+include_once 'controller/PreguntaController.php';
 
 include_once 'model/RegistroModel.php';
 include_once 'model/LoginModel.php';
 include_once 'model/UserModel.php';
+include_once 'model/PreguntaModel.php';
 
 include_once 'helper/Database.php';
 include_once 'helper/Router.php';
@@ -39,6 +41,11 @@ class Configuration {
         return new UserController(self::getUserModel(), self::getPresenter());
     }
 
+    public static function getPreguntaController(): PreguntaController
+    {
+        return new PreguntaController(self::getPreguntaModel(), self::getPresenter());
+    }
+
     // MODELS
     private static function getRegistroModel(): RegistroModel
     {
@@ -53,6 +60,11 @@ class Configuration {
     private static function getUserModel(): UserModel
     {
         return new UserModel(self::getDatabase());
+    }
+
+    private static function getPreguntaModel(): PreguntaModel
+    {
+        return new PreguntaModel(self::getDatabase());
     }
 
     // HELPERS
@@ -73,4 +85,6 @@ class Configuration {
     {
         return new MustachePresenter("view/template");
     }
+
+
 }
