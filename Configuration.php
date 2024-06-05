@@ -46,6 +46,11 @@ class Configuration {
         return new PreguntaController(self::getPreguntaModel(), self::getPresenter());
     }
 
+    public static function getRankingController(): RankingController
+    {
+        return new RankingController(self::getRankingModel(), self::getPresenter());
+    }
+
     // MODELS
     private static function getRegistroModel(): RegistroModel
     {
@@ -65,6 +70,11 @@ class Configuration {
     private static function getPreguntaModel(): PreguntaModel
     {
         return new PreguntaModel(self::getDatabase());
+    }
+
+    private static function getRankingModel(): RankingModel
+    {
+        return new RankingModel(self::getDatabase());
     }
 
     // HELPERS

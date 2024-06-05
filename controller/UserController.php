@@ -21,7 +21,7 @@ class UserController
     public function obtenerInformacionLobby(){
         if(isset($_SESSION['id'])){
             $userId = $_SESSION['id'];
-            $usuario = $this->model->getUserDetailsLobby($userId);
+            $usuario = $this->model->getUserDetails($userId);
             $this->presenter->render("view/perfilPropioView.mustache", [$usuario => $usuario]);
         }
     }
@@ -29,7 +29,7 @@ class UserController
     public function obtenerInformacionHeader(){
         if (isset($_SESSION['id'])){
             $userId = $_SESSION['id'];
-            $usuario = $this->model->getNombreDeUsuarioYFotoDePerfil($userId);
+            $usuario = $this->model->getUserDetails($userId);
             $this->presenter->render("view/template/header.mustache", [$usuario => $usuario]);
         }
     }
@@ -46,7 +46,7 @@ class UserController
 
     public function redirigirRanking()
     {
-        $this->presenter->render("view/verRanking.mustache");
+        $this->presenter->render("view/verRankingView.mustache");
     }
 
     public function redirigirAMisPartidas(){

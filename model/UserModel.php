@@ -22,15 +22,4 @@ class UserModel
         return $this->database->query($sql);
     }
 
-    public function getUserDetailsLobby($userId)
-    {
-        $sql = "SELECT nombreCompleto from usuario WHERE id = '$userId'";
-
-        return $this->database->query($sql);
-    }
-    public function getNombreDeUsuarioYFotoDePerfil($userId){
-        $sql ="SELECT nombreDeUsuario, fotoDePerfil FROM usuario WHERE id = '$userId'";
-
-        return $this->database->query($sql);
-    }
 }
