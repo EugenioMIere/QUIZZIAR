@@ -15,21 +15,32 @@ class PreguntaController
     public function getPregunta()
     {
         $preguntas = $this->model->getPreguntas();
-        $this->presenter->render("view/preguntasView.mustache", ["preguntas" => $preguntas]);
+        $opciones = $this->model->getOpciones($preguntas[0]['id']);
+
+        $this->presenter->render("view/preguntasView.mustache", ["opciones" => $opciones,"preguntas" => $preguntas]);
     }
     public function validarPregunta(){
-        if (isset($_POST["respuesta"])){
-            $respuesta = $_POST["respuesta"];
-            $id = $_GET["idPregunta"];
-            $respuestaCorrecta = $this->getRespuestaCorrecta($id);
+        if (isset($_POST["respuesta"])&&$_GET["idPregunta"]){
 
-            if ($respuestaCorrecta==$respuesta ){
-                $respuestaCorrecta = "Correcto";
-                $this->presenter->render("view/preguntasView.mustache", ["respuestaCorrecta" => $respuestaCorrecta]);
-                exit();
-            }else  {
-                $this->presenter->render("view/preguntasView.mustache", ["respuestaCorrecta" => $respuestaCorrecta]);
+            $idRespuestas = $_POST["respuesta"];
+            $preguntaIdRespuestas = $_GET["idPregunta"];
+            $respuestaCorrecta = $this->getRespuestaCorrecta($idRespuestas);
+            $estadoBoton = "disabled";
+
+            if ($respuestaCorrecta){
+                $result = "Correcto";
+                $preguntas = $this->model->getPreguntaEspecifica($preguntaIdRespuestas);
+                $opciones = $this->model->getOpciones($preguntaIdRespuestas);
+                $this->presenter->render("view/preguntasView.mustache", ["result" => $result,"opciones" => $opciones,"preguntas" => $preguntas,"estadoBoton" =>$estadoBoton]);
+
+            }else{
+                $result = "Falso";
+                $preguntas = $this->model->getPreguntaEspecifica($preguntaIdRespuestas);
+                $opciones = $this->model->getOpciones($preguntaIdRespuestas);
+                $this->presenter->render("view/preguntasView.mustache", ["result" => $result,"opciones" => $opciones,"preguntas" => $preguntas,"estadoBoton" =>$estadoBoton]);
+
             }
+
 
         }
 
