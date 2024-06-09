@@ -16,8 +16,9 @@ class PreguntaController
     {
         $preguntas = $this->model->getPreguntas();
         $opciones = $this->model->getOpciones($preguntas[0]['id']);
+        $visibilidad = "hidden";
 
-        $this->presenter->render("view/preguntasView.mustache", ["opciones" => $opciones,"preguntas" => $preguntas]);
+        $this->presenter->render("view/preguntasView.mustache", ["visibilidad" => $visibilidad,"opciones" => $opciones,"preguntas" => $preguntas]);
     }
     public function validarPregunta(){
         if (isset($_POST["respuesta"])&&$_GET["idPregunta"]){
