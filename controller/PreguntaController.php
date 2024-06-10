@@ -21,7 +21,7 @@ class PreguntaController
         $this->presenter->render("view/preguntasView.mustache", ["visibilidad" => $visibilidad,"opciones" => $opciones,"preguntas" => $preguntas]);
     }
     public function validarPregunta(){
-        if (isset($_POST["respuesta"])&&$_GET["idPregunta"]){
+        if (isset($_POST["respuesta"]) && $_GET["idPregunta"]){
 
             $idRespuestas = $_POST["respuesta"];
             $preguntaIdRespuestas = $_GET["idPregunta"];
@@ -30,23 +30,24 @@ class PreguntaController
 
             if ($respuestaCorrecta){
                 $result = "Correcto";
-                $preguntas = $this->model->getPreguntaEspecifica($preguntaIdRespuestas);
-                $opciones = $this->model->getOpciones($preguntaIdRespuestas);
-                $this->presenter->render("view/preguntasView.mustache", ["result" => $result,"opciones" => $opciones,"preguntas" => $preguntas,"estadoBoton" =>$estadoBoton]);
-
-            }else{
+                $claseRespuesta = "respuesta-correcta";
+            } else {
                 $result = "Falso";
-                $preguntas = $this->model->getPreguntaEspecifica($preguntaIdRespuestas);
-                $opciones = $this->model->getOpciones($preguntaIdRespuestas);
-                $this->presenter->render("view/preguntasView.mustache", ["result" => $result,"opciones" => $opciones,"preguntas" => $preguntas,"estadoBoton" =>$estadoBoton]);
-
+                $claseRespuesta = "respuesta-incorrecta";
             }
 
-
+            $preguntas = $this->model->getPreguntaEspecifica($preguntaIdRespuestas);
+            $opciones = $this->model->getOpciones($preguntaIdRespuestas);
+            $this->presenter->render("view/preguntasView.mustache", [
+                "result" => $result,
+                "opciones" => $opciones,
+                "preguntas" => $preguntas,
+                "estadoBoton" => $estadoBoton,
+                "claseRespuesta" => $claseRespuesta
+            ]);
         }
-
-
     }
+
 
     private function getRespuestaCorrecta($id){
 

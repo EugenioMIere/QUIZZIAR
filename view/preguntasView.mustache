@@ -10,8 +10,7 @@
         color: #fff;
         cursor: pointer;
     }
-    .respuesta{
-
+    .respuesta {
         width: 100%;
         padding: 10px;
         margin-top: 10px;
@@ -21,29 +20,20 @@
         color: #fff;
         cursor: pointer;
     }
+    .respuesta-correcta {
+        background-color: green;
+    }
+    .respuesta-incorrecta {
+        background-color: red;
+    }
 </style>
 <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
-
-
-            <h2>Pregunta: {{#preguntas}} {{ pregunta }} {{/preguntas}}</h2>
-
-
-                {{#opciones}}
-                <form action="/pregunta/validarPregunta&idPregunta={{pregunta_id}} " method="post">
-
-                <p><button id="respuesta" name="respuesta"  value={{id}} {{estadoBoton}}>{{ respuesta }}</button></p>
-
-                </form>
-
-                {{/opciones}}
-
-
-    <p class="respuesta">Respuesta: {{result}}</p>
-    <a href="/pregunta/getPregunta"{{visivilidad}}>Siguiente</a>
-
-
-
-
-
-
+    <h2>Pregunta: {{#preguntas}} {{ pregunta }} {{/preguntas}}</h2>
+    {{#opciones}}
+        <form action="/pregunta/validarPregunta&idPregunta={{pregunta_id}}" method="post">
+        <p><button id="respuesta" name="respuesta" value="{{id}}" {{estadoBoton}}>{{ respuesta }}</button></p>
+        </form>
+    {{/opciones}}
+    <p class="respuesta {{claseRespuesta}}">Respuesta: {{result}}</p>
+    <a href="/pregunta/getPregunta" {{visivilidad}}>Siguiente</a>
 </div>
