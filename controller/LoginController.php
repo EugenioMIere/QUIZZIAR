@@ -11,6 +11,10 @@ class LoginController
         $this->presenter = $presenter;
     }
 
+    public function mostrarLogin(){
+        $this->presenter->render("view/loginView.mustache");
+    }
+
     public function home()
     {
         if ($_SESSION['rol'] === "usuario"){
@@ -22,9 +26,10 @@ class LoginController
         }
 
     }
+
     public function login() {
         $url="";
-        /*session_start();*/
+
         $usuarioBuscado = $this->datosLoginCompletos();
         if ($usuarioBuscado) {
             $emailLogin = $usuarioBuscado['emailLogin'];

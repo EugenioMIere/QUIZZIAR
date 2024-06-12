@@ -6,10 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="66ed4e9b-8f12-43d8-99bf-807e904a68cd" name="Changes" comment="UserModel, UserController, perfilPropioView, usuarioView (lobby)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/Configuration.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/UserModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/UserModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/verRanking.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/verRankingView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/RegistroModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/RegistroModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/loginView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/loginView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/registroView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/registroView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/resources/css/footerStyles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/resources/css/loginViewStyles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/resources/css/usuarioViewStyles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/resources/images/mispartidas.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/mispartidas.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/resources/images/nuevapartida.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/nuevapartida.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/resources/images/verranking.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/verranking.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/template/footer.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/template/footer.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/template/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/template/header.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/usuarioView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/usuarioView.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +71,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\preguntados\public\images" />
       <recent name="C:\xampp\htdocs\preguntados\view\resources\images" />
     </key>
   </component>
@@ -85,6 +97,7 @@
       <workItem from="1717355490412" duration="2901000" />
       <workItem from="1717411686836" duration="1087000" />
       <workItem from="1717629237369" duration="2152000" />
+      <workItem from="1718146962246" duration="4133000" />
     </task>
     <task id="LOCAL-00001" summary="Password encriptada con md5">
       <option name="closed" value="true" />
@@ -112,5 +125,21 @@
     <MESSAGE value="Password encriptada con md5" />
     <MESSAGE value="UserModel, UserController, perfilPropioView, usuarioView (lobby)" />
     <option name="LAST_COMMIT_MESSAGE" value="UserModel, UserController, perfilPropioView, usuarioView (lobby)" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/helper/Database.php</url>
+          <line>23</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/model/RegistroModel.php</url>
+          <line>28</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
