@@ -1,8 +1,7 @@
 <?php
 
-/*use exception\UsuarioExistente;*/
-
 use exception\UsuarioExistente;
+require_once 'exception/UsuarioExistente.php';
 
 class RegistroModel
 {
