@@ -98,7 +98,7 @@ class Configuration {
 
     public static function getRouter(): Router
     {
-        return new Router("getLoginController", "home" );
+        return new Router("getRegistroController", "home" );
     }
 
     private static function getPresenter(): MustachePresenter

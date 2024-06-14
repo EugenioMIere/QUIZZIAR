@@ -12,9 +12,11 @@ class PreguntaModel
     public function getPreguntas(){
 
          $query = "SELECT * FROM preguntas ORDER BY RAND() LIMIT 1";
+
         /*$result = $this->database->query($query);
         return $result[0]['pregunta'];*/
          return $this->database->query($query);
+
     }
 
     public function getPreguntaEspecifica($id){
