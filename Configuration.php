@@ -51,6 +51,11 @@ class Configuration {
         return new RankingController(self::getRankingModel(), self::getPresenter());
     }
 
+    public static function getEditorController(): EditorController
+    {
+        return new EditorController(self::getEditorModel(), self::getPresenter());
+    }
+
     // MODELS
     private static function getRegistroModel(): RegistroModel
     {
@@ -77,6 +82,11 @@ class Configuration {
         return new RankingModel(self::getDatabase());
     }
 
+    private static function getEditorModel(): EditorModel
+    {
+        return new EditorModel(self::getDatabase());
+    }
+
     // HELPERS
     public static function getDatabase(){
         $config = self::getConfig();
@@ -88,7 +98,7 @@ class Configuration {
 
     public static function getRouter(): Router
     {
-        return new Router("getLoginController", "mostrarLogin" );
+        return new Router("getLoginController", "home" );
     }
 
     private static function getPresenter(): MustachePresenter

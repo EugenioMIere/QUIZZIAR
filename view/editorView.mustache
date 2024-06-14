@@ -3,7 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title> Editor </title>
 </head>
-<body><h2>Editor</h2></body>
+<body>
+<h1>Listado de Preguntas</h1>
+
+<div class="alert alert-danger" role="alert">
+    {{#error}}
+        <p> {{error}} </p>
+    {{/error}}
+</div>
+
+<ul class="question-list">
+    {{#preguntas}}
+        <li class="question-item">
+            <span class="question-text">{{pregunta}}</span>
+            <span class="question-category">{{categoria}}</span>
+            <span class="icons">
+
+                <form action="/editor/editarPregunta" method="POST">
+                <input type="hidden" name="idPreguntaAEditar" value="{{id}}">
+                <button type="submit"><span class="material-symbols-outlined">edit</span></button>
+                </form>
+
+                <form action="/editor/eliminarPregunta" method="POST">
+                <input type="hidden" name="idPreguntaAEliminar" value="{{id}}">
+                <button type="submit"><span class="material-symbols-outlined">delete</span></button>
+                </form>
+
+            </span>
+        </li>
+    {{/preguntas}}
+
+</ul>
+
+</body>
 </html>
