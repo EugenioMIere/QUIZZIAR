@@ -4,11 +4,13 @@ include_once 'controller/RegistroController.php';
 include_once 'controller/LoginController.php';
 include_once 'controller/UserController.php';
 include_once 'controller/PreguntaController.php';
+include_once 'controller/EditorController.php';
 
 include_once 'model/RegistroModel.php';
 include_once 'model/LoginModel.php';
 include_once 'model/UserModel.php';
 include_once 'model/PreguntaModel.php';
+include_once 'model/EditorModel.php';
 
 include_once 'helper/Database.php';
 include_once 'helper/Router.php';

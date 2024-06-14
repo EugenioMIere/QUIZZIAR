@@ -12,12 +12,13 @@ class EditorController
     }
 
 
-    public function home()
+    /*public function home()
     {
         $this->presenter->render("view/editorView.mustache");
-    }
+    }*/
 
-    public function getAllPreguntas(){
+    /*public function getAllPreguntas()*/
+    public function home(){
        $preguntas = $this->model->getAllPreguntas();
 
         $this->presenter->render("view/editorView.mustache", ["preguntas" => $preguntas]);

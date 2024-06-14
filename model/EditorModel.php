@@ -12,8 +12,8 @@ class EditorModel
        FROM preguntas p
        JOIN categoria c ON p.categoria_id = c.id";
 
-        $preguntas = $this->database->query($sql)->fetchAll(PDO::FETCH_ASSOC);
-        return $preguntas;
+        /*$preguntas = $this->database->query($sql)->fetchAll(PDO::FETCH_ASSOC);*/
+        return $this->database->query($sql);
     }
     public function eliminarPregunta($id){
 
