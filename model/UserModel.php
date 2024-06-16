@@ -22,4 +22,9 @@ class UserModel
         return $this->database->query($sql);
     }
 
+    public function registrarPartida($userId){
+        $query = "INSERT INTO `partidas` (`usuario_id`) VALUES ('$userId')";
+        $this->database->execute($query);
+    }
+
 }

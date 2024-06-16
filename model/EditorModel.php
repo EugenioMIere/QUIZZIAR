@@ -21,7 +21,7 @@ class EditorModel
         $this->database->execute($sql);
 
         $sql = "DELETE FROM preguntas where id = '$id'";
-        $this->database->execute($sql);
+        $this->database->query($sql);
 
     }
 

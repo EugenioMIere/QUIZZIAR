@@ -17,9 +17,17 @@ class PreguntaController
         $preguntas = $this->model->getPreguntas();
         $opciones = $this->model->getOpciones($preguntas[0]['id']);
         $visibilidad = "hidden";
+        /*$this->registrarPartida($preguntas[0]['id']);*/
 
         $this->presenter->render("view/preguntasView.mustache", ["visibilidad" => $visibilidad,"opciones" => $opciones,"preguntas" => $preguntas]);
     }
+
+    /*private function registrarPartida($idPregunta)
+    {
+        $id_usuario = $_SESSION['id'];
+        $this->model->registrarPartida($id_usuario, $idPregunta);
+
+    }*/
     public function validarPregunta(){
         if (isset($_POST["respuesta"]) && $_GET["idPregunta"]){
 
