@@ -42,18 +42,6 @@ class RegistroModel
         }
 
     }
-
-    /* funcion del admin
-    public function delete($emailUsuarioAEliminar, $passwordDelUsuario){
-        if ($this->elUsuarioYaExiste($emailUsuarioAEliminar)){
-            $sql = "DELETE FROM usuario WHERE email = '$emailUsuarioAEliminar'";
-            $this->database->query($sql);
-        } else {
-            throw new UsuarioInexistente();
-        }
-
-    } */
-
     private function elUsuarioYaExiste($email){
 
         $sql = "SELECT * from usuario WHERE email = '$email'";
