@@ -13,7 +13,7 @@ class EditorModel
        JOIN categoria c ON p.categoria_id = c.id";
 
         /*$preguntas = $this->database->query($sql)->fetchAll(PDO::FETCH_ASSOC);*/
-        return $this->database->query($sql);
+        return $this->database->execute($sql);
     }
     public function eliminarPregunta($id){
 

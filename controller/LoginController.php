@@ -20,7 +20,9 @@ class LoginController
         if ($_SESSION['rol'] === "usuario"){
             $this->presenter->render("view/usuarioView.mustache");
         }elseif ($_SESSION['rol'] === "editor"){
-            $this->presenter->render("view/editorView.mustache");
+            header('Location:/editor');
+            exit();
+            /*$this->presenter->render("view/editorView.mustache");*/
         }elseif ($_SESSION['rol'] === "admin"){
             $this->presenter->render("view/adminView.mustache");
         }
