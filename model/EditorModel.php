@@ -41,4 +41,22 @@ class EditorModel
         return $rtas;
     }
 
+    public function editarPregunta($id, $pregunta, $idCategoria){
+        $sql = "UPDATE preguntas SET pregunta = '$pregunta', categoria_id = '$idCategoria' WHERE id = '$id'";
+        $this->database->query($sql);
+    }
+
+    public function editarRespuestas($idPregunta, $respuestas){
+        // Elimino todas las respuestas de la pregunta
+        $sql = "DELETE from respuestas WHERE pregunta_id = '$idPregunta'";
+        $this->database->query($sql);
+
+        // Inserto 4 respuestas, la primera q llega siempre es la correcta
+        $sql = "INSERT INTO respuestas (pregunta_id, respuesta, es_correcta) VALUES 
+         ($idPregunta, $respuestas[0], 1), ($idPregunta, $respuestas[1], 0),
+         ($idPregunta, $respuestas[2], 0), ($idPregunta, $respuestas[3], 0)";
+
+        $this->database->query($sql);
+    }
+
 }

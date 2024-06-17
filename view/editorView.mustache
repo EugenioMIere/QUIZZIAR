@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-
-
+    <script src="https://kit.fontawesome.com/65c8bcbd9c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/public/css/editor.css">
     <title> Editor </title>
 </head>
 <body>
@@ -18,28 +16,37 @@
     {{/error}}
 </div>
 
-<ul class="question-list">
-    {{#preguntas}}
-        <li class="question-item">
-            <span class="question-text">{{pregunta}}</span>
-            <span class="question-category">{{categoria}}</span>
-            <span class="icons">
-
-                <form action="/editor/editarPregunta" method="POST">
-                <input type="hidden" name="idPreguntaAEditar" value="{{id}}">
-                <button type="submit"><span class="material-symbols-outlined">edit</span></button>
-                </form>
-
-                <form action="/editor/eliminarPregunta" method="POST">
-                <input type="hidden" name="idPreguntaAEliminar" value="{{id}}">
-                <button type="submit"><span class="material-symbols-outlined">delete</span></button>
-                </form>
-
-            </span>
-        </li>
-    {{/preguntas}}
-
-</ul>
-
+<div class="container">
+    <table>
+        <thead>
+        <tr>
+            <th> Preguntas </th>
+            <th> Categoría </th>
+            <th> Editar </th>
+            <th> Eliminar </th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#preguntas}}
+        <tr>
+                <td> {{pregunta}} </td>
+                <td> {{categoria}}</td>
+                <td>
+                    <form action="/editor/editarPregunta" method="POST">
+                        <input type="hidden" name="idPreguntaAEditar" value="{{id}}">
+                        <button type="submit"><i class="fa-solid fa-pen-to-square"></i></button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/editor/eliminarPregunta" method="POST">
+                        <input type="hidden" name="idPreguntaAEliminar" value="{{id}}">
+                        <button type="submit"><i class="fa-solid fa-trash"></i></button>
+                    </form>
+                </td>
+        </tr>
+        {{/preguntas}}
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

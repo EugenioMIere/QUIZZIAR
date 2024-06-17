@@ -18,7 +18,7 @@ class LoginController
     public function home()
     {
         if ($_SESSION['rol'] === "usuario"){
-            $this->presenter->render("view/usuarioView.mustache");
+            $this->presenter->render("view/lobby.mustache");
         }elseif ($_SESSION['rol'] === "editor"){
             header('Location:/editor');
             exit();
@@ -63,7 +63,7 @@ class LoginController
                 $url = "view/adminView.mustache";
                 break;
             case 'usuario':
-                $url = "view/usuarioView.mustache";
+                $url = "view/lobby.mustache";
                 break;
             case 'editor':
                 $url = "view/editorView.mustache";

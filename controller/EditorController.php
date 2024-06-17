@@ -10,14 +10,6 @@ class EditorController
         $this->model = $model;
         $this->presenter = $presenter;
     }
-
-
-    /*public function home()
-    {
-        $this->presenter->render("view/editorView.mustache");
-    }*/
-
-    /*public function getAllPreguntas()*/
     public function home(){
        $preguntas = $this->model->getAllPreguntas();
 
@@ -54,9 +46,26 @@ class EditorController
                 // Llamo al modelo para obtener todas las rtas
                 $respuestas = $this->model->getRespuestasPorIdPregunta($idPreguntaAEditar);
 
+                // Preparar las respuestas
+                $dataRespuestas = [
+                    'correcta' => '',
+                    'falsa1' => '',
+                    'falsa2' => '',
+                    'falsa3' => ''
+                ];
+
+                $falsas = 0;
+                foreach ($respuestas as $respuesta) {
+                    if ($respuesta['es_correcta']) {
+                        $dataRespuestas['correcta'] = $respuesta['respuesta'];
+                    } else {
+                        $dataRespuestas['falsa' . ++$falsas] = $respuesta['respuesta'];
+                    }
+                }
+
                 $data = [
                     'pregunta' => $pregunta,
-                    'respuestas' => $respuestas
+                    'respuestas' => $dataRespuestas
                 ];
 
                 $this->presenter->render("view/editarPreguntaView.mustache", $data);
@@ -72,6 +81,19 @@ class EditorController
     }
 
     public function guardarEdicionPregunta(){
+        $id = $_POST['idPregunta'];
+        $pregunta = $_POST['pregunta'];
+        $idCategoria = $_POST['categoria'];
+
+        $respuestas = [
+            'respuestaCorrecta' => $_POST['respuestaCorrecta'],
+            'respuestaFalsa1' => $_POST['respuestaFalsa1'],
+            'respuestaFalsa2' => $_POST['respuestaFalsa2'],
+            'respuestaFalsa3' => $_POST['respuestaFalsa3']
+        ];
+
+        $this->model->editarPregunta($id, $pregunta, $idCategoria);
+        $this->model->editarRespuestas($id, $respuestas);
 
     }
 

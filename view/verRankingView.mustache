@@ -3,47 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/public/css/verRanking.css">
     <title>Ranking de Usuarios</title>
-    <style>
-        h1, p {
-            text-align: center;
-        }
-        table {
-            border-collapse: collapse;
-            width: 70%;
-            margin: 20px auto;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
 </head>
 <body>
 <h1>Ranking de Usuarios</h1>
-<table>
-    <thead>
-    <tr>
-        <th><p> Ranking </p></th>
-        <th><p> Foto de Perfil </p></th>
-        <th><p> Nombre </p></th>
-        <th> <p> Puntaje</p></th>
-    </tr>
-    </thead>
-    <tbody>
-    {{#ranking}}
+<div class="container">
+    <table>
+        <thead>
         <tr>
-            <td>{{ranking}}</td>
-            <td><img src="{{fotoDePerfil}}" alt="{{nombre}}"></td>
-            <td>{{nombre}}</td>
-            <td>{{total_correctas}}</td>
+            <th><p> Ranking </p></th>
+            <th><p> Foto de Perfil </p></th>
+            <th><p> Nombre </p></th>
+            <th> <p> Puntaje</p></th>
         </tr>
-    {{/ranking}}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        {{#ranking}}
+            <tr>
+                <td>{{ranking}}</td>
+                <td><img src="{{fotoDePerfil}}" alt="{{nombre}}"></td>
+                <td>{{nombre}}</td>
+                <td>{{total_correctas}}</td>
+            </tr>
+        {{/ranking}}
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

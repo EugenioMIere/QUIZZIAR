@@ -1,1 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="/public/css/editarPregunta.css">
+    <title> Editar pregunta </title>
+</head>
+<body>
+<h1> Edición de preguntas </h1>
 
+<div class="form">
+    <form action="/editor/guardarEdicionPregunta" method="POST">
+        <div class="question-info">
+
+            <div class="pregunta-ed">
+                {{#pregunta}}
+                    <label for="pregunta"> Pregunta a editar: </label>
+                    <input type="hidden" name="idPregunta" value="{{pregunta.id}}">
+                    <input type="text" id="pregunta" name="pregunta" placeholder="{{pregunta}}">
+                {{/pregunta}}
+            </div>
+
+            <div class="pregunta-cat">
+                <label for="categoria"> Categoría: </label>
+                <select id="categoria" name="categoria">
+                    <option value="1"> Arte </option>
+                    <option value="2"> Ciencia </option>
+                    <option value="3"> Deportes </option>
+                    <option value="4"> Entretenimiento </option>
+                    <option value="5"> Geografía </option>
+                    <option value="6"> Historia </option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="answer-info">
+
+            {{#respuestas}}
+                <label for="respuestaCorrecta"> Respuesta correcta: </label>
+                <input type="text" id="respuestaCorrecta" name="respuestaCorrecta" style="border: 2px solid green" placeholder="{{respuestas.correcta}}" required>
+
+                <label for="respuestaFalsa1"> Respuesta falsa: </label>
+                <input type="text" id="respuestaFalsa1" name="respuestaFalsa1" style="border: 2px solid red" placeholder="{{respuestas.falsa1}}" required>
+
+                <label for="respuestaFalsa2"> Respuesta falsa: </label>
+                <input type="text" id="respuestaFalsa2" name="respuestaFalsa2" style="border: 2px solid red" placeholder="{{respuestas.falsa2}}" required>
+
+                <label for="respuestaFalsa3"> Respuesta falsa: </label>
+                <input type="text" id="respuestaFalsa3" name="respuestaFalsa3" style="border: 2px solid red" placeholder="{{respuestas.falsa3}}" required>
+
+            {{/respuestas}}
+        </div>
+
+        <button type="submit" class="guardarCambios"> Guardar cambios </button>
+    </form>
+</div>
+</body>
+</html>
