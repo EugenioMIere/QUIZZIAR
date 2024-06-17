@@ -17,22 +17,23 @@ class PreguntaController
         $preguntas = $this->model->getPreguntas();
         $opciones = $this->model->getOpciones($preguntas[0]['id']);
         $visibilidad = "hidden";
-        /*$this->registrarPartida($preguntas[0]['id']);*/
+        $this->registrarPreguntaEnPartida($preguntas[0]['id']);
+
 
         $this->presenter->render("view/preguntasView.mustache", ["visibilidad" => $visibilidad,"opciones" => $opciones,"preguntas" => $preguntas]);
     }
 
-    /*private function registrarPartida($idPregunta)
+    private function registrarPreguntaEnPartida($idPregunta)
     {
         $id_usuario = $_SESSION['id'];
-        $this->model->registrarPartida($id_usuario, $idPregunta);
+        $this->model->setPreguntaEnPartida($id_usuario, $idPregunta);
 
-    }*/
+    }
     public function validarPregunta(){
         if (isset($_POST["respuesta"]) && $_GET["idPregunta"]){
 
             $idRespuestas = $_POST["respuesta"];
-            $preguntaIdRespuestas = $_GET["idPregunta"];
+            $idPregunta = $_GET["idPregunta"];
             $respuestaCorrecta = $this->getRespuestaCorrecta($idRespuestas);
             $estadoBoton = "disabled";
 
@@ -44,9 +45,10 @@ class PreguntaController
                 $claseRespuesta = "respuesta-incorrecta";
             }
 
-            $preguntas = $this->model->getPreguntaEspecifica($preguntaIdRespuestas);
-            $opciones = $this->model->getOpciones($preguntaIdRespuestas);
-            $this->model->setRespuestaPartida($_SESSION['id'], $result);
+            $preguntas = $this->model->getPreguntaEspecifica($idPregunta);
+            $opciones = $this->model->getOpciones($idPregunta);
+            $this->model->setRespuestaPartida($_SESSION['id'], $result,$idPregunta,$idRespuestas);
+
             $this->presenter->render("view/preguntasView.mustache", [
                 "result" => $result,
                 "opciones" => $opciones,

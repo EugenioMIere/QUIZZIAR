@@ -44,7 +44,7 @@ class PreguntaModel
         }
         return false;
     }
-    public function setRespuestaPartida($usuario_id,$respuesta){
+    public function setRespuestaPartida($usuario_id,$respuesta,$idPregunta,$idRespuestas){
         $consulta = "SELECT *
                     FROM partidas
                     WHERE `usuario_id` = '$usuario_id'
@@ -52,21 +52,51 @@ class PreguntaModel
                     LIMIT 1";
 
         $puntos = $this->database->query($consulta);
+        ;
 
         $correctas = $puntos[0]['correctas'];
         $incorrectas = $puntos[0]['incorrectas'];
         $id = $puntos[0]['id'];
+        $estado = 0;
 
 
         if ($respuesta== "Correcto"){
             $correctas++;
+            $estado = 1;
         } else {
             $incorrectas++;
+            $estado = 0;
         }
+        $this->setRespuesta_partidas_preguntas($id,$idPregunta,$estado,$idRespuestas );
         $query = "UPDATE `partidas` SET `correctas` = '$correctas',`incorrectas` = '$incorrectas' WHERE id = '$id'";
 
         $this->database->execute($query);
 
+    }
+
+    public function setPreguntaEnPartida($usuario_id, $idPregunta){
+        $consulta = "SELECT *
+                    FROM partidas
+                    WHERE `usuario_id` = '$usuario_id'
+                    ORDER BY `id` DESC
+                    LIMIT 1";
+
+        $partida = $this->database->query($consulta);
+
+        /*$incorrectas = $partida[0]['usuario_id'];*/
+        $partida_id = $partida[0]['id'];
+
+        $sql = "INSERT INTO partidas_preguntas (pregunta_id, partida_id) VALUES ('$idPregunta','$partida_id')";
+        $this->database->execute($sql);
+    }
+
+    private function setRespuesta_partidas_preguntas($id_partida,$idPregunta,$estado,$idRespuestas)
+    {
+        $query = "UPDATE `partidas_preguntas` 
+                    SET `respuesta_id` = '$idRespuestas',`correcta` = '$estado' 
+                    WHERE partida_id = '$id_partida' AND pregunta_id = '$idPregunta'";
+
+        $this->database->execute($query);
     }
 
 //    public function reportarPregunta($id){
