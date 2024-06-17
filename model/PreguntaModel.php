@@ -44,5 +44,29 @@ class PreguntaModel
         }
         return false;
     }
+    public function setRespuestaPartida($usuario_id,$respuesta){
+        $consulta = "SELECT *
+                    FROM partidas
+                    WHERE `usuario_id` = '$usuario_id'
+                    ORDER BY `id` DESC
+                    LIMIT 1";
+
+        $puntos = $this->database->query($consulta);
+
+        $correctas = $puntos[0]['correctas'];
+        $incorrectas = $puntos[0]['incorrectas'];
+        $id = $puntos[0]['id'];
+
+
+        if ($respuesta== "Correcto"){
+            $correctas++;
+        } else {
+            $incorrectas++;
+        }
+        $query = "UPDATE `partidas` SET `correctas` = '$correctas',`incorrectas` = '$incorrectas' WHERE id = '$id'";
+
+        $this->database->execute($query);
+
+    }
 
 }

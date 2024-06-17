@@ -46,6 +46,7 @@ class PreguntaController
 
             $preguntas = $this->model->getPreguntaEspecifica($preguntaIdRespuestas);
             $opciones = $this->model->getOpciones($preguntaIdRespuestas);
+            $this->model->setRespuestaPartida($_SESSION['id'], $result);
             $this->presenter->render("view/preguntasView.mustache", [
                 "result" => $result,
                 "opciones" => $opciones,
