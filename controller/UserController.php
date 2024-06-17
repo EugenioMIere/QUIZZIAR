@@ -10,28 +10,10 @@ class UserController
         $this->presenter = $presenter;
     }
 
-    public function obtenerDetallesDelUsuario(){
-        if(isset($_SESSION['id'])){
-            $userId = $_SESSION['id'];
-            $usuario = $this->model->getUserDetails($userId);
-            $this->presenter->render("view/perfilPropioView.mustache", [$usuario => $usuario]);
-        }
-    }
-
-    public function obtenerInformacionLobby(){
-        if(isset($_SESSION['id'])){
-            $userId = $_SESSION['id'];
-            $usuario = $this->model->getUserDetails($userId);
-            $this->presenter->render("view/perfilPropioView.mustache", [$usuario => $usuario]);
-        }
-    }
-
-    public function obtenerInformacionHeader(){
-        if (isset($_SESSION['id'])){
-            $userId = $_SESSION['id'];
-            $usuario = $this->model->getUserDetails($userId);
-            $this->presenter->render("view/template/header.mustache", [$usuario => $usuario]);
-        }
+    public function home(){
+        $idUsuario = $_SESSION['id'];
+        $usuario = $this->model->getUserDetails($idUsuario);
+        $this->presenter->render("view/miPerfilView.mustache", ["usuario" => $usuario]);
     }
 
     public function redirigirNuevaPartida()
@@ -44,7 +26,7 @@ class UserController
 
     public function redirigirDatosUsuario()
     {
-        $this->presenter->render("view/perfilPropioView.mustache");
+        $this->presenter->render("view/miPerfilView.mustache");
     }
 
     public function redirigirRanking()
@@ -54,5 +36,13 @@ class UserController
 
     public function redirigirAMisPartidas(){
         $this->presenter->render("view/misPartidasView.mustache");
+    }
+
+    public function editar(){
+        $id = $_SESSION['id'];
+
+        $usuario = $this->model->getUserDetails($id);
+
+        $this->presenter->render("view/editarPerfilView.mustache", ["usuario" => $usuario]);
     }
 }

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/public/css/header.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/miPerfil.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/65c8bcbd9c.js" crossorigin="anonymous"></script>
+    <title> Mi perfil </title>
+</head>
+<body>
+
+<div class="contenedor">
+    <!-- First Container -->
+    {{#usuario}}
+        <div class="left-side">
+            <div class="container-fluid text-center">
+                <img src="/{{fotoDePerfil}}" class="img-responsive img-circle margin" style="display:inline" alt="user" width="350" height="350">
+                <h3>{{nombreDeUsuario}}</h3>
+                <h2 class="margin">{{nombreCompleto}}</h2>
+            </div>
+        </div>
+
+        <!-- Second Container -->
+        <div class="right-side">
+            <div class="container-fluid text-center">
+                <p> <i class="fa-solid fa-envelope"></i> Email: {{email}}</p>
+                <p> <i class="fa-solid fa-calendar-days"></i> Fecha de nacimiento: {{fechaDeNacimiento}}</p>
+                <p> <i class="fa-solid fa-globe"></i> País: {{pais}}</p>
+                <p> <i class="fa-solid fa-city"></i> Ciudad: {{ciudad}} </p>
+                <a href="/user/editar" class="btn btn-default btn-lg">
+                    <i class="fa-solid fa-user-pen"></i> Editar
+                </a>
+            </div>
+        </div>
+    {{/usuario}}
+</div>
+
+</body>
+</html>
