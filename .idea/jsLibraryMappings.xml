@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{65c8bcbd9c, bootstrap}" />
+    <file url="PROJECT" libraries="{65c8bcbd9c, MaterialDesign-Webfont, bootstrap, bootstrap.bundle, jquery}" />
   </component>
 </project>
