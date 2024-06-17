@@ -11,13 +11,13 @@
 <body>
 
 <ul class="sidenav">
-    <li><a class="active" href="/editor/home">Listado de preguntas</a></li>
+    <li><a href="/editor/home">Listado de preguntas</a></li>
     <li><a href="/editor/verPreguntasReportadas">Preguntas reportadas</a></li>
-    <li><a href="/editor/verPreguntasSugeridas">Preguntas sugeridas</a></li>
+    <li><a class="active" href="/editor/verPreguntasSugeridas">Preguntas sugeridas</a></li>
     <li><a href="/editor/irACrearPregunta">Crear pregunta</a></li>
 </ul>
 
-<h1>Listado de Preguntas</h1>
+<h1> Listado de preguntas reportadas </h1>
 
 <div class="alert alert-danger" role="alert">
     {{#error}}
@@ -30,30 +30,21 @@
         <thead>
         <tr>
             <th> Preguntas </th>
-            <th> Categoría </th>
-            <th> Editar </th>
-            <th> Eliminar </th>
+            <th> Quitar </th>
         </tr>
         </thead>
         <tbody>
-        {{#preguntas}}
-        <tr>
+        {{#sugeridas}}
+            <tr>
                 <td> {{pregunta}} </td>
-                <td> {{categoria}}</td>
                 <td>
-                    <form action="/editor/editarPregunta" method="POST">
-                        <input type="hidden" name="idPreguntaAEditar" value="{{id}}">
-                        <button type="submit"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <form action="/editor/quitarDeSugeridas" method="POST">
+                        <input type="hidden" name="idPregunta" value="{{id}}">
+                        <button type="submit"><i class="fa-solid fa-eraser"></i></button>
                     </form>
                 </td>
-                <td>
-                    <form action="/editor/eliminarPregunta" method="POST">
-                        <input type="hidden" name="idPreguntaAEliminar" value="{{id}}">
-                        <button type="submit"><i class="fa-solid fa-trash"></i></button>
-                    </form>
-                </td>
-        </tr>
-        {{/preguntas}}
+            </tr>
+        {{/sugeridas}}
         </tbody>
     </table>
 </div>

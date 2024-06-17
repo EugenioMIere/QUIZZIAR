@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66ed4e9b-8f12-43d8-99bf-807e904a68cd" name="Changes" comment="Implementación API de google maps + ya se puede guardar la foto de perfil del usuario, rol del editor casi terminado">
+    <list default="true" id="66ed4e9b-8f12-43d8-99bf-807e904a68cd" name="Changes" comment="sidenav comentada">
+      <change afterPath="$PROJECT_DIR$/view/preguntasReportadasView.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/EditorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/EditorController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/EditorModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/EditorModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/editorView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/editorView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/preguntasReportadas.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/preguntasSugeridasView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/preguntasSugeridas.mustache" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +94,9 @@
       <workItem from="1718384636845" duration="6056000" />
       <workItem from="1718569547146" duration="1675000" />
       <workItem from="1718575612045" duration="7414000" />
-      <workItem from="1718587889481" duration="2894000" />
+      <workItem from="1718587889481" duration="2983000" />
+      <workItem from="1718591807159" duration="84000" />
+      <workItem from="1718643578557" duration="4486000" />
     </task>
     <task id="LOCAL-00001" summary="Password encriptada con md5">
       <option name="closed" value="true" />
@@ -139,7 +146,23 @@
       <option name="project" value="LOCAL" />
       <updated>1718583055106</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="sidenav comentada">
+      <option name="closed" value="true" />
+      <created>1718591093587</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1718591093587</updated>
+    </task>
+    <task id="LOCAL-00008" summary="sidenav comentada">
+      <option name="closed" value="true" />
+      <created>1718591136617</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1718591136617</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -151,7 +174,8 @@
     <MESSAGE value="cambios de estilos, carpeta public (image, css)" />
     <MESSAGE value="Implementación API de google maps + ya se puede guardar la foto de perfil del usuario" />
     <MESSAGE value="Implementación API de google maps + ya se puede guardar la foto de perfil del usuario, rol del editor casi terminado" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementación API de google maps + ya se puede guardar la foto de perfil del usuario, rol del editor casi terminado" />
+    <MESSAGE value="sidenav comentada" />
+    <option name="LAST_COMMIT_MESSAGE" value="sidenav comentada" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

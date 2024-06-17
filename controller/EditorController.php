@@ -19,8 +19,8 @@ class EditorController
     public function eliminarPregunta(){
         $mensaje = "";
 
-        if (isset($_POST['id'])){
-            $id = $_POST['id'];
+        if (isset($_POST['idPreguntaAEliminar'])){
+            $id = $_POST['idPreguntaAEliminar'];
             $resultado = $this->model->eliminarPregunta($id);
 
             if ($resultado){
@@ -86,12 +86,6 @@ class EditorController
         $pregunta = $_POST['pregunta'];
         $idCategoria = $_POST['categoria'];
 
-        /*$respuestas = [
-            'respuestaCorrecta' => $_POST['respuestaCorrecta'],
-            'respuestaFalsa1' => $_POST['respuestaFalsa1'],
-            'respuestaFalsa2' => $_POST['respuestaFalsa2'],
-            'respuestaFalsa3' => $_POST['respuestaFalsa3']
-        ];*/
         $respuestas = [
             '0' => isset($_POST['respuestaCorrecta']) ? $_POST['respuestaCorrecta'] : '',
             '1' => isset($_POST['respuestaFalsa1']) ? $_POST['respuestaFalsa1'] : '',
@@ -103,9 +97,47 @@ class EditorController
         $this->model->editarRespuestas($id, $respuestas);
 
     }
+    public function verPreguntasReportadas(){
+        $reportadas = $this->model->getAllReportadas();
 
-    public function agregarPregunta(){
+        $this->presenter->render("view/preguntasReportadasView.mustache", ["reportadas" => $reportadas]);
+    }
 
+    public function verPreguntasSugeridas(){
+        $sugeridas = $this->model->getAllSugeridas();
+
+        $this->presenter->render("view/preguntasSugeridasView.mustache", ["sugeridas" => $sugeridas]);
+    }
+
+    public function quitarDeSugeridas(){
+        $idPregunta = $_POST['idPregunta'];
+
+        $this->model->quitarSugerida($idPregunta);
+    }
+
+    public function quitarDeReportadas(){
+        $idPregunta = $_POST['idPregunta'];
+
+        $this->model->quitarReportada($idPregunta);
+    }
+
+    public function irACrearPregunta(){
+        $this->presenter->render("view/crearPreguntaView.mustache");
+    }
+    public function crearPregunta(){
+        $pregunta = $_POST['preguntaTexto'];
+        $categoria = $_POST['categoriaC'];
+
+        $respuestasI = [
+            '0' => isset($_POST['respuestaCorrectaI']) ? $_POST['respuestaCorrectaI'] : '',
+            '1' => isset($_POST['respuestaFalsa1I']) ? $_POST['respuestaFalsa1I'] : '',
+            '2' => isset($_POST['respuestaFalsa2I']) ? $_POST['respuestaFalsa2I'] : '',
+            '3' => isset($_POST['respuestaFalsa3I']) ? $_POST['respuestaFalsa3I'] : ''
+        ];
+
+        $this->model->crearPregunta($pregunta, $categoria);
+        $id = $this->model->lastInsertId();
+        $this->model->crearRespuestas($id, $respuestasI);
     }
 
 

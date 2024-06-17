@@ -12,7 +12,6 @@ class EditorModel
        FROM preguntas p
        JOIN categoria c ON p.categoria_id = c.id";
 
-        /*$preguntas = $this->database->query($sql)->fetchAll(PDO::FETCH_ASSOC);*/
         return $this->database->execute($sql);
     }
     public function eliminarPregunta($id){
@@ -21,7 +20,7 @@ class EditorModel
         $this->database->execute($sql);
 
         $sql = "DELETE FROM preguntas where id = '$id'";
-        $this->database->query($sql);
+        return $this->database->query($sql);
 
     }
 
@@ -59,6 +58,46 @@ class EditorModel
         }
 
 
+    }
+
+    public function getAllReportadas(){
+        $sql = "SELECT p.id, p.pregunta, c.nombre FROM preguntas_reportadas pr JOIN preguntas p ON p.id = pr.pregunta_reportada JOIN categoria c ON c.id = p.categoria_id";
+        return $this->database->execute($sql);
+    }
+
+    public function getAllSugeridas(){
+        $sql = "SELECT * FROM preguntas_sugeridas";
+        return $this->database->execute($sql);
+    }
+
+    public function quitarSugerida($id){
+        $sql = "DELETE FROM preguntas_sugeridas WHERE pregunta_sugerida = '$id'";
+        return $this->database->execute($sql);
+    }
+
+    public function quitarReportada($id){
+        $sql = "DELETE FROM preguntas_reportada WHERE pregunta_reportada = '$id'";
+        return $this->database->execute($sql);
+    }
+
+    public function crearPregunta($pregunta, $categoria){
+        $sql = "INSERT INTO preguntas(pregunta, categoria_id) VALUES ('$pregunta', '$categoria')";
+        return $this->database->execute($sql);
+    }
+
+    public function crearRespuestas($id, $respuestas){
+
+        foreach ($respuestas as $index => $respuesta) {
+            if( $index == 0 ) $correcta = 1;
+            else $correcta = 0;
+            $sqlRespuesta = "INSERT INTO respuestas(pregunta_id, respuesta, es_correcta) VALUES ('$id','$respuesta','$correcta')";
+            $this->database->execute($sqlRespuesta);
+        }
+
+    }
+    public function lastInsertId(){
+        $sql = "SELECT MAX(id) FROM preguntas";
+        return $this->database->query($sql);
     }
 
 }
