@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/65c8bcbd9c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/public/css/editor.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/sidenavEditor.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/crearPregunta.css">
+    <title> Editor </title>
+</head>
+<body>
+
+<ul class="sidenav">
+    <li><a href="/editor/home">Listado de preguntas</a></li>
+    <li><a href="/editor/verPreguntasReportadas">Preguntas reportadas</a></li>
+    <li><a href="/editor/verPreguntasSugeridas">Preguntas sugeridas</a></li>
+    <li><a class="active" href="/editor/irACrearPregunta">Crear pregunta</a></li>
+</ul>
+
+<h1> Crear pregunta </h1>
+
+<div class="form">
+    <form action="/editor/crearPregunta" method="POST">
+
+        <div class="question-info">
+            <div class="preguntaTexto">
+                <label for="pregunta"> Pregunta: </label>
+                <input type="text" id="pregunta" name="pregunta">
+            </div>
+
+            <div class="preguntaCat">
+                <label for="categoriaC"> Categoría: </label>
+                <select id="categoriaC" name="categoriaC">
+                    <option value="1"> Arte </option>
+                    <option value="2"> Ciencia </option>
+                    <option value="3"> Deportes </option>
+                    <option value="4"> Entretenimiento </option>
+                    <option value="5"> Geografía </option>
+                    <option value="6"> Historia </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="respuestasI">
+            <label for="respuestaCorrectaI"> Respuesta correcta: </label>
+            <input type="text" id="respuestaCorrectaI" name="respuestaCorrectaI" style="border: 2px solid green" required>
+
+            <label for="respuestaFalsa1I"> Respuesta falsa: </label>
+            <input type="text" id="respuestaFalsa1I" name="respuestaFalsa1I" style="border: 2px solid red" required>
+
+            <label for="respuestaFalsa2I"> Respuesta falsa: </label>
+            <input type="text" id="respuestaFalsa2I" name="respuestaFalsa2I" style="border: 2px solid red" required>
+
+            <label for="respuestaFalsa3I"> Respuesta falsa: </label>
+            <input type="text" id="respuestaFalsa3I" name="respuestaFalsa3I" style="border: 2px solid red" required>
+        </div>
+
+        <button type="submit" class="crearPregunta"> Crear pregunta </button>
+    </form>
+</div>
+
+</body>
+
+</html>

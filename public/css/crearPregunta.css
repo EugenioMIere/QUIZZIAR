@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1{
+    text-align: center;
+}
+
+.form {
+    padding: 16px;
+    background-color: white;
+}
+
+input[type=text]{
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus{
+    background-color: #ddd;
+    outline: none;
+}
+
+.crearPregunta {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.crearPregunta:hover {
+    opacity: 1;
+}
+
+.question-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.preguntaTexto{
+    width: 80%;
+}
+
+.preguntaCat{
+    align-items: center;
+    margin-left: 20px;
+    width: 20%;
+}

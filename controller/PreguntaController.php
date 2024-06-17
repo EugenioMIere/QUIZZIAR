@@ -63,4 +63,9 @@ class PreguntaController
         return $this->model->getRespuesta($id);
     }
 
+//    public function reportarPregunta(){
+//        $id = $_GET['idPregunta'];
+//        $this->model->reportarPregunta($id);
+//    }
+
 }

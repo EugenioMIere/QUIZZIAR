@@ -1,32 +1,12 @@
-<style>
-    button {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        margin-top: 10px;
-        border: none;
-        border-radius: 5px;
-        background-color: #3498db;
-        color: #fff;
-        cursor: pointer;
-    }
-    .respuesta {
-        width: 100%;
-        padding: 10px;
-        margin-top: 10px;
-        border: none;
-        border-radius: 5px;
-        background-color: grey;
-        color: #fff;
-        cursor: pointer;
-    }
-    .respuesta-correcta {
-        background-color: green;
-    }
-    .respuesta-incorrecta {
-        background-color: red;
-    }
-</style>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="/public/css/preguntas.css">
+</head>
+<body>
+
 <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
     <h2>Pregunta: {{#preguntas}} {{ pregunta }} {{/preguntas}}</h2>
     {{#opciones}}
@@ -37,3 +17,7 @@
     <p class="respuesta {{claseRespuesta}}">Respuesta: {{result}}</p>
     <a href="/pregunta/getPregunta" {{visivilidad}}>Siguiente</a>
 </div>
+
+</body>
+</html>
+
