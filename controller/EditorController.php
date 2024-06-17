@@ -65,7 +65,8 @@ class EditorController
 
                 $data = [
                     'pregunta' => $pregunta,
-                    'respuestas' => $dataRespuestas
+                    'respuestas' => $dataRespuestas,
+                    'nPregunta' => $idPreguntaAEditar
                 ];
 
                 $this->presenter->render("view/editarPreguntaView.mustache", $data);
@@ -85,11 +86,17 @@ class EditorController
         $pregunta = $_POST['pregunta'];
         $idCategoria = $_POST['categoria'];
 
-        $respuestas = [
+        /*$respuestas = [
             'respuestaCorrecta' => $_POST['respuestaCorrecta'],
             'respuestaFalsa1' => $_POST['respuestaFalsa1'],
             'respuestaFalsa2' => $_POST['respuestaFalsa2'],
             'respuestaFalsa3' => $_POST['respuestaFalsa3']
+        ];*/
+        $respuestas = [
+            '0' => isset($_POST['respuestaCorrecta']) ? $_POST['respuestaCorrecta'] : '',
+            '1' => isset($_POST['respuestaFalsa1']) ? $_POST['respuestaFalsa1'] : '',
+            '2' => isset($_POST['respuestaFalsa2']) ? $_POST['respuestaFalsa2'] : '',
+            '3' => isset($_POST['respuestaFalsa3']) ? $_POST['respuestaFalsa3'] : ''
         ];
 
         $this->model->editarPregunta($id, $pregunta, $idCategoria);
