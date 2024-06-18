@@ -14,7 +14,7 @@ class PreguntaController
 
     public function getPregunta()
     {
-        $preguntas = $this->model->getPreguntas();
+        $preguntas = $this->model->getPreguntas($_SESSION['id']);
         $opciones = $this->model->getOpciones($preguntas[0]['id']);
         $visibilidad = "hidden";
         $this->registrarPreguntaEnPartida($preguntas[0]['id']);

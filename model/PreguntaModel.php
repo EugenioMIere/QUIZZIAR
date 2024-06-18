@@ -9,13 +9,28 @@ class PreguntaModel
         $this->database = $database;
     }
 
-    public function getPreguntas(){
+    public function getPreguntas($id_usuario){
 
-         $query = "SELECT * FROM preguntas ORDER BY RAND() LIMIT 1";
+        $preguntaPreguntada = [];
 
-        /*$result = $this->database->query($query);
-        return $result[0]['pregunta'];*/
-         return $this->database->query($query);
+        while (empty($preguntaPreguntada)) {
+
+            $query = "SELECT * FROM preguntas ORDER BY RAND() LIMIT 1";
+            $result = $this->database->query($query);
+            $idPregunta = $result[0]['id'];
+
+            $sql = "SELECT pp.pregunta_id, p.usuario_id
+                    FROM partidas_preguntas pp
+                    LEFT JOIN partidas p ON pp.partida_id = p.id AND p.usuario_id = '$id_usuario'
+                    WHERE pp.pregunta_id = '$idPregunta' ";
+
+            if (!$this->database->query($sql)) {
+                $preguntaPreguntada = $result;
+            }
+
+        }
+
+         return $preguntaPreguntada;
 
     }
 
@@ -45,18 +60,13 @@ class PreguntaModel
         return false;
     }
     public function setRespuestaPartida($usuario_id,$respuesta,$idPregunta,$idRespuestas){
-        $consulta = "SELECT *
-                    FROM partidas
-                    WHERE `usuario_id` = '$usuario_id'
-                    ORDER BY `id` DESC
-                    LIMIT 1";
 
-        $puntos = $this->database->query($consulta);
-        ;
+        $partida = $this->getUltimaPartidaUsario($usuario_id);
 
-        $correctas = $puntos[0]['correctas'];
-        $incorrectas = $puntos[0]['incorrectas'];
-        $id = $puntos[0]['id'];
+
+        $correctas = $partida[0]['correctas'];
+        $incorrectas = $partida[0]['incorrectas'];
+        $id = $partida[0]['id'];
         $estado = 0;
 
 
@@ -65,7 +75,6 @@ class PreguntaModel
             $estado = 1;
         } else {
             $incorrectas++;
-            $estado = 0;
         }
         $this->setRespuesta_partidas_preguntas($id,$idPregunta,$estado,$idRespuestas );
         $query = "UPDATE `partidas` SET `correctas` = '$correctas',`incorrectas` = '$incorrectas' WHERE id = '$id'";
@@ -73,21 +82,23 @@ class PreguntaModel
         $this->database->execute($query);
 
     }
-
     public function setPreguntaEnPartida($usuario_id, $idPregunta){
+
+        $partida = $this->getUltimaPartidaUsario($usuario_id);
+        $partida_id = $partida[0]['id'];
+
+        $sql = "INSERT INTO partidas_preguntas (pregunta_id, partida_id) VALUES ('$idPregunta','$partida_id')";
+        $this->database->execute($sql);
+    }
+    public function getUltimaPartidaUsario($usuario_id)
+    {
         $consulta = "SELECT *
                     FROM partidas
                     WHERE `usuario_id` = '$usuario_id'
                     ORDER BY `id` DESC
                     LIMIT 1";
 
-        $partida = $this->database->query($consulta);
-
-        /*$incorrectas = $partida[0]['usuario_id'];*/
-        $partida_id = $partida[0]['id'];
-
-        $sql = "INSERT INTO partidas_preguntas (pregunta_id, partida_id) VALUES ('$idPregunta','$partida_id')";
-        $this->database->execute($sql);
+        return $this->database->query($consulta);
     }
 
     private function setRespuesta_partidas_preguntas($id_partida,$idPregunta,$estado,$idRespuestas)
