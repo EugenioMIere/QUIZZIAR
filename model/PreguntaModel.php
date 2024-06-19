@@ -110,9 +110,9 @@ class PreguntaModel
         $this->database->execute($query);
     }
 
-//    public function reportarPregunta($id){
-//        $sql = "INSERT INTO preguntas_reportadas(pregunta_reportada) VALUES ('$id')";
-//        return $this->database->execute($sql);
-//    }
+    public function reportarPregunta($id){
+        $sql = "INSERT INTO preguntas_reportadas(pregunta_reportada) VALUES ('$id')";
+        return $this->database->execute($sql);
+    }
 
 }

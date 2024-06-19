@@ -25,3 +25,20 @@ button {
 .respuesta-incorrecta {
     background-color: red;
 }
+
+.reportar-btn {
+    display: flex;
+    text-align: center;
+    background-color: red;
+    color: white;
+    padding: 16px 20px;
+    margin: 0 auto;
+    border: none;
+    cursor: pointer;
+    width: 75%;
+    opacity: 0.9;
+}
+
+.reportar-btn:hover {
+    opacity: 1;
+}

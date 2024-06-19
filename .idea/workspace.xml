@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66ed4e9b-8f12-43d8-99bf-807e904a68cd" name="Changes" comment="Editar perfil, menú de editor y sugerir pregunta">
+    <list default="true" id="66ed4e9b-8f12-43d8-99bf-807e904a68cd" name="Changes" comment="editar perfil y agregar red social">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/UserModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/UserModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/7407996-user-icon-person-icon-client-symbol-login-head-sign-icon-design-vetor.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/uploads/eaf9beb51a03ddc1dfe579596d5a4cd3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/editarPerfilView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/editarPerfilView.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/miPerfilView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/miPerfilView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/PreguntaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/PreguntaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/PreguntaModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/PreguntaModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/preguntas.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/preguntas.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/preguntasSugeridasView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/preguntasSugeridasView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/preguntasView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/preguntasView.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +98,7 @@
       <workItem from="1718643578557" duration="11195000" />
       <workItem from="1718751514737" duration="7674000" />
       <workItem from="1718759277130" duration="59000" />
-      <workItem from="1718814983109" duration="3957000" />
+      <workItem from="1718814983109" duration="4631000" />
     </task>
     <task id="LOCAL-00001" summary="Password encriptada con md5">
       <option name="closed" value="true" />
@@ -197,7 +196,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718759324290</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="editar perfil y agregar red social">
+      <option name="closed" value="true" />
+      <created>1718819013109</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1718819013109</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,7 +221,8 @@
     <MESSAGE value="Inicio reportar pregunta" />
     <MESSAGE value="Perfil de usuario" />
     <MESSAGE value="Editar perfil, menú de editor y sugerir pregunta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Editar perfil, menú de editor y sugerir pregunta" />
+    <MESSAGE value="editar perfil y agregar red social" />
+    <option name="LAST_COMMIT_MESSAGE" value="editar perfil y agregar red social" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

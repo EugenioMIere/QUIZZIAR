@@ -3,9 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" type="text/css" href="/public/css/preguntas.css">
 </head>
 <body>
+
+{{#error}}
+    <div class="w3-panel w3-pale-red w3-border">
+        <p> {{error}} </p>
+    </div>
+{{/error}}
+
+{{#mensaje}}
+    <div class="w3-panel w3-pale-green w3-border">
+        <p> {{mensaje}} </p>
+    </div>
+{{/mensaje}}
 
 <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
     <h2>Pregunta: {{#preguntas}} {{ pregunta }} {{/preguntas}}</h2>
@@ -18,6 +31,9 @@
     <a href="/pregunta/getPregunta" {{visivilidad}}>Siguiente</a>
 </div>
 
+<div class="buttons">
+    <a href="/pregunta/reportarPregunta" class="reportar-btn"> Reportar pregunta </a>
+</div>
 </body>
 </html>
 

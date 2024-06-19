@@ -59,15 +59,24 @@ class PreguntaController
         }
     }
 
+    public function reportarPregunta(){
+        $idPregunta = $_GET['idPregunta'];
+
+        $result = $this->model->reportarPregunta($idPregunta);
+
+        if ($result){
+            $mensaje = "La pregunta fue reportada";
+            $this->presenter->render("view/preguntasView.mustache", ["mensaje" => $mensaje]);
+        } else {
+            $error = "Hubo un error al reportar la pregunta";
+            $this->presenter->render("view/preguntasView.mustache", ["error" => $error]);
+        }
+    }
 
     private function getRespuestaCorrecta($id){
 
         return $this->model->getRespuesta($id);
     }
 
-//    public function reportarPregunta(){
-//        $id = $_GET['idPregunta'];
-//        $this->model->reportarPregunta($id);
-//    }
 
 }
