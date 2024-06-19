@@ -3,48 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script>
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'F5') {
+                // Evitar el comportamiento predeterminado de F5
+                event.preventDefault();
+                // Enviar una solicitud AJAX al servidor para registrar el evento F5
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'registro_f5.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.send('f5_pressed=true');
+
+                // Redirigir a perdisteView.mustache
+                window.location.href = 'perdisteView.mustache';
+            }
+        });
+    </script>
     <title> Usuario </title>
     <style>
-    body{
-        background-color:#f2f2f2;
-        padding: 2% 2% 2% 2%;
-    }
-    section{
-        display:flex;
-        flex-direction:row;
-        justify-content:space-around;
-    }
-    section div{
-        background-color:#dddcdc;
-        display:flex;
-        flex-direction:column;
-        justify-content:space-between;
-        width:90%;
-        padding: 5% 5% 5% 5%;
-        border-radius:35px;
-    }
-    h2, h3{
-        text-decoration: underline;
-        font-weight:bold;
-    }
-    h2{
-        text-align:center;
-    }
+        body{
+            background-color:#f2f2f2;
+            padding: 2% 2% 2% 2%;
+        }
+        section{
+            display:flex;
+            flex-direction:row;
+            justify-content:space-around;
+        }
+        section div{
+            background-color:#dddcdc;
+            display:flex;
+            flex-direction:column;
+            justify-content:space-between;
+            width:90%;
+            padding: 5% 5% 5% 5%;
+            border-radius:35px;
+        }
+        h2, h3{
+            text-decoration: underline;
+            font-weight:bold;
+        }
+        h2{
+            text-align:center;
+        }
     </style>
+
 </head>
 <body>
-    <h2>¡Preparate para la partida!</h2>
-    <section>
-        <div>
-            <h3>Instrucciones</h3>
-            <p>1.- Tendrás un tiempo limitado de 10 segundos para responder cada pregunta. Si no respondes a tiempo, la partida se considerará perdida.</p>
-            <p>2.- Se te presentarán varias opciones de respuesta para cada pregunta.</p>
-            <p>3.- Selecciona la opción que consideres correcta haciendo clic en ella.</p>
-            <p>4.- Luego de elegir la opción, tocar el botón "Confirmar" para pasar a la siguiente pregunta.</p>
-            <p>¡Que te diviertas!</p>
-            <a href="/pregunta/getPregunta">Iniciar</a>
-        </div>
-    </section>
-
+<h2>¡Preparate para la partida!</h2>
+<section>
+    <div>
+        <h3>Instrucciones</h3>
+        <p>1.- Tendrás un tiempo limitado de 10 segundos para responder cada pregunta. Si no respondes a tiempo, la partida se considerará perdida.</p>
+        <p>2.- Se te presentarán varias opciones de respuesta para cada pregunta.</p>
+        <p>3.- Selecciona la opción que consideres correcta haciendo clic en ella.</p>
+        <p>4.- Luego de elegir la opción, tocar el botón "Confirmar" para pasar a la siguiente pregunta.</p>
+        <p>¡Que te diviertas!</p>
+        <a href="/pregunta/getPregunta">Iniciar</a>
+    </div>
+</section>
 </body>
 </html>
