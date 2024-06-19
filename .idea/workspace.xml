@@ -4,15 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66ed4e9b-8f12-43d8-99bf-807e904a68cd" name="Changes" comment="Inicio reportar pregunta">
+    <list default="true" id="66ed4e9b-8f12-43d8-99bf-807e904a68cd" name="Changes" comment="Perfil de usuario">
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/preguntados.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/preguntados.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/RegistroModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/RegistroModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/perfilPropioView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/miPerfilView.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/registroView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/registroView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/UserModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/UserModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/crearPreguntaView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/crearPreguntaView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/editarPerfilView.mustache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/editorView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/editorView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/lobby.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/lobby.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/miPerfilView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/miPerfilView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/preguntasReportadasView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/preguntasReportadasView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/preguntasSugeridasView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/preguntasSugeridasView.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/template/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/template/header.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +103,8 @@
       <workItem from="1718575612045" duration="7414000" />
       <workItem from="1718587889481" duration="2983000" />
       <workItem from="1718591807159" duration="84000" />
-      <workItem from="1718643578557" duration="11108000" />
+      <workItem from="1718643578557" duration="11195000" />
+      <workItem from="1718751514737" duration="7674000" />
     </task>
     <task id="LOCAL-00001" summary="Password encriptada con md5">
       <option name="closed" value="true" />
@@ -180,7 +186,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718648908199</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Perfil de usuario">
+      <option name="closed" value="true" />
+      <created>1718654806566</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1718654806566</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,7 +209,8 @@
     <MESSAGE value="sidenav comentada" />
     <MESSAGE value="Rol editor terminado" />
     <MESSAGE value="Inicio reportar pregunta" />
-    <option name="LAST_COMMIT_MESSAGE" value="Inicio reportar pregunta" />
+    <MESSAGE value="Perfil de usuario" />
+    <option name="LAST_COMMIT_MESSAGE" value="Perfil de usuario" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

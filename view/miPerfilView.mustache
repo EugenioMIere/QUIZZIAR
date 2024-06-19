@@ -2,42 +2,138 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="/public/css/header.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/miPerfil.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://kit.fontawesome.com/65c8bcbd9c.js" crossorigin="anonymous"></script>
-    <title> Mi perfil </title>
+    <title> Editar perfil </title>
+    <!--    MDB CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.css" rel="stylesheet"/>
 </head>
 <body>
-
-<div class="contenedor">
-    <!-- First Container -->
+<section style="background-color: #eee;">
     {{#usuario}}
-        <div class="left-side">
-            <div class="container-fluid text-center">
-                <img src="/{{fotoDePerfil}}" class="img-responsive img-circle margin" style="display:inline" alt="user" width="350" height="350">
-                <h3>{{nombreDeUsuario}}</h3>
-                <h2 class="margin">{{nombreCompleto}}</h2>
+        <div class="container py-5">
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <img src="/{{fotoDePerfil}}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                            <h5 class="my-3">{{nombreCompleto}}</h5>
+                            <p class="text-muted mb-1">{{nombreDeUsuario}}</p>
+                            <p class="text-muted mb-4"> {{pais}}, {{ciudad}}</p>
+                            <div class="d-flex justify-content-center mb-2">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-4 mb-lg-0">
+                        <div class="card-body p-0">
+                            <ul class="list-group list-group-flush rounded-3">
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                    <i class="fas fa-globe fa-lg text-warning"></i>
+                                    <p class="mb-0">https://mdbootstrap.com</p>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                    <i class="fab fa-github fa-lg text-body"></i>
+                                    <p class="mb-0">mdbootstrap</p>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                    <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+                                    <p class="mb-0">@mdbootstrap</p>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                    <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                                    <p class="mb-0">mdbootstrap</p>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                    <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+                                    <p class="mb-0">mdbootstrap</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Nombre completo</p>
+                                </div>
+                                <div class="col-sm-9" d-flex justify-content-between align-items-center" style="display: flex; justify-content: space-between; align-items: center;">
+                                <p class="text-muted mb-0">{{nombreCompleto}}</p>
+                                <a href="/user/editarPerfil"> <i class="fa-regular fa-pen-to-square"></i> </a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Nombre de usuario</p>
+                            </div>
+                            <div class="col-sm-9" d-flex justify-content-between align-items-center" style="display: flex; justify-content: space-between; align-items: center;">
+                            <p class="text-muted mb-0">{{nombreDeUsuario}}</p>
+                            <a href="/user/editarPerfil"> <i class="fa-regular fa-pen-to-square"></i> </a>
+                        </div>
+                    </div>
+                    <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Email</p>
+                            </div>
+                            <div class="col-sm-9" d-flex justify-content-between align-items-center" style="display: flex; justify-content: space-between; align-items: center;">
+                            <p class="text-muted mb-0">{{email}}</p>
+                            <a href="/user/editarPerfil"> <i class="fa-regular fa-pen-to-square"></i> </a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">Fecha de nacimiento</p>
+                        </div>
+                        <div class="col-sm-9" d-flex justify-content-between align-items-center" style="display: flex; justify-content: space-between; align-items: center;">
+                        <p class="text-muted mb-0">{{fechaDeNacimiento}}</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <p class="mb-0">País</p>
+                    </div>
+                    <div class="col-sm-9" d-flex justify-content-between align-items-center" style="display: flex; justify-content: space-between; align-items: center;">
+                    <p class="text-muted mb-0">{{pais}}</p>
+                    <a href="/user/editarPerfil"> <i class="fa-regular fa-pen-to-square"></i> </a>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-3">
+                    <p class="mb-0">Ciudad</p>
+                </div>
+                <div class="col-sm-9" d-flex justify-content-between align-items-center" style="display: flex; justify-content: space-between; align-items: center;">
+                <p class="text-muted mb-0">{{ciudad}}</p>
+                <a href="/user/editarPerfil"><i class="fa-regular fa-pen-to-square"></i></a>
             </div>
         </div>
-
-        <!-- Second Container -->
-        <div class="right-side">
-            <div class="container-fluid text-center">
-                <p> <i class="fa-solid fa-envelope"></i> Email: {{email}}</p>
-                <p> <i class="fa-solid fa-calendar-days"></i> Fecha de nacimiento: {{fechaDeNacimiento}}</p>
-                <p> <i class="fa-solid fa-globe"></i> País: {{pais}}</p>
-                <p> <i class="fa-solid fa-city"></i> Ciudad: {{ciudad}} </p>
-                <a href="/user/editar" class="btn btn-default btn-lg">
-                    <i class="fa-solid fa-user-pen"></i> Editar
-                </a>
+        <hr>
+        <div class="row">
+            <div class="col-sm-3">
+                <p class="mb-0">Género</p>
             </div>
+            <div class="col-sm-9" d-flex justify-content-between align-items-center" style="display: flex; justify-content: space-between; align-items: center;">
+            <p class="text-muted mb-0">{{genero}}</p>
+            <a href="/user/editarPerfil"><i class="fa-regular fa-pen-to-square"></i></a>
+        </div>
+        </div>
+
+        </div>
+        </div>
+        </div>
+        </div>
         </div>
     {{/usuario}}
-</div>
+</section>
+
+<!-- MDB JS -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.1/mdb.min.js"></script>
 
 </body>
 </html>

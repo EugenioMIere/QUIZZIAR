@@ -10,5 +10,6 @@
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="bootstrap.bundle" level="application" />
     <orderEntry type="library" name="MaterialDesign-Webfont" level="application" />
+    <orderEntry type="library" name="mdb-ui-kit" level="application" />
   </component>
 </module>
