@@ -65,9 +65,17 @@ class PreguntaController
         return $this->model->getRespuesta($id);
     }
 
-//    public function reportarPregunta(){
-//        $id = $_GET['idPregunta'];
-//        $this->model->reportarPregunta($id);
-//    }
+    public function reportarPregunta(){
+        $id = $_GET['idPregunta'];
+        $result = $this->model->reportarPregunta($id);
+
+        if ($result){
+            $mensaje = "La pregunta fue reportada";
+            $this->presenter->render("view/preguntasView.mustache", ["mensaje" => $mensaje]);
+        } else {
+            $error = "Hubo un error al reportar la pregunta";
+            $this->presenter->render("view/preguntasView.mustache", ["error" => $error]);
+        }
+    }
 
 }
