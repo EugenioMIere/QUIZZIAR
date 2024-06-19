@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Sugerir pregunta </title>
+    <link rel="stylesheet" type="text/css" href="/public/css/sugerirPregunta.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<h1> Sugerencia de preguntas </h1>
+<div class="form-container">
+    <form action="/user/sugerirPregunta" method="POST">
+        <div class="question-suggest">
+            <div class="sugerencia">
+                <label for="preguntaSugerida"> Pregunta sugerida: </label>
+                <input type="text" id="preguntaSugerida" name="preguntaSugerida" placeholder="Ingrese su pregunta sugerida" required>
+            </div>
+        </div>
+
+        <button type="submit" class="sugerirbtn"> Enviar sugerencia </button>
+    </form>
+</div>
+
+{{#success}}
+    <div class="alert alert-success">
+        <strong> {{success}}</strong>
+    </div>
+{{/success}}
+
+{{#error}}
+    <div class="alert alert-danger">
+        <strong> {{error}} !</strong>
+    </div>
+{{/error}}
+
+</body>
+</html>
