@@ -30,7 +30,7 @@ class PreguntaModel
 
         }
 
-         return $preguntaPreguntada;
+        return $preguntaPreguntada;
 
     }
 
