@@ -79,6 +79,8 @@ class UserController
             'ciudad' => 'editarCiudad',
             'nombreDeUsuario' => 'editarNombreUsuario',
             'genero' => 'editarGenero',
+            'pais' => 'editarPais',
+            'ciudad' => 'editarCiudad'
         ];
 
         if (!empty($_FILES['fotoDePerfil']['name'])) {
@@ -92,10 +94,39 @@ class UserController
         }
 
         foreach ($fields as $field => $method){
-            if (isset($_POST['$field'])){
-                $this->model->$method($_POST['$field'], $idUsuario);
+            if ((!empty($_POST[$field]))){
+                $this->model->$method($_POST[$field], $idUsuario);
             }
         }
+
+        $usuario = $this->model->getUserDetails($idUsuario);
+        $this->presenter->render("view/miPerfilView.mustache", ["usuario" => $usuario]);
     }
 
+
+    public function irAAgregarRedes(){
+        $this->presenter->render("view/agregarRedSocialView.mustache");
+    }
+
+    public function agregarRedes(){
+        $idUser = $_SESSION['id'];
+
+        $fields = [
+           'pagina_web' => ($_POST['pagina_web']),
+            'github' => ($_POST['github']),
+            'twitter' => ($_POST['twitter']),
+            'instagram' => ($_POST['instagram']),
+            'facebook' => ($_POST['facebook']),
+        ];
+
+        foreach ($fields as $red => $content){
+            if (!empty($_POST[$red])){
+                $this->model->agregarRed($idUser, $red, $content);
+            }
+        }
+
+        $redes = $this->model->getRedesSociales($idUser);
+
+        $this->presenter->render("view/miPerfilView.mustache", ["redes" => $redes]);
+    }
 }

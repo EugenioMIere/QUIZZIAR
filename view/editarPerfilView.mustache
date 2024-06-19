@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="/public/css/registroViewStyle.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/editarPerfil.css">
 </head>
 <body>
 <form action="/user/guardarEdicionPerfil" enctype="multipart/form-data" method="POST">
+    <div class="container">
     {{#usuario}}
     <div class="container">
-        <h1> Registrarme </h1>
-        <p> Por favor, completa el formulario para crear tu cuenta. </p>
+        <h1> Editar perfil </h1>
+        <p> Completa los campos que deseas editar </p>
 
+        {{#error}}
         <div class="w3-panel w3-pale-red w3-border">
-            {{#error}}
-                <p> {{error}} </p>
-            {{/error}}
+            <p> {{error}} </p>
         </div>
+        {{/error}}
 
         <hr>
 
@@ -38,7 +39,9 @@
             <input type="radio" id="prefieroNoDecirlo" name="genero" value="otro"> Prefiero no decirlo <br>
         </div>
 
-
+        <div id="map" style="height: 400px; width: 100%;"></div>
+        <input type="hidden" id="pais" name="pais">
+        <input type="hidden" id="ciudad" name="ciudad">
 
         <label for="nombreDeUsuario"> Nombre de Usuario: </label>
         <input type="text" id="nombreDeUsuario" name="nombreDeUsuario" placeholder="{{nombreDeUsuario}}">
@@ -46,11 +49,53 @@
         <label for="fotoDePerfil"> Foto de perfil: </label>
         <input type="file" accept="image/*" id="fotoDePerfil" name="fotoDePerfil">
 
-        <button type="submit" class="guardar-cambios-btn"> Guardar cambios </button>
+        <button type="submit" class="guardar-cambios-btn" onclick="alert('Los cambios fueron guardados con éxito')"> Guardar cambios </button>
 
         <hr>
     </div>
     {{/usuario}}
+    </div>
 </form>
 </body>
+
+<script>
+    let map;
+
+    function iniciarMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {
+                lat: 0,
+                lng: 0
+            },
+            zoom: 2
+        });
+
+        map.addListener('click', function (event) {
+            const latLng = event.latLng;
+
+            // Realizar una llamada a la API de geocodificación inversa
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({
+                location: latLng
+            }, function (results, status) {
+                if (status === 'OK') {
+                    if (results[0]) {
+                        // Obtener el país y ciudad a partir de los resultados de la geocodificación
+                        const country = results[0].address_components.find(component => component.types.includes('country'));
+                        const city = results[0].address_components.find(component => component.types.includes('locality'));
+
+                        // Llenar los campos de país y ciudad con la información obtenida
+                        document.getElementById('pais').value = country ? country.long_name : '';
+                        document.getElementById('ciudad').value = city ? city.long_name : '';
+                    } else {
+                        window.alert('No se encontraron resultados.');
+                    }
+                } else {
+                    window.alert('La geocodificación inversa falló debido a: ' + status);
+                }
+            });
+        });
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDO-cs-AzjPpidbANQOQr9bWXK1mw0I9Ww&callback=iniciarMap"></script>
 </html>
