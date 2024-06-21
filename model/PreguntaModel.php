@@ -29,12 +29,12 @@ class PreguntaModel
                     $query = "SELECT * FROM preguntas WHERE dificultad = '$dificultad' ORDER BY RAND() LIMIT 1";
                     $result = $this->database->query($query);
 
-                    if (empty($result)){
-                        $dificultad = 'Dificil';
+                        if (empty($result)){
+                            $dificultad = 'Dificil';
                         $query = "SELECT * FROM preguntas WHERE dificultad = '$dificultad' ORDER BY RAND() LIMIT 1";
                         $result = $this->database->query($query);
 
-                    }
+                        }
 
                 }
             }
@@ -263,5 +263,8 @@ class PreguntaModel
 
         return $resultado[0]["dificultad"];
     }
+
+
+
 
 }
