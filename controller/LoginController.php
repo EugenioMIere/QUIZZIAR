@@ -23,7 +23,7 @@ class LoginController
             header('Location:/editor');
             exit();
             /*$this->presenter->render("view/editorView.mustache");*/
-        }elseif ($_SESSION['rol'] === "admin"){
+        }elseif ($_SESSION['rol'] === "administrador"){
             $this->presenter->render("view/adminView.mustache");
         }
 

@@ -5,12 +5,14 @@ include_once 'controller/LoginController.php';
 include_once 'controller/UserController.php';
 include_once 'controller/PreguntaController.php';
 include_once 'controller/EditorController.php';
+include_once 'controller/AdminController.php';
 
 include_once 'model/RegistroModel.php';
 include_once 'model/LoginModel.php';
 include_once 'model/UserModel.php';
 include_once 'model/PreguntaModel.php';
 include_once 'model/EditorModel.php';
+include_once 'model/AdminModel.php';
 
 include_once 'helper/Database.php';
 include_once 'helper/Router.php';
@@ -58,6 +60,11 @@ class Configuration {
         return new EditorController(self::getEditorModel(), self::getPresenter());
     }
 
+    public static function getAdminController(): AdminController
+    {
+        return new AdminController(self::getAdminModel(), self::getPresenter());
+    }
+
     // MODELS
     private static function getRegistroModel(): RegistroModel
     {
@@ -87,6 +94,11 @@ class Configuration {
     private static function getEditorModel(): EditorModel
     {
         return new EditorModel(self::getDatabase());
+    }
+
+    private static function getAdminmodel(): AdminModel
+    {
+        return new AdminModel(self::getDatabase());
     }
 
     // HELPERS
