@@ -19,8 +19,9 @@ class PreguntaController
         $visibilidad = "hidden";
         $this->registrarPreguntaEnPartida($preguntas[0]['id']);
 
+        $nivel = $this->model->getNivelDeJugador($_SESSION['id']);
 
-        $this->presenter->render("view/preguntasView.mustache", ["visibilidad" => $visibilidad,"opciones" => $opciones,"preguntas" => $preguntas]);
+        $this->presenter->render("view/preguntasView.mustache", ["visibilidad" => $visibilidad,"opciones" => $opciones,"preguntas" => $preguntas,"nivel" => $nivel]);
     }
 
     private function registrarPreguntaEnPartida($idPregunta)
@@ -77,5 +78,4 @@ class PreguntaController
             $this->presenter->render("view/preguntasView.mustache", ["error" => $error]);
         }
     }
-
 }
