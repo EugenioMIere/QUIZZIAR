@@ -100,7 +100,7 @@ class AdminModel
             $whereClause = " WHERE fecha_creacion >= '" . $fechaDesde . "' AND fecha_creacion <= '" . $fechaHasta . "'";
         }
 
-        $sql = "SELECT pais, COUNT(*) AS cantidad_usuarios
+        $sql = "SELECT pais, COUNT(*) AS cantidad_usuarios_por_pais
         FROM usuario" . $whereClause . " 
         GROUP BY pais";
 
@@ -141,7 +141,7 @@ class AdminModel
         WHEN TIMESTAMPDIFF(YEAR, fechaDeNacimiento, CURDATE()) >= 65 THEN 'Jubilados'
         ELSE 'Otro'
         END AS grupo_edad,
-        COUNT(*) AS cantidad_usuarios
+        COUNT(*) AS cantidad_usuarios_por_grupo
         FROM usuario
         " . $whereClause . "
         GROUP BY grupo_edad";

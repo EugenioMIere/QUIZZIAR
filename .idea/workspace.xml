@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66ed4e9b-8f12-43d8-99bf-807e904a68cd" name="Changes" comment="Inicio rol administrador">
-      <change beforePath="$PROJECT_DIR$/controller/PreguntaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/PreguntaController.php" afterDir="false" />
+    <list default="true" id="66ed4e9b-8f12-43d8-99bf-807e904a68cd" name="Changes" comment="rol admin (faltan gráficos, generar pdf y vistas mustache)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/AdminModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AdminModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/PreguntaModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/PreguntaModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/preguntasView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/preguntasView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/adminView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/adminView.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +98,8 @@
       <workItem from="1718751514737" duration="7674000" />
       <workItem from="1718759277130" duration="59000" />
       <workItem from="1718814983109" duration="4631000" />
-      <workItem from="1718923033632" duration="8750000" />
+      <workItem from="1718923033632" duration="9013000" />
+      <workItem from="1718992342976" duration="4356000" />
     </task>
     <task id="LOCAL-00001" summary="Password encriptada con md5">
       <option name="closed" value="true" />
@@ -220,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718935889520</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="rol admin (faltan gráficos, generar pdf y vistas mustache)">
+      <option name="closed" value="true" />
+      <created>1718936344965</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1718936344965</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,7 +249,8 @@
     <MESSAGE value="editar perfil y agregar red social" />
     <MESSAGE value="reportar pregunta" />
     <MESSAGE value="Inicio rol administrador" />
-    <option name="LAST_COMMIT_MESSAGE" value="Inicio rol administrador" />
+    <MESSAGE value="rol admin (faltan gráficos, generar pdf y vistas mustache)" />
+    <option name="LAST_COMMIT_MESSAGE" value="rol admin (faltan gráficos, generar pdf y vistas mustache)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
