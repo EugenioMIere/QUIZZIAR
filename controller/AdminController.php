@@ -57,7 +57,7 @@ class AdminController
             $labels[] = $fila['nombreDeUsuario'];
             $data[] = $fila['porcentaje'];
         }
-        $this->generarGraficoDeBarras($labels, $data,'usuarios','Eje x', 'Eje y','usuario1' );
+        $this->generarGraficoDeBarras($labels, $data,'usuarios','Eje x', 'Eje y','getPorcentajeCorrectasPorUsuario' );
     }
 
     public function getCantidadDeUsuariosPorPais(){
@@ -70,7 +70,7 @@ class AdminController
         foreach ($resultados as $fila){
             $labels[] = $fila['pais'];
             $data[] = $fila['cantidad_usuarios_por_pais'];
-        }
+        }$this->generarGraficoDeBarras($labels, $data,'usuarios','Eje x', 'Eje y','getCantidadDeUsuariosPorPais' );
 
     }
 
@@ -85,6 +85,7 @@ class AdminController
             $labels[] = $fila['genero'];
             $data[] = $fila['cantidad_usuarios_por_genero'];
         }
+        $this->generarGraficoDeBarras($labels, $data,'usuarios','Eje x', 'Eje y','getCantidadDeUsuariosPorGenero' );
     }
 
     public function getCantidadDeUsuariosPorGrupoDeEdad(){
@@ -97,7 +98,7 @@ class AdminController
         foreach ($resultados as $fila){
             $labels[] = $fila['grupo_edad'];
             $data[] = $fila['cantidad_usuarios_por_grupo'];
-        }
+        }$this->generarGraficoDeBarras($labels, $data,'usuarios','Eje x', 'Eje y','getCantidadDeUsuariosPorGrupoDeEdad' );
     }
 
     private function obtenerFiltrosDeFecha(){
