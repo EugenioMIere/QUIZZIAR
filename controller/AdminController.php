@@ -57,6 +57,7 @@ class AdminController
             $labels[] = $fila['nombreDeUsuario'];
             $data[] = $fila['porcentaje'];
         }
+        $this->generarGraficoDeBarras($labels, $data,'usuarios','Eje x', 'Eje y','usuario1' );
     }
 
     public function getCantidadDeUsuariosPorPais(){

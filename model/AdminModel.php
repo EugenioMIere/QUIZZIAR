@@ -22,7 +22,9 @@ class AdminModel
         FROM usuario
         " . $whereClause . ";";
 
-        return $this->database->query($sql);
+        $result = $this->database->query($sql);
+
+        return $result[0]['cantidad_usuarios'];
     }
 
     public function getCantidadPartidasJugadas($filtros){
@@ -83,10 +85,31 @@ class AdminModel
         }
 
         $sql = "SELECT u.nombreDeUsuario,
-        (SUM(p.correctas) * 100.0 / (SUM(p.correctas) + SUM(p.incorrectas)) AS porcentaje
+        (SUM(p.correctas) * 100.0 / (SUM(p.correctas) + SUM(p.incorrectas))) AS porcentaje
         FROM partidas p 
         JOIN usuario u ON p.usuario_id = u.id
         " . $whereClause . " GROUP BY u.nombreDeUsuario";
+
+        /*Prueba*/
+        /*$result = $this->database->query($sql);
+
+        // Verificar si la consulta se ejecutó correctamente
+        if ($result === false) {
+            // Manejo de error, por ejemplo:
+            throw new Exception("Error al ejecutar la consulta: " . $this->database->error);
+        }
+
+        // Obtener los resultados como un array asociativo
+        $porcentajes = [];
+        while ($row = $result->fetch_assoc()) {
+            $porcentajes[$row['nombreDeUsuario']] = $row['porcentaje'];
+        }
+
+        // Liberar el resultado
+        $result->free();
+
+        return $porcentajes;*/
+
 
         return $this->database->query($sql);
     }

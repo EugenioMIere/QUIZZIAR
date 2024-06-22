@@ -1,2 +1,3 @@
 # Ignorar archivos con datos
 *.ini
+/third-party/jpgraph/
