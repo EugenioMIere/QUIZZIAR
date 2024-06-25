@@ -14,7 +14,7 @@ class AdminController
 
     public function home()
     {
-        $this->presenter->render("view/adminView.mustache");
+        $this->presenter->render("view/adminView.mustache", ['vista' => 'hidden']);
     }
 
     public function getCantidadDeUsuarios(){
@@ -57,7 +57,9 @@ class AdminController
             $labels[] = $fila['nombreDeUsuario'];
             $data[] = $fila['porcentaje'];
         }
-        $this->generarGraficoDeBarras($labels, $data,'usuarios','Eje x', 'Eje y','getPorcentajeCorrectasPorUsuario' );
+
+        $result = $this->generarGraficoDeBarras($labels, $data,'usuarios','Usuario', 'Cantidad respuestas correctas','getPorcentajeCorrectasPorUsuario' );
+        $this->presenter->render("view/adminView.mustache", ['resultado' => $result]);
     }
 
     public function getCantidadDeUsuariosPorPais(){
@@ -70,7 +72,9 @@ class AdminController
         foreach ($resultados as $fila){
             $labels[] = $fila['pais'];
             $data[] = $fila['cantidad_usuarios_por_pais'];
-        }$this->generarGraficoDeBarras($labels, $data,'usuarios','Eje x', 'Eje y','getCantidadDeUsuariosPorPais' );
+        }
+        $result = $this->generarGraficoDeBarras($labels, $data,'usuarios','Pais', 'Cantidad de usuarios por pais','getCantidadDeUsuariosPorPais' );
+        $this->presenter->render("view/adminView.mustache", ['resultado' => $result]);
 
     }
 
@@ -85,7 +89,8 @@ class AdminController
             $labels[] = $fila['genero'];
             $data[] = $fila['cantidad_usuarios_por_genero'];
         }
-        $this->generarGraficoDeBarras($labels, $data,'usuarios','Eje x', 'Eje y','getCantidadDeUsuariosPorGenero' );
+        $result = $this->generarGraficoDeBarras($labels, $data,'usuarios','Genero', 'Cantidad de usuarios por genero','getCantidadDeUsuariosPorGenero' );
+        $this->presenter->render("view/adminView.mustache", ['resultado' => $result]);
     }
 
     public function getCantidadDeUsuariosPorGrupoDeEdad(){
@@ -98,7 +103,9 @@ class AdminController
         foreach ($resultados as $fila){
             $labels[] = $fila['grupo_edad'];
             $data[] = $fila['cantidad_usuarios_por_grupo'];
-        }$this->generarGraficoDeBarras($labels, $data,'usuarios','Eje x', 'Eje y','getCantidadDeUsuariosPorGrupoDeEdad' );
+        }
+        $result = $this->generarGraficoDeBarras($labels, $data,'usuarios','Grupo', 'Cantidad de usuarios por grupo de edad','getCantidadDeUsuariosPorGrupoDeEdad' );
+        $this->presenter->render("view/adminView.mustache", ['resultado' => $result]);
     }
 
     private function obtenerFiltrosDeFecha(){
@@ -129,6 +136,12 @@ class AdminController
 
         // Devolver la ruta del archivo generado
         return $fileName;
+    }
+
+    public function generarPDF(){
+        $img = $_POST['name'];
+        $pdfController = new PDFController();
+        $pdfController->generarPDF('$img');
     }
 
 

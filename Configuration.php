@@ -6,6 +6,7 @@ include_once 'controller/UserController.php';
 include_once 'controller/PreguntaController.php';
 include_once 'controller/EditorController.php';
 include_once 'controller/AdminController.php';
+include_once ('controller/PDFController.php');
 
 include_once 'model/RegistroModel.php';
 include_once 'model/LoginModel.php';
@@ -23,6 +24,7 @@ include_once('vendor/mustache/src/Mustache/Autoloader.php');
 include_once('vendor/PHPMailer-master/src/PHPMailer.php');
 include_once('vendor/PHPMailer-master/src/Exception.php');
 include_once('vendor/PHPMailer-master/src/SMTP.php');
+
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -118,6 +120,10 @@ class Configuration {
     private static function getPresenter(): MustachePresenter
     {
         return new MustachePresenter("view/template");
+    }
+
+    public function getPDFController() {
+        return new PDFController();
     }
 
 
