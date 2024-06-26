@@ -37,7 +37,9 @@ class UserController
 
     public function redirigirRanking()
     {
-        $this->presenter->render("view/verRankingView.mustache");
+        /*$this->presenter->render("view/verRankingView.mustache");*/
+        header('Location:/ranking/mostrarRanking');
+        exit();
     }
 
     public function redirigirAMisPartidas(){

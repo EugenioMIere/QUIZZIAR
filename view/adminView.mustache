@@ -21,25 +21,22 @@
 <body>
 <div class="container mt-5">
 
-    <div class="card mb-3" style="max-width: 540px;">
-        <div class="row g-0">
-            <div class="col-md-4 d-flex align-items-center justify-content-center">
-                <i class="fa-solid fa-user fa-5x"></i>
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Cantidad de usuarios</h5>
-                    <p class="card-text">Cantidad</p>
-                    <p>{{cantidad_de_usuarios}}</p>
-                    <p class="card-text"><small><a href="/admin/getCantidadDeUsuarios">Ver lista de usuarios</a></small></p>
-                </div>
+    <!--<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4 d-flex align-items-center justify-content-center">
+            <i class="fa-solid fa-user fa-5x"></i>
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">Cantidad de usuarios</h5>
+                <p class="card-text">Cantidad</p>
+                <p>{{cantidad_de_usuarios}}</p>
+                <p class="card-text"><small><a href="/admin/getCantidadDeUsuarios">Ver lista de usuarios</a></small></p>
             </div>
         </div>
     </div>
-    <br>
-
-
-    <div class="card mb-3" style="max-width: 540px;">
+</div>-->
+    <!--<div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
             <div class="col-md-4 d-flex align-items-center justify-content-center">
                 <i class="fa-solid fa-dice fa-5x"></i>
@@ -53,9 +50,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
-    <div class="card mb-3" style="max-width: 540px;">
+    <!--<div class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
             <div class="col-md-4 d-flex align-items-center justify-content-center">
                 <i class="fa-solid fa-circle-question fa-5x"></i>
@@ -68,7 +65,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
 
     <div class="card mb-3" style="max-width: 540px;">
@@ -93,6 +90,13 @@
                             <option value="getCantidadDeUsuariosPorGenero">Cantidad de usuarios por sexo</option>
                             <option value="getCantidadDeUsuariosPorGrupoDeEdad">Cantidad de usuarios por grupo de edad</option>
                         </select>
+
+                        <label for="fechaDesde">Desde:</label>
+                        <input type="date" id="fechaDesde" name="fechaDesde" required>
+                        <br><br>
+                        <label for="fechaHasta">Hasta:</label>
+                        <input type="date" id="fechaHasta" name="fechaHasta" required>
+
                         <button type="button" onclick="enviarFormulario()">Filtrar</button>
                     </form>
 
@@ -104,14 +108,17 @@
             </div>
         </div>
     </div>
-    <img src="/{{resultado}}" alt="imagen" {{vista}}>
 
 
-        <div class="graficos">
-    {{#graficos}}
-            <img src="{{grafico}}" alt="grafico">
-    {{/graficos}}
-        </div>
+
+
+
+
+    <div class="graficos">
+
+        <img src="/{{resultado}}" alt="grafico" {{vista}}>
+
+    </div>
 
     <div class="container mt-5 ">
         <form action="/admin/generarPDF" method="post">
