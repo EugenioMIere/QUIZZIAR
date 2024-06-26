@@ -76,4 +76,9 @@ class UserModel
         return $this->database->execute($query);
     }
 
+    public function obtenerMisPartidas($idUsuario){
+        $sql = "SELECT * FROM partidas WHERE usuario_id = '$idUsuario'";
+        return $this->database->execute($sql);
+    }
+
 }

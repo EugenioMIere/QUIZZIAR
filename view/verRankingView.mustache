@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/public/css/verRanking.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title>Ranking de Usuarios</title>
 </head>
 <body>
 <h1>Ranking de Usuarios</h1>
+
+{{#error}}
+    <div class="w3-panel w3-pale-red w3-border">
+            <p> {{error}} </p>
+    </div>
+{{/error}}
 <div class="container">
     <table>
         <thead>
@@ -21,9 +29,9 @@
         <tbody>
         {{#ranking}}
             <tr>
-                <td>{{ranking}}</td>
-                <td><img src="{{fotoDePerfil}}" alt="{{nombre}}"></td>
-                <td>{{nombre}}</td>
+                <td>{{{@index}}}</td>
+                <td> <a href="/user/verPerfilAjeno/{{id}}"> <img src="{{fotoDePerfil}}" alt="{{nombreDeUsuario}}"> </a> </td>
+                <td>{{nombreDeUsuario}}</td>
                 <td>{{total_correctas}}</td>
             </tr>
         {{/ranking}}

@@ -3,22 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script>
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'F5') {
-                // Evitar el comportamiento predeterminado de F5
-                event.preventDefault();
-                // Enviar una solicitud AJAX al servidor para registrar el evento F5
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'registro_f5.php', true);
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                xhr.send('f5_pressed=true');
-
-                // Redirigir a perdisteView.mustache
-                window.location.href = 'perdisteView.mustache';
-            }
-        });
-    </script>
     <title> Usuario </title>
     <style>
         body{

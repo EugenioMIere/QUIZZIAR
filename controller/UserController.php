@@ -129,4 +129,28 @@ class UserController
 
         $this->presenter->render("view/miPerfilView.mustache", ["redes" => $redes]);
     }
+
+    public function verPerfilAjeno(){
+        $idUsuario = $_GET['id'];
+
+        $usuario = $this->model->getUserDetails($idUsuario);
+
+        if ($usuario){
+            $this->presenter->render("view/perfilAjenoView.mustache", ["usuario" => $usuario]);
+        } else {
+            $error = "¡Ups! Parece que ha habido un error. Intenta nuevamente más tarde!";
+            $this->presenter->render("view/verRankingView.mustache", ["error" => $error]);
+        }
+    }
+
+    public function getMisPartidas(){
+        $idUsuario = $_SESSION['id'];
+        $partidas = $this->model->obtenerMisPartidas($idUsuario);
+        if ($partidas){
+            $this->presenter->render("view/misPartidasView.mustache", ["partidas" => $partidas]);
+        } else {
+            $error = "Aún no tienes un historial de partidas";
+            $this->presenter->render("view/misPartidasView.mustache", ["error" => $error]);
+        }
+    }
 }

@@ -13,13 +13,9 @@ class RankingController
 
     public function home()
     {
-        $this->presenter->render("view/verRankingView.mustache");
-    }
-
-    public function mostrarRanking(){
         $ranking = $this->model->getRanking();
 
-        $this->presenter->render("view/verRankingView.mustache", [$ranking => $ranking]);
+        $this->presenter->render("view/verRankingView.mustache", ["ranking" => $ranking]);
     }
 
 }

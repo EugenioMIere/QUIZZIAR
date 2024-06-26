@@ -14,7 +14,15 @@ class PreguntaController
 
     public function getPregunta()
     {
-        $preguntas = $this->model->getPreguntas($_SESSION['id']);
+        // Verificar si hay una pregunta en la sesion y usarla
+        if (!empty($_SESSION['current_question_id'])){
+            $preguntas = $this->model->getPreguntaEspecifica($_SESSION['current_question_id']);
+        } else {
+            // Si no hay ninguna, obtenerla:
+            $preguntas = $this->model->getPreguntas($_SESSION['id']);
+            $_SESSION['current_question_id'] = $preguntas[0]['id'];
+        }
+
         $opciones = $this->model->getOpciones($preguntas[0]['id']);
         $visibilidad = "hidden";
         $this->registrarPreguntaEnPartida($preguntas[0]['id']);
