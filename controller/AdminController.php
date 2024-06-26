@@ -10,6 +10,7 @@ class AdminController
     {
         $this->model = $model;
         $this->presenter = $presenter;
+
     }
 
     public function home()
@@ -48,6 +49,14 @@ class AdminController
 //    Métodos que necesitan gráficos:
     public function getPorcentajeCorrectasPorUsuario(){
         $filtros = $this->obtenerFiltrosDeFecha();
+        if (empty($filtros['fechaDesde'])){
+            $auxiliarA = '';
+            $auxiliarB = '';
+        }else{
+            $auxiliarA = 'desde ';
+            $auxiliarB = ' hasta ';
+
+        }
         $resultados = $this->model->getPorcentajeCorrectasPorUsuario($filtros);
 
         $labels = [];
@@ -58,12 +67,13 @@ class AdminController
             $data[] = $fila['porcentaje'];
         }
 
-        $result = $this->generarGraficoDeBarras($labels, $data,'usuarios','Usuario', 'Cantidad respuestas correctas','getPorcentajeCorrectasPorUsuario' );
+        $result = $this->generarGraficoDeBarras($labels, $data,'Cantidad de respuestas correctas por usuario '.$auxiliarA.$filtros['fechaDesde'].$auxiliarB.$filtros['fechaHasta'].'','Usuario', 'Cantidad respuestas correctas','getPorcentajeCorrectasPorUsuario' );
         $this->presenter->render("view/adminView.mustache", ['resultado' => $result]);
     }
 
     public function getCantidadDeUsuariosPorPais(){
         $filtros = $this->obtenerFiltrosDeFecha();
+
         $resultados = $this->model->getCantidadDeUsuariosPorPais($filtros);
 
         $labels = [];
@@ -80,6 +90,7 @@ class AdminController
 
     public function getCantidadDeUsuariosPorGenero(){
         $filtros = $this->obtenerFiltrosDeFecha();
+
         $resultados = $this->model->getCantidadDeUsuariosPorGenero($filtros);
 
         $labels = [];
