@@ -85,7 +85,7 @@
                             <option value="preguntas_juego">Cantidad de preguntas en el juego</option>
                             <option value="preguntas_creadas">Cantidad de preguntas creadas</option>
                             <option value="usuarios_nuevos">Cantidad de usuarios nuevos</option>-->
-                            <option value="getPorcentajeCorrectasPorUsuario">Porcentaje de preguntas respondidas correctamente por usuario</option>
+                            <option value="getPorcentajeCorrectasPorUsuario">respuestas correctas por usuario</option>
                             <option value="getCantidadDeUsuariosPorPais">Cantidad de usuarios por país</option>
                             <option value="getCantidadDeUsuariosPorGenero">Cantidad de usuarios por sexo</option>
                             <option value="getCantidadDeUsuariosPorGrupoDeEdad">Cantidad de usuarios por grupo de edad</option>
@@ -122,11 +122,8 @@
 
     <div class="container mt-5 ">
         <form action="/admin/generarPDF" method="post">
-            <input type="hidden" name="name" value="{{resultado}}">
+            <input type="hidden" name="image_name" value="{{resultado}}">
 
-            <div class="mb-3">
-                <div id="grafico" style="width: 100%; height: 500px;"></div>
-            </div>
             <div class="d-flex justify-content-center">
                 <button class="btn btn-primary" type="submit">Generar PDF</button>
             </div>

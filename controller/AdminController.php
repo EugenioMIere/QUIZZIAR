@@ -5,11 +5,12 @@ class AdminController
 {
     private $model;
     private $presenter;
-
-    public function __construct($model, $presenter)
+    private $pdf;
+    public function __construct($model, $presenter, $pdf)
     {
         $this->model = $model;
         $this->presenter = $presenter;
+        $this->pdf = $pdf;
 
     }
 
@@ -73,7 +74,14 @@ class AdminController
 
     public function getCantidadDeUsuariosPorPais(){
         $filtros = $this->obtenerFiltrosDeFecha();
+        if (empty($filtros['fechaDesde'])){
+            $auxiliarA = '';
+            $auxiliarB = '';
+        }else{
+            $auxiliarA = 'desde ';
+            $auxiliarB = ' hasta ';
 
+        }
         $resultados = $this->model->getCantidadDeUsuariosPorPais($filtros);
 
         $labels = [];
@@ -83,14 +91,21 @@ class AdminController
             $labels[] = $fila['pais'];
             $data[] = $fila['cantidad_usuarios_por_pais'];
         }
-        $result = $this->generarGraficoDeBarras($labels, $data,'usuarios','Pais', 'Cantidad de usuarios por pais','getCantidadDeUsuariosPorPais' );
+        $result = $this->generarGraficoDeBarras($labels, $data,'Cantidad de usuarios por pais '.$auxiliarA.$filtros['fechaDesde'].$auxiliarB.$filtros['fechaHasta'].'','Pais', 'Cantidad de usuarios por pais','getCantidadDeUsuariosPorPais' );
         $this->presenter->render("view/adminView.mustache", ['resultado' => $result]);
 
     }
 
     public function getCantidadDeUsuariosPorGenero(){
         $filtros = $this->obtenerFiltrosDeFecha();
+        if (empty($filtros['fechaDesde'])){
+            $auxiliarA = '';
+            $auxiliarB = '';
+        }else{
+            $auxiliarA = 'desde ';
+            $auxiliarB = ' hasta ';
 
+        }
         $resultados = $this->model->getCantidadDeUsuariosPorGenero($filtros);
 
         $labels = [];
@@ -100,12 +115,20 @@ class AdminController
             $labels[] = $fila['genero'];
             $data[] = $fila['cantidad_usuarios_por_genero'];
         }
-        $result = $this->generarGraficoDeBarras($labels, $data,'usuarios','Genero', 'Cantidad de usuarios por genero','getCantidadDeUsuariosPorGenero' );
+        $result = $this->generarGraficoDeBarras($labels, $data,'Cantidad de usuarios por genero '.$auxiliarA.$filtros['fechaDesde'].$auxiliarB.$filtros['fechaHasta'].'','Genero', 'Cantidad de usuarios por genero','getCantidadDeUsuariosPorGenero' );
         $this->presenter->render("view/adminView.mustache", ['resultado' => $result]);
     }
 
     public function getCantidadDeUsuariosPorGrupoDeEdad(){
         $filtros = $this->obtenerFiltrosDeFecha();
+        if (empty($filtros['fechaDesde'])){
+            $auxiliarA = '';
+            $auxiliarB = '';
+        }else{
+            $auxiliarA = 'desde ';
+            $auxiliarB = ' hasta ';
+
+        }
         $resultados = $this->model->getCantidadDeUsuariosPorGrupoDeEdad($filtros);
 
         $labels = [];
@@ -115,7 +138,7 @@ class AdminController
             $labels[] = $fila['grupo_edad'];
             $data[] = $fila['cantidad_usuarios_por_grupo'];
         }
-        $result = $this->generarGraficoDeBarras($labels, $data,'usuarios','Grupo', 'Cantidad de usuarios por grupo de edad','getCantidadDeUsuariosPorGrupoDeEdad' );
+        $result = $this->generarGraficoDeBarras($labels, $data,'Cantidad de usuarios por grupo de edad '.$auxiliarA.$filtros['fechaDesde'].$auxiliarB.$filtros['fechaHasta'].'','Grupo', 'Cantidad de usuarios por grupo de edad','getCantidadDeUsuariosPorGrupoDeEdad' );
         $this->presenter->render("view/adminView.mustache", ['resultado' => $result]);
     }
 
@@ -150,9 +173,8 @@ class AdminController
     }
 
     public function generarPDF(){
-        $img = $_POST['name'];
-        $pdfController = new PDFController();
-        $pdfController->generarPDF('$img');
+        $img = $_POST['image_name'];
+        $this->pdf->generarPDF($img);
     }
 
 

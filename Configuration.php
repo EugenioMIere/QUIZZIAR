@@ -7,7 +7,6 @@ include_once 'controller/PreguntaController.php';
 include_once 'controller/EditorController.php';
 include_once 'controller/AdminController.php';
 include_once 'controller/RankingController.php';
-include_once ('controller/PDFController.php');
 include_once ('controller/RankingController.php');
 
 
@@ -23,6 +22,7 @@ include_once 'helper/Database.php';
 include_once 'helper/Router.php';
 include_once 'helper/MustachePresenter.php';
 include_once 'helper/Presenter.php';
+include_once 'helper/PDFCreator.php';
 
 include_once('vendor/mustache/src/Mustache/Autoloader.php');
 include_once('vendor/PHPMailer-master/src/PHPMailer.php');
@@ -68,7 +68,7 @@ class Configuration {
 
     public static function getAdminController(): AdminController
     {
-        return new AdminController(self::getAdminModel(), self::getPresenter());
+        return new AdminController(self::getAdminModel(), self::getPresenter(),self::getPDFCreator());
     }
 
     // MODELS
@@ -126,8 +126,9 @@ class Configuration {
         return new MustachePresenter("view/template");
     }
 
-    public function getPDFController() {
-        return new PDFController();
+    public static function getPDFCreator(): PDFCreator
+    {
+        return new PDFCreator();
     }
 
 
