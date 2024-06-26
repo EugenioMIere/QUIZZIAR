@@ -10,6 +10,7 @@ class AdminController
     {
         $this->model = $model;
         $this->presenter = $presenter;
+
     }
 
     public function home()

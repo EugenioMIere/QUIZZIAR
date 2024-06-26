@@ -8,6 +8,8 @@ include_once 'controller/EditorController.php';
 include_once 'controller/AdminController.php';
 include_once 'controller/RankingController.php';
 include_once ('controller/PDFController.php');
+include_once ('controller/RankingController.php');
+
 
 include_once 'model/RegistroModel.php';
 include_once 'model/LoginModel.php';
