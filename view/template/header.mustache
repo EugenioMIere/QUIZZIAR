@@ -1,27 +1,33 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="es">-->
-<!--<head>-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
-<!--    <link rel="stylesheet" type="text/css" href="/public/css/header.css">-->
-<!--    <title></title>-->
-<!--</head>-->
-<!--<body>-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/public/css/header.css">
+    <title></title>
+</head>
+<body>
 
-<!--<div class="header">-->
-<!--    <div class="contenedor-img">-->
-<!--&lt;!&ndash;        <a href="#default" class="logo"><img src="/public/images/logo.png" alt="logo"></a>&ndash;&gt;-->
-<!--    </div>-->
+<div class="header">
+    <div class="contenedor-img">
+<!--        <a href="#default" class="logo"><img src="/public/images/logo.png" alt="logo"></a>-->
+    </div>
 
-<!--    <div class="header-right">-->
-<!--        <a href="/user/home"> Mi perfil </a>-->
-<!--        {{#usuario}}-->
-<!--        <a href="/user/home"><img src="/{{fotoDePerfil}}" width="150" height="150" border-radius="50%"> </a>-->
-<!--        {{/usuario}}-->
-<!--        <a href="">About</a>-->
-<!--    </div>-->
+    <div class="header-right">
+        <a href="/login/view/lobby.mustache"> Lobby </a>
+        <a href="/user/home"> Mi perfil </a>
+        <a href="/user/redirigirNuevaPartida">Nueva Partida</a>
+        <a href="/user/redirigirAMisPartidas">Mis Partidas</a>
+        <a href="/user/redirigirRanking">Ver Ranking</a>
+        <a href="/user/irASugerirPreguntas">Sugerir Pregunta</a>
+        <a href="">Sobre Nosotros</a>
+        <a style="color: red;" href="/login/mostrarLogin">Cerrar sesión</a>
+        {{#usuario}}
+            <a href="/user/home"><img src="/{{fotoDePerfil}}" width="75" height="75" border-radius="50%"> </a>
+        {{/usuario}}
+    </div>
 
-<!--</div>-->
+</div>
 
-<!--</body>-->
-<!--</html>-->
+</body>
+</html>
 
