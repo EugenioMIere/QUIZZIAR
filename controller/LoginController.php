@@ -58,6 +58,12 @@ class LoginController
         return $url;
     }
 
+    public function logout(){
+        unset($_SESSION['id']);
+        unset($_SESSION['rol']);
+        $this->presenter->render("view/loginView.mustache");
+    }
+
     private function manejoDeUrls($rol): string {
         $url = "";
 

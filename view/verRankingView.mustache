@@ -30,7 +30,14 @@
         {{#ranking}}
             <tr>
                 <td>{{{@index}}}</td>
-                <td> <a href="/user/verPerfilAjeno/{{id}}"> <img src="/{{fotoDePerfil}}" alt="{{nombreDeUsuario}}"> </a> </td>
+                <td>
+                    <form action="/user/verPerfilAjeno" method="POST">
+                        <input type="hidden" name="id" value="{{id}}">
+                        <button type="submit" style="border: none;">
+                            <img src="/{{fotoDePerfil}}" alt="{{nombreDeUsuario}}" width="10px" height="10px" style="border-radius: 50%;">
+                        </button>
+                    </form>
+                </td>
                 <td>{{nombreDeUsuario}}</td>
                 <td>{{total_correctas}}</td>
             </tr>

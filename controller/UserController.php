@@ -37,7 +37,6 @@ class UserController
 
     public function redirigirRanking()
     {
-        /*$this->presenter->render("view/verRankingView.mustache");*/
         header('Location:/ranking/mostrarRanking');
         exit();
     }
@@ -133,7 +132,7 @@ class UserController
     }
 
     public function verPerfilAjeno(){
-        $idUsuario = $_GET['id'];
+        $idUsuario = $_POST['id'];
 
         $usuario = $this->model->getUserDetails($idUsuario);
 
@@ -148,6 +147,7 @@ class UserController
     public function getMisPartidas(){
         $idUsuario = $_SESSION['id'];
         $partidas = $this->model->obtenerMisPartidas($idUsuario);
+
         if ($partidas){
             $this->presenter->render("view/misPartidasView.mustache", ["partidas" => $partidas]);
         } else {

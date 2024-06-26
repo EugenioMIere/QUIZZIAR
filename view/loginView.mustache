@@ -9,7 +9,6 @@ $page = 'login'; // puedes usar una variable para indicar la página actual
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="/public/css/loginViewStyle.css">
-    <link rel="stylesheet" href="/public/css/footerStyle.css">
     <title>Iniciar Sesión</title>
 </head>
 <body>
@@ -28,11 +27,11 @@ $page = 'login'; // puedes usar una variable para indicar la página actual
                 <input type="password" placeholder="Contraseña" id="passwordLogin" name="passwordLogin" required>
             </label>
 
+            {{#error}}
             <div class="alert alert-danger" role="alert">
-                {{#error}}
                     <p> {{error}} </p>
-                {{/error}}
             </div>
+            {{/error}}
 
             <button type="submit">Login</button>
             <label for="remember" class="remember">
@@ -47,8 +46,5 @@ $page = 'login'; // puedes usar una variable para indicar la página actual
     </div>
 </div>
 
-<footer>
-    <p class="footer"> © UNLaM 2024, Programación Web II </p>
-</footer>
 </body>
 </html>
