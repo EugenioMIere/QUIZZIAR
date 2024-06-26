@@ -1,3 +1,8 @@
+<?php
+// login.php
+$page = 'login'; // puedes usar una variable para indicar la página actual
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,11 +21,11 @@
     <div class="right-side">
         <form action="/login/login" method="post">
             <label for="emailLogin"><b>Username</b>
-            <input type="text" placeholder="Email" id="emailLogin" name="emailLogin" required>
+                <input type="text" placeholder="Email" id="emailLogin" name="emailLogin" required>
             </label>
 
             <label for="passwordLogin"><b>Password</b>
-            <input type="password" placeholder="Contraseña" id="passwordLogin" name="passwordLogin" required>
+                <input type="password" placeholder="Contraseña" id="passwordLogin" name="passwordLogin" required>
             </label>
 
             <div class="alert alert-danger" role="alert">
