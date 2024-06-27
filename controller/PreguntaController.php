@@ -78,7 +78,12 @@ class PreguntaController
     }
 
     public function reportarPregunta(){
-        $id = $_GET['idPregunta'];
+//        $id = $_GET["idPregunta"];
+
+
+        $id = $_SESSION['idPregunta'];
+
+//        $id = $_POST['idPregunta'];
         $result = $this->model->reportarPregunta($id);
 
         if ($result){

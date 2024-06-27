@@ -32,7 +32,12 @@
 </div>
 
 <div class="buttons">
-    <a href="/pregunta/reportarPregunta" class="reportar-btn"> Reportar pregunta </a>
+    <form action="/pregunta/reportarPregunta" method="POST">
+        <input hidden value={{pregunta_id}} name="idPregunta">
+        <button class="reportar-btn" type="submit"> Reportar pregunta </button>
+    </form>
+
+<!--    <a href="/pregunta/reportarPregunta" class="reportar-btn"> Reportar pregunta </a>-->
 </div>
 </body>
 </html>
