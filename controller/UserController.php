@@ -1,7 +1,7 @@
 <?php
-
 class UserController
 {
+
     private $model;
     private $presenter;
 

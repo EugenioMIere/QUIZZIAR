@@ -7,7 +7,6 @@
     <style>
         body{
             background-color:#f2f2f2;
-            padding: 2% 2% 2% 2%;
         }
         section{
             display:flex;
@@ -15,6 +14,7 @@
             justify-content:space-around;
         }
         section div{
+            margin-top: 2.5%;
             background-color:#dddcdc;
             display:flex;
             flex-direction:column;
@@ -26,12 +26,35 @@
         h2, h3{
             text-decoration: underline;
             font-weight:bold;
+            margin-bottom: 1.5%;
         }
         h2{
             text-align:center;
+            margin-bottom: 5%;
+        }
+        .Iniciar{
+            color: black;
+            font-weight: bold;
+            text-decoration: underline;
+            font-size: 22px
+        }
+        .Iniciar:hover{
+            font-size: 30px;
+            color: rebeccapurple;
+            transition-duration: 2s;
         }
     </style>
+    <script>
+        function renderHeader() {
+            // Render header content using your existing code
 
+            // Select the nuevaPartidaMenu element
+            const nuevaPartidaMenu = document.getElementById('nuevaPartidaMenu');
+
+            // Add the "active" class
+            nuevaPartidaMenu.classList.add('active');
+        }
+    </script>
 </head>
 <body>
 <h2>¡Preparate para la partida!</h2>
@@ -42,8 +65,8 @@
         <p>2.- Se te presentarán varias opciones de respuesta para cada pregunta.</p>
         <p>3.- Selecciona la opción que consideres correcta haciendo clic en ella.</p>
         <p>4.- Luego de elegir la opción, tocar el botón "Confirmar" para pasar a la siguiente pregunta.</p>
-        <p>¡Que te diviertas!</p>
-        <div style="display: flex; flex-direction: row;justify-content: center; padding: 0% 0% 0% 0%;"><a href="/pregunta/getPregunta" style="color: black; font-weight: bold; text-decoration: underline; font-size: large">Iniciar</a></div>
+        <p style="font-weight: bold">¡Que te diviertas!</p>
+        <div style="display: flex; flex-direction: row;justify-content: center; padding: 0% 0% 0% 0%;"><a class="Iniciar" href="/pregunta/getPregunta">Iniciar</a></div>
 
     </div>
 </section>
