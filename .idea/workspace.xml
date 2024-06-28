@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66ed4e9b-8f12-43d8-99bf-807e904a68cd" name="Changes" comment="Update mis partidas, ver ranking y acceder a perfil de otro usuario">
+    <list default="true" id="66ed4e9b-8f12-43d8-99bf-807e904a68cd" name="Changes" comment="variable $_SESSION['current_question_id']">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/PreguntaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/PreguntaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/preguntasView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/preguntasView.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +105,8 @@
       <workItem from="1719354025575" duration="6446000" />
       <workItem from="1719365727399" duration="595000" />
       <workItem from="1719421091202" duration="8104000" />
-      <workItem from="1719429565669" duration="189000" />
+      <workItem from="1719429565669" duration="234000" />
+      <workItem from="1719539743840" duration="1145000" />
     </task>
     <task id="LOCAL-00001" summary="Password encriptada con md5">
       <option name="closed" value="true" />
@@ -258,11 +260,30 @@
       <option name="project" value="LOCAL" />
       <updated>1719429260476</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="variable $_SESSION['current_question_id']">
+      <option name="closed" value="true" />
+      <created>1719429791684</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1719429791684</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Password encriptada con md5" />
@@ -281,7 +302,8 @@
     <MESSAGE value="rol admin (faltan gráficos, generar pdf y vistas mustache)" />
     <MESSAGE value="Update (f5, mis partidas, ver ranking, perfil ajeno) ?" />
     <MESSAGE value="Update mis partidas, ver ranking y acceder a perfil de otro usuario" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update mis partidas, ver ranking y acceder a perfil de otro usuario" />
+    <MESSAGE value="variable $_SESSION['current_question_id']" />
+    <option name="LAST_COMMIT_MESSAGE" value="variable $_SESSION['current_question_id']" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
