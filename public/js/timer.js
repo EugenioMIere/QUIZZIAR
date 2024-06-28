@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var timer = 20; // 20 segundos
+    var timer = 10; // 10 segundos
     var interval = setInterval(function() {
-        if (timer <= 0) {
+        if (timer <= -1) {
             clearInterval(interval);
             enviarRespuesta();
         } else {
@@ -17,10 +17,10 @@ function enviarRespuesta() {
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     var idPregunta = document.getElementById("idPregunta").value();
     xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200){
+        if (xhr.readyState === 4 && xhr.status === 100){
             // manejar la rta del servidor
             console.log(xhr.responseText);
-            // redirigir a otra página si es necesario
+            window.location.href = "perdisteView.mustache";
         }
     };
     xhr.send("idPregunta=" + idPregunta);

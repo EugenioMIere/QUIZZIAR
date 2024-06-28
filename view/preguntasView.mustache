@@ -29,7 +29,7 @@
     <h2>Pregunta: {{#preguntas}} {{ pregunta }} {{/preguntas}}<!--{{nivel}}--></h2>
     {{#opciones}}
         <form action="/pregunta/validarPregunta&idPregunta={{pregunta_id}}" method="post">
-        <p><button id="respuesta" name="respuesta" value="{{id}}" {{estadoBoton}}>{{ respuesta }}</button></p>
+            <p><button id="respuesta" name="respuesta" value="{{id}}" {{estadoBoton}}>{{ respuesta }}</button></p>
         </form>
     {{/opciones}}
     <p class="respuesta {{claseRespuesta}}">Respuesta: {{result}}</p>

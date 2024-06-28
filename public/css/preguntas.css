@@ -25,7 +25,9 @@ button {
 .respuesta-incorrecta {
     background-color: red;
 }
-
+a{
+    color: black;
+}
 .reportar-btn {
     display: flex;
     text-align: center;
