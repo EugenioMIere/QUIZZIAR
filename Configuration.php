@@ -29,6 +29,9 @@ include_once('vendor/PHPMailer-master/src/PHPMailer.php');
 include_once('vendor/PHPMailer-master/src/Exception.php');
 include_once('vendor/PHPMailer-master/src/SMTP.php');
 
+require_once('third-party/jpgraph/src/jpgraph.php');
+require_once('third-party/jpgraph/src/jpgraph_bar.php');
+
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;

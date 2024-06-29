@@ -68,23 +68,20 @@
     </div>-->
 
 
-    <div class="card mb-3" style="max-width: 540px;">
+    <div class="card mb-3 mx-auto" style="max-width: 60%;">
         <div class="row g-0">
-            <div class="col-md-4 d-flex align-items-center justify-content-center">
-                <i class="fa-solid fa-circle-question fa-5x"></i>
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title">Filtrado </h5>
-                    <form id="formulario" action="/admin/" method="post">
+            <div class="col-md-12">
+                <div class="card-body d-flex flex-column align-items-center justify-content-center"> <!-- added d-flex, flex-column, align-items-center, justify-content-center -->
+                    <h5 class="card-title">Filtrado</h5>
+                    <form id="formulario" action="/admin/" method="post" class="text-center"> <!-- added text-center to form -->
 
                         <label for="opcion">Opción:</label>
 
-                        <select name="opcion" id="opcion">
-                            <!--<option value="partidas_jugadas">Cantidad de partidas jugadas</option>
-                            <option value="preguntas_juego">Cantidad de preguntas en el juego</option>
-                            <option value="preguntas_creadas">Cantidad de preguntas creadas</option>
-                            <option value="usuarios_nuevos">Cantidad de usuarios nuevos</option>-->
+                        <select name="opcion" id="opcion" class="form-select mb-3">
+                            <option value="getCantidadPartidasJugadas">Cantidad de partidas jugadas</option>
+                            <option value="getCantidadPreguntas">Cantidad de preguntas en el juego</option>
+                            <option value="getCantidadSugeridas">Cantidad de preguntas sugeridas</option>
+                            <option value="getCantidadDeUsuarios">Cantidad de usuarios nuevos</option>
                             <option value="getPorcentajeCorrectasPorUsuario">respuestas correctas por usuario</option>
                             <option value="getCantidadDeUsuariosPorPais">Cantidad de usuarios por país</option>
                             <option value="getCantidadDeUsuariosPorGenero">Cantidad de usuarios por sexo</option>
@@ -92,12 +89,12 @@
                         </select>
 
                         <label for="fechaDesde">Desde:</label>
-                        <input type="date" id="fechaDesde" name="fechaDesde" required>
-                        <br><br>
-                        <label for="fechaHasta">Hasta:</label>
-                        <input type="date" id="fechaHasta" name="fechaHasta" required>
+                        <input type="date" id="fechaDesde" name="fechaDesde" required class="form-control mb-3">
 
-                        <button type="button" onclick="enviarFormulario()">Filtrar</button>
+                        <label for="fechaHasta">Hasta:</label>
+                        <input type="date" id="fechaHasta" name="fechaHasta" required class="form-control mb-3">
+
+                        <button type="button" onclick="enviarFormulario()" class="btn btn-primary">Filtrar</button>
                     </form>
 
                     <!--<p class="card-text">Cantidad</p>-->
@@ -109,16 +106,11 @@
         </div>
     </div>
 
+    <br>
 
-
-
-
-
-        <div class="graficos">
-
-            <img src="/{{resultado}}" alt="grafico" {{vista}}>
-
-        </div>
+    <div class="graficos d-flex align-items-center justify-content-center" >
+        <img src="/{{resultado}}" alt="grafico" {{vista}} width="63%">
+    </div>
 
     <div class="container mt-5 ">
         <form action="/admin/generarPDF" method="post">

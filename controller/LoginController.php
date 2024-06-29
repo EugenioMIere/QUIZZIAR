@@ -17,19 +17,10 @@ class LoginController
 
     public function home()
     {
-        if (empty($_SESSION['rol'])){
-            $this->mostrarLogin();
+        if (!empty($_SESSION['rol'])){
+            $this->sessionRedirect();
         }else{
-            if ($_SESSION['rol'] === "usuario"){
-                $this->presenter->render("view/lobby.mustache");
-            }elseif ($_SESSION['rol'] === "editor"){
-                header('Location:/editor');
-                exit();
-                /*$this->presenter->render("view/editorView.mustache");*/
-            }elseif ($_SESSION['rol'] === "administrador"){
-                header('Location:/admin');
-                exit();
-            }
+            $this->mostrarLogin();
         }
     }
 
@@ -45,9 +36,10 @@ class LoginController
             if (count($result) > 0) {
                 $_SESSION['id'] = $result[0]['id'];
                 $_SESSION['rol'] = $result[0]['rol'];
-                $rol = $_SESSION['rol'];
+                /*$rol = $_SESSION['rol'];
                 $url = $this->manejoDeUrls($rol);
-                $this->redirect($url);
+                $this->redirect($url);*/
+                $this->home();
             } else {
                 $error = "Email o contraseña incorrectos";
                 $this->presenter->render("view/loginView.mustache", ['error' => $error]);
@@ -65,7 +57,7 @@ class LoginController
         $this->presenter->render("view/loginView.mustache");
     }
 
-    private function manejoDeUrls($rol): string {
+   /* private function manejoDeUrls($rol): string {
         $url = "";
 
         switch ($rol) {
@@ -83,7 +75,7 @@ class LoginController
                 break;
         }
         return $url;
-    }
+    }*/
 
     private function datosLoginCompletos() {
         if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
@@ -94,9 +86,24 @@ class LoginController
         }
         return false;
     }
-
+/*
     private function redirect($url) {
         header("Location: " . $url);
         exit();
+    }*/
+
+    private function sessionRedirect()
+    {
+        if ($_SESSION['rol'] === "usuario"){
+            $this->presenter->render("view/lobby.mustache");
+        }elseif ($_SESSION['rol'] === "editor"){
+            header('Location:/editor');
+            exit();
+            /*$this->presenter->render("view/editorView.mustache");*/
+        }elseif ($_SESSION['rol'] === "administrador"){
+            header('Location:/admin');
+            exit();
+        }
+
     }
 }

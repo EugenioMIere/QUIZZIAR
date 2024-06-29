@@ -15,16 +15,18 @@ class AdminModel
         $fechaHasta = $filtros['fechaHasta'];
 
         if(!empty($fechaDesde) && !empty($fechaHasta)){
-            $whereClause = " WHERE fecha_creacion >= '" . $fechaDesde . "' AND fecha_creacion <= '" . $fechaHasta . "'";
+            $whereClause = " WHERE fecha_creacion >= '" . $fechaDesde . "' 
+            AND fecha_creacion <= '" . $fechaHasta . "'
+            AND rol = 'usuario'";
+        }else{
+            $whereClause = " WHERE rol = 'usuario'";
         }
 
-        $sql = "SELECT COUNT(*) as cantidad_usuarios 
+        $sql = "SELECT COUNT(*) as cantidad_usuarios,rol
         FROM usuario
         " . $whereClause . ";";
 
-        $result = $this->database->query($sql);
-
-        return $result[0]['cantidad_usuarios'];
+        return $this->database->query($sql);
     }
 
     public function getCantidadPartidasJugadas($filtros){
@@ -33,7 +35,9 @@ class AdminModel
         $fechaHasta = $filtros['fechaHasta'];
 
         if(!empty($fechaDesde) && !empty($fechaHasta)){
-            $whereClause = " WHERE fecha_creacion >= '" . $fechaDesde . "' AND fecha_creacion <= '" . $fechaHasta . "'";
+            $whereClause = " WHERE fecha_creacion >= '" . $fechaDesde . "' 
+            AND fecha_creacion <= '" . $fechaHasta . "'
+            ";
         }
 
         $sql = "SELECT COUNT(DISTINCT id) as cantidad_partidas 
@@ -89,27 +93,6 @@ class AdminModel
         FROM partidas p 
         JOIN usuario u ON p.usuario_id = u.id
         " . $whereClause . " GROUP BY u.nombreDeUsuario";
-
-        /*Prueba*/
-        /*$result = $this->database->query($sql);
-
-        // Verificar si la consulta se ejecutó correctamente
-        if ($result === false) {
-            // Manejo de error, por ejemplo:
-            throw new Exception("Error al ejecutar la consulta: " . $this->database->error);
-        }
-
-        // Obtener los resultados como un array asociativo
-        $porcentajes = [];
-        while ($row = $result->fetch_assoc()) {
-            $porcentajes[$row['nombreDeUsuario']] = $row['porcentaje'];
-        }
-
-        // Liberar el resultado
-        $result->free();
-
-        return $porcentajes;*/
-
 
         return $this->database->query($sql);
     }
