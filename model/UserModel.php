@@ -81,4 +81,10 @@ class UserModel
         return $this->database->execute($sql);
     }
 
+    public function getCantidadPartidas($idUsuario){
+        $sql = "SELECT COUNT(DISTINCT id) FROM partidas WHERE usuario_id = '$idUsuario'";
+        return $this->database->execute($sql);
+    }
+
+
 }

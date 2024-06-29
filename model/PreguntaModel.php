@@ -162,23 +162,24 @@ class PreguntaModel
 
         $nivelJugador = null;
 
-        $porcentajeCorrectas = ($correctas / $intentos) * 100;
+        if(($correctas!=0)&&($intentos!=0)){
+            $porcentajeCorrectas = ($correctas / $intentos) * 100;
 
-        if ($porcentajeCorrectas >= 70) {
-            $nivelJugador = 'avanzado';
-        } elseif ($porcentajeCorrectas >= 30) {
-            $nivelJugador = 'intermedio';
+            if ($porcentajeCorrectas >= 70) {
+                $nivelJugador = 'avanzado';
+            } elseif ($porcentajeCorrectas >= 30) {
+                $nivelJugador = 'intermedio';
+            } else {
+                $nivelJugador = 'principiante';
+            }
+
+            if ($intentos <= 10) {
+                $nivelJugador = 'principiante';
+            }
         } else {
             $nivelJugador = 'principiante';
         }
-
-        if ($intentos <= 10) {
-            $nivelJugador = 'principiante';
-        }
-
         return $nivelJugador;
-
-
     }
 
     private function cantidadDePreguntasCorrectasPorUsuario($id_usuario){

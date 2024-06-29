@@ -4,16 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66ed4e9b-8f12-43d8-99bf-807e904a68cd" name="Changes" comment="Update (f5, mis partidas, ver ranking, perfil ajeno) ?">
+    <list default="true" id="66ed4e9b-8f12-43d8-99bf-807e904a68cd" name="Changes" comment="variable $_SESSION['current_question_id']">
+      <change afterPath="$PROJECT_DIR$/public/css/perdisteView.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/perdisteView.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/Configuration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/RankingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/RankingController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/RankingModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/RankingModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/adminView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/adminView.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/verRankingView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/verRankingView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/PreguntaModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/PreguntaModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/preguntas.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/preguntas.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/timer.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/timer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/preguntasView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/preguntasView.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +21,13 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -43,36 +49,40 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2h7GTWFhingXhPAAsQ0gKcMatOF" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/quizziar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/xampp/htdocs/quizziar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\preguntados\third-party" />
       <recent name="C:\xampp\htdocs\preguntados\public\images" />
+      <recent name="C:\xampp\htdocs\preguntados\third-party" />
       <recent name="C:\xampp\htdocs\preguntados\view\resources\images" />
     </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-php-predefined-ba97393d7c68-6f8e3395a2b4-com.jetbrains.php.sharedIndexes-PS-233.15026.12" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-PS-241.15989.102" />
+        <option value="bundled-php-predefined-ba97393d7c68-c76157a7178b-com.jetbrains.php.sharedIndexes-PS-241.15989.102" />
       </set>
     </attachedChunks>
   </component>
@@ -109,7 +119,11 @@
       <workItem from="1719174915605" duration="30000" />
       <workItem from="1719337460517" duration="11000" />
       <workItem from="1719354025575" duration="6446000" />
-      <workItem from="1719365727399" duration="484000" />
+      <workItem from="1719365727399" duration="595000" />
+      <workItem from="1719421091202" duration="8104000" />
+      <workItem from="1719429565669" duration="234000" />
+      <workItem from="1719539743840" duration="1145000" />
+      <workItem from="1719573225150" duration="15186000" />
     </task>
     <task id="LOCAL-00001" summary="Password encriptada con md5">
       <option name="closed" value="true" />
@@ -247,13 +261,49 @@
       <option name="project" value="LOCAL" />
       <updated>1719360970742</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Update (f5, mis partidas, ver ranking, perfil ajeno) ?">
+      <option name="closed" value="true" />
+      <created>1719366253944</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1719366253944</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Update mis partidas, ver ranking y acceder a perfil de otro usuario">
+      <option name="closed" value="true" />
+      <created>1719429260476</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1719429260476</updated>
+    </task>
+    <task id="LOCAL-00020" summary="variable $_SESSION['current_question_id']">
+      <option name="closed" value="true" />
+      <created>1719429791684</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1719429791684</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Password encriptada con md5" />
     <MESSAGE value="UserModel, UserController, perfilPropioView, usuarioView (lobby)" />
     <MESSAGE value="cambios de estilos, carpeta public (image, css)" />
@@ -269,19 +319,21 @@
     <MESSAGE value="Inicio rol administrador" />
     <MESSAGE value="rol admin (faltan gráficos, generar pdf y vistas mustache)" />
     <MESSAGE value="Update (f5, mis partidas, ver ranking, perfil ajeno) ?" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update (f5, mis partidas, ver ranking, perfil ajeno) ?" />
+    <MESSAGE value="Update mis partidas, ver ranking y acceder a perfil de otro usuario" />
+    <MESSAGE value="variable $_SESSION['current_question_id']" />
+    <option name="LAST_COMMIT_MESSAGE" value="variable $_SESSION['current_question_id']" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/model/RegistroModel.php</url>
-          <line>28</line>
+          <line>31</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/helper/Database.php</url>
-          <line>17</line>
+          <line>18</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

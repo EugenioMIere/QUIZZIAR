@@ -1,7 +1,7 @@
 <?php
-
 class UserController
 {
+
     private $model;
     private $presenter;
 
@@ -37,13 +37,16 @@ class UserController
 
     public function redirigirRanking()
     {
-        /*$this->presenter->render("view/verRankingView.mustache");*/
         header('Location:/ranking/mostrarRanking');
         exit();
     }
 
     public function redirigirAMisPartidas(){
         $this->presenter->render("view/misPartidasView.mustache");
+    }
+
+    public function redirigirAPerdiste(){
+        $this->presenter->render("view/perdisteView.mustache");
     }
 
     public function irASugerirPreguntas(){
@@ -133,7 +136,7 @@ class UserController
     }
 
     public function verPerfilAjeno(){
-        $idUsuario = $_GET['id'];
+        $idUsuario = $_POST['id'];
 
         $usuario = $this->model->getUserDetails($idUsuario);
 
@@ -148,6 +151,7 @@ class UserController
     public function getMisPartidas(){
         $idUsuario = $_SESSION['id'];
         $partidas = $this->model->obtenerMisPartidas($idUsuario);
+
         if ($partidas){
             $this->presenter->render("view/misPartidasView.mustache", ["partidas" => $partidas]);
         } else {

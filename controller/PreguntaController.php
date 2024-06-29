@@ -58,6 +58,9 @@ class PreguntaController
             $opciones = $this->model->getOpciones($idPregunta);
             $this->model->setRespuestaPartida($_SESSION['id'], $result,$idPregunta,$idRespuestas);
 
+            // Borro de la variable session la pregunta actual para setearla nuevamente en el validarPregunta();
+            unset($_SESSION['current_question_id']);
+
             $this->presenter->render("view/preguntasView.mustache", [
                 "result" => $result,
                 "opciones" => $opciones,
@@ -75,7 +78,8 @@ class PreguntaController
     }
 
     public function reportarPregunta(){
-        $id = $_GET['idPregunta'];
+        $id = $_POST['questionId'];
+
         $result = $this->model->reportarPregunta($id);
 
         if ($result){

@@ -1,13 +1,18 @@
+<?php
+// login.php
+$page = 'login'; // puedes usar una variable para indicar la página actual
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="/public/css/loginViewStyle.css">
-    <link rel="stylesheet" href="/public/css/footerStyle.css">
     <title>Iniciar Sesión</title>
 </head>
-<body>
+<body style="display: flex; flex-direction: column; margin:0;">
+{{> header.php }}
 
 <div class="container">
     <div class="left-side">
@@ -16,18 +21,18 @@
     <div class="right-side">
         <form action="/login/login" method="post">
             <label for="emailLogin"><b>Username</b>
-            <input type="text" placeholder="Email" id="emailLogin" name="emailLogin" required>
+                <input type="text" placeholder="Email" id="emailLogin" name="emailLogin" required>
             </label>
 
             <label for="passwordLogin"><b>Password</b>
-            <input type="password" placeholder="Contraseña" id="passwordLogin" name="passwordLogin" required>
+                <input type="password" placeholder="Contraseña" id="passwordLogin" name="passwordLogin" required>
             </label>
 
+            {{#error}}
             <div class="alert alert-danger" role="alert">
-                {{#error}}
                     <p> {{error}} </p>
-                {{/error}}
             </div>
+            {{/error}}
 
             <button type="submit">Login</button>
             <label for="remember" class="remember">
@@ -42,8 +47,5 @@
     </div>
 </div>
 
-<footer>
-    <p class="footer"> © UNLaM 2024, Programación Web II </p>
-</footer>
 </body>
 </html>

@@ -59,3 +59,7 @@ a {
 #misPartidas{
     background-image: url('/public/images/mispartidas.png');
 }
+
+#sugerirPregunta{
+    background-image: url('/public/images/sugerir.png');
+}
