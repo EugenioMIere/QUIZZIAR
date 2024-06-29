@@ -17,19 +17,20 @@ class LoginController
 
     public function home()
     {
-        if ($_SESSION['rol'] === "usuario"){
-            $this->presenter->render("view/lobby.mustache");
-        }elseif ($_SESSION['rol'] === "editor"){
-            header('Location:/editor');
-            exit();
-            /*$this->presenter->render("view/editorView.mustache");*/
-        }elseif ($_SESSION['rol'] === "administrador"){
-            header('Location:/admin');
-            exit();
-
-            /*$this->presenter->render("view/adminView.mustache");*/
+        if (empty($_SESSION['rol'])){
+            $this->mostrarLogin();
+        }else{
+            if ($_SESSION['rol'] === "usuario"){
+                $this->presenter->render("view/lobby.mustache");
+            }elseif ($_SESSION['rol'] === "editor"){
+                header('Location:/editor');
+                exit();
+                /*$this->presenter->render("view/editorView.mustache");*/
+            }elseif ($_SESSION['rol'] === "administrador"){
+                header('Location:/admin');
+                exit();
+            }
         }
-
     }
 
     public function login() {
