@@ -19,9 +19,11 @@ class PreguntaController
             $preguntas = $this->model->getPreguntaEspecifica($_SESSION['current_question_id']);
         } else {
             // Si no hay ninguna, obtenerla:
+            $_SESSION["temporizador-comienzo"] = time();
             $preguntas = $this->model->getPreguntas($_SESSION['id']);
             $_SESSION['current_question_id'] = $preguntas[0]['id'];
         }
+
 
         $opciones = $this->model->getOpciones($preguntas[0]['id']);
         $visibilidad = "hidden";
@@ -39,36 +41,47 @@ class PreguntaController
 
     }
     public function validarPregunta(){
-        if (isset($_POST["respuesta"]) && $_GET["idPregunta"]){
+        $temporizadorFin = time();
+        $tiempo = $temporizadorFin - $_SESSION["temporizador-comienzo"];
+        if ($tiempo <= 10){
+            if (isset($_POST["respuesta"]) && $_GET["idPregunta"]){
 
-            $idRespuestas = $_POST["respuesta"];
-            $idPregunta = $_GET["idPregunta"];
-            $respuestaCorrecta = $this->getRespuestaCorrecta($idRespuestas);
-            $estadoBoton = "disabled";
+                $idRespuestas = $_POST["respuesta"];
+                $idPregunta = $_GET["idPregunta"];
+                $respuestaCorrecta = $this->getRespuestaCorrecta($idRespuestas);
+                $estadoBoton = "disabled";
 
-            if ($respuestaCorrecta){
-                $result = "Correcto";
-                $claseRespuesta = "respuesta-correcta";
-            } else {
-                $result = "Falso";
-                $claseRespuesta = "respuesta-incorrecta";
+                if ($respuestaCorrecta){
+                    $result = "Correcto";
+                    $claseRespuesta = "respuesta-correcta";
+                } else {
+                    $result = "Falso";
+                    $claseRespuesta = "respuesta-incorrecta";
+                }
+
+                $preguntas = $this->model->getPreguntaEspecifica($idPregunta);
+                $opciones = $this->model->getOpciones($idPregunta);
+                $this->model->setRespuestaPartida($_SESSION['id'], $result,$idPregunta,$idRespuestas);
+
+                // Borro de la variable session la pregunta actual para setearla nuevamente en el validarPregunta();
+                unset($_SESSION['current_question_id']);
+
+                $this->presenter->render("view/preguntasView.mustache", [
+                    "result" => $result,
+                    "opciones" => $opciones,
+                    "preguntas" => $preguntas,
+                    "estadoBoton" => $estadoBoton,
+                    "claseRespuesta" => $claseRespuesta
+                ]);
             }
 
-            $preguntas = $this->model->getPreguntaEspecifica($idPregunta);
-            $opciones = $this->model->getOpciones($idPregunta);
-            $this->model->setRespuestaPartida($_SESSION['id'], $result,$idPregunta,$idRespuestas);
-
-            // Borro de la variable session la pregunta actual para setearla nuevamente en el validarPregunta();
-            unset($_SESSION['current_question_id']);
-
-            $this->presenter->render("view/preguntasView.mustache", [
-                "result" => $result,
-                "opciones" => $opciones,
-                "preguntas" => $preguntas,
-                "estadoBoton" => $estadoBoton,
-                "claseRespuesta" => $claseRespuesta
-            ]);
+        }else{
+            unset($_SESSION['current_question_id'],$_SESSION["temporizador-comienzo"]);
+            header('Location:/user/redirigirAPerdiste');
+            exit();
         }
+
+
     }
 
 

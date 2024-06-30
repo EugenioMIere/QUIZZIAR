@@ -25,6 +25,7 @@ class UserController
     public function redirigirNuevaPartida()
     {
         $userId = $_SESSION['id'];
+
         $this->model->registrarPartida($userId);
         $this->presenter->render("view/jugarPartidaInicio.mustache");
     }
