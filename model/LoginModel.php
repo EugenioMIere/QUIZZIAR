@@ -12,7 +12,7 @@ class LoginModel
 
         $passwordEncriptada = md5($password);
 
-        $sql = "SELECT * from usuario WHERE email = '$email' AND password = '$passwordEncriptada'";
+        $sql = "SELECT * from usuario WHERE email = '$email' AND password = '$passwordEncriptada' AND estado = 'activo'";
         return $this->database->query($sql);
 
     }

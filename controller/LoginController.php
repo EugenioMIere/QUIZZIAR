@@ -41,7 +41,7 @@ class LoginController
                 $this->redirect($url);*/
                 $this->home();
             } else {
-                $error = "Email o contraseña incorrectos";
+                $error = "Email o contraseña incorrectos, o usuario no activo";
                 $this->presenter->render("view/loginView.mustache", ['error' => $error]);
             }
         } else {

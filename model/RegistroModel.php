@@ -21,8 +21,8 @@ class RegistroModel
             // encriptar la contraseña con md5
             $passwordEncriptada = md5($password);
 
-            $sql = "INSERT INTO `usuario`(`nombreCompleto`, `email`, `fechaDeNacimiento`, `genero`, `pais`, `ciudad`, `nombreDeUsuario`, `password` ,`fotoDePerfil`, `rol`, `token`)
-            VALUES ('$nombreCompleto','$email','$fechaDeNacimiento','$genero','$pais','$ciudad','$nombreDeUsuario','$passwordEncriptada','$fotoDePerfil','usuario','$token')";
+            $sql = "INSERT INTO `usuario`(`nombreCompleto`, `email`, `fechaDeNacimiento`, `genero`, `pais`, `ciudad`, `nombreDeUsuario`, `password` ,`fotoDePerfil`, `rol`, `token`, `estado`)
+            VALUES ('$nombreCompleto','$email','$fechaDeNacimiento','$genero','$pais','$ciudad','$nombreDeUsuario','$passwordEncriptada','$fotoDePerfil','usuario','$token','inactivo')";
             $this->database->execute($sql);
         } else {
 
@@ -36,6 +36,8 @@ class RegistroModel
         $sql = "SELECT token from usuario WHERE email = '$email'";
         $tokenDB = $this->database->query($sql);
         if ($token==$tokenDB[0]['token']){
+            $sql = "UPDATE `usuario` SET estado = 'activo' WHERE token = '$token'";
+            $this->database->execute($sql);
             return true;
         }else{
             return false;
