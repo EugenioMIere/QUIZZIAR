@@ -160,4 +160,7 @@ class UserController
             $this->presenter->render("view/misPartidasView.mustache", ["error" => $error]);
         }
     }
+    public function lobby(){
+        $this->presenter->render("view/lobby.mustache");
+    }
 }

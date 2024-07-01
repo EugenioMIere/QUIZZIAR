@@ -95,7 +95,10 @@ class LoginController
     private function sessionRedirect()
     {
         if ($_SESSION['rol'] === "usuario"){
-            $this->presenter->render("view/lobby.mustache");
+            header('Location:/user/lobby');
+            exit();
+
+            /*$this->presenter->render("view/lobby.mustache");*/
         }elseif ($_SESSION['rol'] === "editor"){
             header('Location:/editor');
             exit();
@@ -106,4 +109,5 @@ class LoginController
         }
 
     }
+
 }
