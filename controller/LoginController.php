@@ -36,9 +36,6 @@ class LoginController
             if (count($result) > 0) {
                 $_SESSION['id'] = $result[0]['id'];
                 $_SESSION['rol'] = $result[0]['rol'];
-                /*$rol = $_SESSION['rol'];
-                $url = $this->manejoDeUrls($rol);
-                $this->redirect($url);*/
                 $this->home();
             } else {
                 $error = "Email o contraseña incorrectos, o usuario no activo";
@@ -57,26 +54,6 @@ class LoginController
         $this->presenter->render("view/loginView.mustache");
     }
 
-   /* private function manejoDeUrls($rol): string {
-        $url = "";
-
-        switch ($rol) {
-            case 'administrador':
-                $url = "view/adminView.mustache";
-                break;
-            case 'usuario':
-                $url = "view/lobby.mustache";
-                break;
-            case 'editor':
-                $url = "view/editorView.mustache";
-                break;
-            default:
-                $url = "view/loginView.mustache";
-                break;
-        }
-        return $url;
-    }*/
-
     private function datosLoginCompletos() {
         if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
             return [
@@ -86,11 +63,6 @@ class LoginController
         }
         return false;
     }
-/*
-    private function redirect($url) {
-        header("Location: " . $url);
-        exit();
-    }*/
 
     private function sessionRedirect()
     {
@@ -98,11 +70,10 @@ class LoginController
             header('Location:/user/lobby');
             exit();
 
-            /*$this->presenter->render("view/lobby.mustache");*/
         }elseif ($_SESSION['rol'] === "editor"){
             header('Location:/editor');
             exit();
-            /*$this->presenter->render("view/editorView.mustache");*/
+
         }elseif ($_SESSION['rol'] === "administrador"){
             header('Location:/admin');
             exit();

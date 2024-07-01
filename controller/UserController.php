@@ -16,12 +16,6 @@ class UserController
         $this->presenter->render("view/miPerfilView.mustache", ["usuario" => $usuario]);
     }
 
-    public function header(){
-        $idUsuario = $_SESSION['id'];
-        $usuario = $this->model->getUserDetails($idUsuario);
-        $this->presenter->render("view/template/header.mustache", ["usuario" => $usuario]);
-    }
-
     public function redirigirNuevaPartida()
     {
         $userId = $_SESSION['id'];
@@ -144,13 +138,33 @@ class UserController
         $idUsuario = $_POST['id'];
 
         $usuario = $this->model->getUserDetails($idUsuario);
+        $edad = $this->model->getEdad($idUsuario);
+        $info = $this->model->getInfoJuego($idUsuario);
+        $nivel = $this->getNivelJugador($idUsuario);
 
         if ($usuario){
-            $this->presenter->render("view/perfilAjenoView.mustache", ["usuario" => $usuario]);
+            $this->presenter->render("view/perfilAjenoView.mustache", ["usuario" => $usuario, "info" => $info, "nivel" => $nivel, "edad" => $edad]);
         } else {
             $error = "¡Ups! Parece que ha habido un error. Intenta nuevamente más tarde!";
             $this->presenter->render("view/verRankingView.mustache", ["error" => $error]);
         }
+    }
+
+    private function getNivelJugador($idUsuario){
+        $row = $this->model->getNivelJugador($idUsuario);
+
+        $promedio = $row[0]['promedio_correctas_por_partida'] * 100;
+
+        if ($promedio >= 70) {
+            $nivelJugador = 'Avanzado';
+        } elseif ($promedio >= 30) {
+            $nivelJugador = 'Intermedio';
+        } else {
+            $nivelJugador = 'Principiante';
+        }
+
+        return $nivelJugador;
+
     }
 
     public function getMisPartidas(){
