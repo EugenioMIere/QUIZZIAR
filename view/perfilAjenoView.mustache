@@ -24,8 +24,8 @@
                                 <p>{{fechaDeNacimiento}}</p>
                             </div>
                             <div class="media">
-                                <label>Age</label>
-                                <p>22 Yr</p>
+                                <label>Edad</label>
+                                <p>{{#edad}} {{edad}} {{/edad}}</p>
                             </div>
                             <div class="media">
                                 <label>País</label>
@@ -59,25 +59,25 @@
             <div class="row">
                 <div class="col-6 col-lg-3">
                     <div class="count-data text-center">
-                        <h6 class="count h2" data-to="500" data-speed="500">N</h6>
+                        <h6 class="count h2" data-to="500" data-speed="500">{{#info}} {{cantidad}} {{/info}}</h6>
                         <p class="m-0px font-w-600">Cantidad de partidas</p>
                     </div>
                 </div>
                 <div class="col-6 col-lg-3">
                     <div class="count-data text-center">
-                        <h6 class="count h2" data-to="150" data-speed="150">N</h6>
+                        <h6 class="count h2" data-to="150" data-speed="150">{{#nivel}} {{nivel}} {{/nivel}}</h6>
                         <p class="m-0px font-w-600">Nivel</p>
                     </div>
                 </div>
                 <div class="col-6 col-lg-3">
                     <div class="count-data text-center">
-                        <h6 class="count h2" data-to="850" data-speed="850">N</h6>
+                        <h6 class="count h2" data-to="850" data-speed="850">{{#info}} {{correctas}} {{/info}}</h6>
                         <p class="m-0px font-w-600">Correctas</p>
                     </div>
                 </div>
                 <div class="col-6 col-lg-3">
                     <div class="count-data text-center">
-                        <h6 class="count h2" data-to="190" data-speed="190">N</h6>
+                        <h6 class="count h2" data-to="190" data-speed="190">{{#info}} {{incorrectas}} {{/info}}</h6>
                         <p class="m-0px font-w-600">Incorrectas</p>
                     </div>
                 </div>

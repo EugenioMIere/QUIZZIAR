@@ -4,23 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66ed4e9b-8f12-43d8-99bf-807e904a68cd" name="Changes" comment="variable $_SESSION['current_question_id']">
-      <change afterPath="$PROJECT_DIR$/public/css/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/navbar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/trivia.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/uploads/18c849dbf36156e05acfe50f676a0684.jpg" afterDir="false" />
+    <list default="true" id="66ed4e9b-8f12-43d8-99bf-807e904a68cd" name="Changes" comment="login responsive">
       <change beforePath="$PROJECT_DIR$/.idea/preguntados.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/preguntados.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/lobbyStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/lobbyStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/loginViewStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/loginViewStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/registroViewStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/registroViewStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/sugerirPregunta.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/sugerirPregunta.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/lobby.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/lobby.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/loginView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/loginView.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/registroView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/registroView.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/sugerirPreguntaView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/sugerirPreguntaView.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/template/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/template/header.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/UserModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/UserModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/perfilAjeno.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/perfilAjeno.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/perfilAjenoView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/perfilAjenoView.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,8 +79,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-PS-241.15989.102" />
-        <option value="bundled-php-predefined-ba97393d7c68-c76157a7178b-com.jetbrains.php.sharedIndexes-PS-241.15989.102" />
+        <option value="bundled-php-predefined-ba97393d7c68-6f8e3395a2b4-com.jetbrains.php.sharedIndexes-PS-233.15026.12" />
       </set>
     </attachedChunks>
   </component>
@@ -132,6 +121,7 @@
       <workItem from="1719429565669" duration="234000" />
       <workItem from="1719539743840" duration="1145000" />
       <workItem from="1719573225150" duration="15186000" />
+      <workItem from="1719796349377" duration="2286000" />
     </task>
     <task id="LOCAL-00001" summary="Password encriptada con md5">
       <option name="closed" value="true" />
@@ -293,7 +283,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719429791684</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="login responsive">
+      <option name="closed" value="true" />
+      <created>1719795041951</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1719795041951</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,7 +327,8 @@
     <MESSAGE value="Update (f5, mis partidas, ver ranking, perfil ajeno) ?" />
     <MESSAGE value="Update mis partidas, ver ranking y acceder a perfil de otro usuario" />
     <MESSAGE value="variable $_SESSION['current_question_id']" />
-    <option name="LAST_COMMIT_MESSAGE" value="variable $_SESSION['current_question_id']" />
+    <MESSAGE value="login responsive" />
+    <option name="LAST_COMMIT_MESSAGE" value="login responsive" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
