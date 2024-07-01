@@ -50,6 +50,10 @@ class UserController
         $this->presenter->render("view/perdisteView.mustache");
     }
 
+    public function redirigirAEstadisticasDePartida(){
+        $this->presenter->render("view/resultadoPartida.mustache");
+    }
+
     public function irASugerirPreguntas(){
         $this->presenter->render("view/sugerirPreguntaView.mustache");
     }

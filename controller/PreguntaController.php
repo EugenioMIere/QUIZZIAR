@@ -14,25 +14,38 @@ class PreguntaController
 
     public function getPregunta()
     {
-        // Verificar si hay una pregunta en la sesion y usarla
-        if (!empty($_SESSION['current_question_id'])){
-            $preguntas = $this->model->getPreguntaEspecifica($_SESSION['current_question_id']);
+        // Verificar si se ha alcanzado el límite de preguntas
+        if (!isset($_SESSION['contadorDePreguntas'])) {
+            $_SESSION['contadorDePreguntas'] = 0;
         } else {
-            // Si no hay ninguna, obtenerla:
-            $_SESSION["temporizador-comienzo"] = time();
-            $preguntas = $this->model->getPreguntas($_SESSION['id']);
-            $_SESSION['current_question_id'] = $preguntas[0]['id'];
+            // Incrementar el contador de preguntas
+            $_SESSION['contadorDePreguntas']++;
         }
 
+        if($_SESSION['contadorDePreguntas'] >= 10){
+            header('Location:/user/redirigirAEstadisticasDePartida');
+            exit();
+        } else {
+            // Verificar si hay una pregunta en la sesion y usarla
+            if (!empty($_SESSION['current_question_id'])){
+                $preguntas = $this->model->getPreguntaEspecifica($_SESSION['current_question_id']);
+            } else {
+                // Si no hay ninguna, obtenerla:
+                $_SESSION["temporizador-comienzo"] = time();
+                $preguntas = $this->model->getPreguntas($_SESSION['id']);
+                $_SESSION['current_question_id'] = $preguntas[0]['id'];
+            }
 
-        $opciones = $this->model->getOpciones($preguntas[0]['id']);
-        $visibilidad = "hidden";
-        $this->registrarPreguntaEnPartida($preguntas[0]['id']);
+            $opciones = $this->model->getOpciones($preguntas[0]['id']);
+            $visibilidad = "hidden";
+            $this->registrarPreguntaEnPartida($preguntas[0]['id']);
 
-        $nivel = $this->model->getNivelDeJugador($_SESSION['id']);
+            $nivel = $this->model->getNivelDeJugador($_SESSION['id']);
 
-        $this->presenter->render("view/preguntasView.mustache", ["visibilidad" => $visibilidad,"opciones" => $opciones,"preguntas" => $preguntas,"nivel" => $nivel]);
+            $this->presenter->render("view/preguntasView.mustache", ["visibilidad" => $visibilidad, "opciones" => $opciones, "preguntas" => $preguntas, "nivel" => $nivel]);
+        }
     }
+
 
     private function registrarPreguntaEnPartida($idPregunta)
     {
