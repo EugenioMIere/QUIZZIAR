@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66ed4e9b-8f12-43d8-99bf-807e904a68cd" name="Changes" comment="login responsive">
-      <change beforePath="$PROJECT_DIR$/.idea/preguntados.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/preguntados.iml" afterDir="false" />
+    <list default="true" id="66ed4e9b-8f12-43d8-99bf-807e904a68cd" name="Changes" comment="Perfil de otro usuario completo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/UserModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/UserModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/perfilAjeno.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/perfilAjeno.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/perfilAjenoView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/perfilAjenoView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/template/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/template/header.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +117,7 @@
       <workItem from="1719429565669" duration="234000" />
       <workItem from="1719539743840" duration="1145000" />
       <workItem from="1719573225150" duration="15186000" />
-      <workItem from="1719796349377" duration="2286000" />
+      <workItem from="1719796349377" duration="3092000" />
     </task>
     <task id="LOCAL-00001" summary="Password encriptada con md5">
       <option name="closed" value="true" />
@@ -291,7 +287,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719795041951</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Perfil de otro usuario completo">
+      <option name="closed" value="true" />
+      <created>1719799034288</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1719799034288</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -328,7 +332,8 @@
     <MESSAGE value="Update mis partidas, ver ranking y acceder a perfil de otro usuario" />
     <MESSAGE value="variable $_SESSION['current_question_id']" />
     <MESSAGE value="login responsive" />
-    <option name="LAST_COMMIT_MESSAGE" value="login responsive" />
+    <MESSAGE value="Perfil de otro usuario completo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Perfil de otro usuario completo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
