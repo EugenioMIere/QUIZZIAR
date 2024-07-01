@@ -1,0 +1,48 @@
+.navbar {
+    background-color: #042159;
+    color: white;
+}
+
+.custom-navbar-height {
+    min-height: 100px;
+}
+
+.custom-navbar-height .navbar-brand,
+.custom-navbar-height .navbar-nav .nav-link,
+.custom-navbar-height .navbar-toggler {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.custom-navbar .navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.custom-navbar {
+    min-height: 100px;
+}
+
+.custom-navbar .signup {
+    margin-right: 20px;
+}
+
+.dropdown-menu {
+    background-color: #042159!important;
+    --bs-dropdown-link-hover-bg: #ffffff1e !important;
+}
+
+.navbar-toggler {
+    display: none !important;
+}
+
+@media (max-width: 767px) {
+
+    .navbar-toggler {
+        display: inherit !important;
+    ;
+    }
+
+}
+

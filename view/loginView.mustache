@@ -1,51 +1,74 @@
-<?php
-// login.php
-$page = 'login'; // puedes usar una variable para indicar la página actual
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="/public/css/loginViewStyle.css">
+    <link rel="stylesheet" href="/public/css/login.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/65c8bcbd9c.js" crossorigin="anonymous"></script>
     <title>Iniciar Sesión</title>
 </head>
-<body style="display: flex; flex-direction: column; margin:0;">
-{{> header.php }}
+<body>
 
-<div class="container">
-    <div class="left-side">
-        <img src="" alt="Logo de la App" class="logo">
-    </div>
-    <div class="right-side">
-        <form action="/login/login" method="post">
-            <label for="emailLogin"><b>Username</b>
-                <input type="text" placeholder="Email" id="emailLogin" name="emailLogin" required>
-            </label>
-
-            <label for="passwordLogin"><b>Password</b>
-                <input type="password" placeholder="Contraseña" id="passwordLogin" name="passwordLogin" required>
-            </label>
-
-            {{#error}}
-            <div class="alert alert-danger" role="alert">
-                    <p> {{error}} </p>
+<div class="container content">
+    <div class="contact__wrapper shadow-lg mt-n9">
+        <div class="row no-gutters">
+            <div class="col-lg-5 contact-info__wrapper gradient-brand-color p-5 order-lg-2">
+                <!-- IMG -->
             </div>
-            {{/error}}
 
-            <button type="submit">Login</button>
-            <label for="remember" class="remember">
-                <input type="checkbox" checked="checked" name="remember" id="remember"> Remember me
-            </label>
+            <div class="col-lg-7 contact-form__wrapper p-5 order-lg-1">
+                <form action="/login/login" class="contact-form form-validate" method="POST">
 
-            <div class="container" style="background-color:#f1f1f1; padding: 10px;">
-                <button type="button" class="registerbtn"> <a href="/registro/home"> Registrarme </a></button>
-                <span class="psw">Forgot <a href="#">password?</a></span>
+                    <h5 class="color--black mb-5 text-center"><strong> Iniciar sesión </strong></h5>
+
+                        <div class="col-sm-12 mb-3">
+                            <div class="form-group">
+                                <label for="emailLogin"><b>Username</b>
+                                    <input type="text" placeholder="Email" id="emailLogin" name="emailLogin" required>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 mb-6">
+                            <div class="form-group">
+                                <label for="passwordLogin"><b>Password</b>
+                                    <input type="password" placeholder="Contraseña" id="passwordLogin" name="passwordLogin" required>
+                                </label>
+                            </div>
+                        </div>
+
+
+                    {{#error}}
+                        <div class="alert alert-danger" role="alert">
+                            <p> {{error}} </p>
+                        </div>
+                    {{/error}}
+
+                    <button type="submit">Login</button>
+                    <label for="remember" class="remember">
+                        <input type="checkbox" checked="checked" name="remember" id="remember"> Remember me
+                    </label>
+
+                    <div class="btn-container" style="background-color:#f1f1f1; padding: 10px;">
+                        <button type="button" class="registerbtn"> <a href="/registro/home"> Registrarme </a></button>
+                        <span class="psw">Forgot <a href="#">password?</a></span>
+                    </div>
+
+                </form>
             </div>
-        </form>
+            <!-- End Contact Form Wrapper -->
+
+        </div>
     </div>
 </div>
 
+<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 </html>
