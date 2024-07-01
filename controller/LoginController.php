@@ -1,5 +1,4 @@
 <?php
-
 class LoginController
 {
     private $model;
@@ -36,6 +35,7 @@ class LoginController
             if (count($result) > 0) {
                 $_SESSION['id'] = $result[0]['id'];
                 $_SESSION['rol'] = $result[0]['rol'];
+                $this->presenter->render("view/loginView.mustache", ['rol' => $_SESSION['rol']]);
                 $this->home();
             } else {
                 $error = "Email o contraseña incorrectos, o usuario no activo";
