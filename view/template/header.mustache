@@ -7,6 +7,7 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="https://kit.fontawesome.com/65c8bcbd9c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/public/css/navbar.css">
+    <title> </title>
 </head>
 <body>
 
@@ -29,6 +30,8 @@
                     <a class="nav-link " href="sobreNosotros.html">Sobre nosotros</a>
                 </li>
                 {{#rol}}
+                    <input type="hidden" id="rol" value="{{rol}}">
+
                     <li class="nav-item">
                         <a style="color: red;" href="/login/logout"><i class="fa-solid fa-right-from-bracket"></i></a>
                     </li>
@@ -49,8 +52,8 @@
 </nav>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var rol = document.getElementById("rol").value;
+    window.addEventListener("DOMContentLoaded", () => {
+        let rol = document.getElementById('rol').value;
         console.log(rol);
     });
 </script>
