@@ -191,14 +191,19 @@ class AdminController
 
 
     }
-    private function auxiliaresDefecha($filtro): array
+    private function auxiliaresDefecha($filtros): array
     {
 
-        if (empty($filtros['fechaDesde'])){
+        if (empty($filtros['fechaHasta']) && empty($filtros['fechaDesde'])){
             $auxiliar =[
                 "auxiliarA" => '',
-                "auxiliarB" => 'hasta'];
-        }elseif (empty($filtros['fechaHasta'])){
+                "auxiliarB" => ''];
+        }elseif (empty($filtros['fechaDesde'])){
+            $auxiliar =[
+                "auxiliarA" => '',
+                "auxiliarB" => 'hasta '];
+
+        }elseif (empty($filtros['fechaHasta']) ){
             $auxiliar =[
                 "auxiliarA" => 'desde ',
                 "auxiliarB" => ''];
