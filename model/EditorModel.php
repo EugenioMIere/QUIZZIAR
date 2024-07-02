@@ -6,12 +6,6 @@ class EditorModel
     public function __construct ($database){
         $this->database = $database;
     }
-    public function getUserDetails($userId)
-    {
-        $sql = "SELECT * from usuario WHERE id = '$userId'";
-        return $this->database->query($sql);
-    }
-
     public function getAllPreguntas(){
        $sql = "SELECT p.id, p.pregunta, c.nombre AS categoria
        FROM preguntas p
@@ -102,6 +96,11 @@ class EditorModel
     }
     public function lastInsertId(){
         $sql = "SELECT MAX(id) FROM preguntas";
+        return $this->database->query($sql);
+    }
+    public function getUserDetails($userId)
+    {
+        $sql = "SELECT * from usuario WHERE id = '$userId'";
         return $this->database->query($sql);
     }
 

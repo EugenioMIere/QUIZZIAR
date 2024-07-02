@@ -27,7 +27,9 @@ class UserController
 
     public function redirigirDatosUsuario()
     {
-        $this->presenter->render("view/miPerfilView.mustache");
+        $idUsuario = $_SESSION['id'];
+        $usuario = $this->model->getUserDetails($idUsuario);
+        $this->presenter->render("view/miPerfilView.mustache", ["usuario" => $usuario]);
     }
 
     public function redirigirRanking()

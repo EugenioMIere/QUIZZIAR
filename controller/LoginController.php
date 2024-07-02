@@ -75,7 +75,7 @@ class LoginController
 
     private function sessionRedirect()
     {
-        if ($_SESSION['rol'] === "usuario"){
+        if ($_SESSION['rol'] === "user"){
             header('Location:/user');
             exit();
 
@@ -83,7 +83,7 @@ class LoginController
             header('Location:/editor');
             exit();
 
-        }elseif ($_SESSION['rol'] === "administrador"){
+        }elseif ($_SESSION['rol'] === "admin"){
             header('Location:/admin');
             exit();
         }

@@ -16,9 +16,7 @@ class AdminController
 
     public function home()
     {
-        $idUsuario = $_SESSION['id'];
-        $usuario = $this->model->getUserDetails($idUsuario);
-        $this->presenter->render("view/adminView.mustache", ['vista' => 'hidden',"usuario" => $usuario]);
+        $this->presenter->render("view/adminView.mustache", ['vista' => 'hidden']);
     }
 
     public function getCantidadDeUsuarios(){
@@ -210,6 +208,12 @@ class AdminController
                 "auxiliarB" => ' hasta '];
         }
         return $auxiliar;
+    }
+    public function redirigirDatosUsuario()
+    {
+        $idUsuario = $_SESSION['id'];
+        $usuario = $this->model->getUserDetails($idUsuario);
+        $this->presenter->render("view/miPerfilView.mustache", ["usuario" => $usuario]);
     }
 
 

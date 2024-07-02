@@ -13,8 +13,9 @@ class EditorController
 
     }
     public function home(){
+
        $preguntas = $this->model->getAllPreguntas();
-        $this->presenter->render("view/editorView.mustache", ["preguntas" => $preguntas,"usuario" => $usuario]);
+        $this->presenter->render("view/editorView.mustache", ["preguntas" => $preguntas]);
 
     }
     public function eliminarPregunta(){
@@ -139,6 +140,12 @@ class EditorController
         $this->model->crearPregunta($pregunta, $categoria);
         $id = $this->model->lastInsertId();
         $this->model->crearRespuestas($id, $respuestasI);
+    }
+    public function redirigirDatosUsuario()
+    {
+        $idUsuario = $_SESSION['id'];
+        $usuario = $this->model->getUserDetails($idUsuario);
+        $this->presenter->render("view/miPerfilView.mustache", ["usuario" => $usuario]);
     }
 
 
