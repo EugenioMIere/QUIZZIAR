@@ -40,7 +40,7 @@
     <form action="/pregunta/reportarPregunta" method="POST">
         {{#preguntas}}
             <label for="questionId">
-                <input hidden value={{pregunta_id}} id="questionId" name="questionId">
+                <input hidden value={{id}} id="questionId" name="questionId">
             </label>
         {{/preguntas}}
         <button class="reportar-btn" type="submit"> Reportar pregunta </button>

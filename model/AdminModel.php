@@ -8,6 +8,11 @@ class AdminModel
     {
         $this->database = $database;
     }
+    public function getUserDetails($userId)
+    {
+        $sql = "SELECT * from usuario WHERE id = '$userId'";
+        return $this->database->query($sql);
+    }
 
     public function getCantidadDeUsuarios($filtros){
         $whereClause = "";

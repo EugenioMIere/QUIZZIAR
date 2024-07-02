@@ -16,7 +16,9 @@ class AdminController
 
     public function home()
     {
-        $this->presenter->render("view/adminView.mustache", ['vista' => 'hidden']);
+        $idUsuario = $_SESSION['id'];
+        $usuario = $this->model->getUserDetails($idUsuario);
+        $this->presenter->render("view/adminView.mustache", ['vista' => 'hidden',"usuario" => $usuario]);
     }
 
     public function getCantidadDeUsuarios(){

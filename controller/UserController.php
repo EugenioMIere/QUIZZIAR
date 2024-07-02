@@ -13,7 +13,7 @@ class UserController
     public function home(){
         $idUsuario = $_SESSION['id'];
         $usuario = $this->model->getUserDetails($idUsuario);
-        $this->presenter->render("view/miPerfilView.mustache", ["usuario" => $usuario]);
+        $this->presenter->render("view/lobby.mustache", ["usuario" => $usuario,"rol"=> $_SESSION['rol']]);
     }
 
     public function redirigirNuevaPartida()

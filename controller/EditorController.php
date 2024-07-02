@@ -14,8 +14,7 @@ class EditorController
     }
     public function home(){
        $preguntas = $this->model->getAllPreguntas();
-
-        $this->presenter->render("view/editorView.mustache", ["preguntas" => $preguntas]);
+        $this->presenter->render("view/editorView.mustache", ["preguntas" => $preguntas,"usuario" => $usuario]);
 
     }
     public function eliminarPregunta(){

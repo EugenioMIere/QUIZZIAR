@@ -14,6 +14,16 @@ class MustachePresenter{
     }
 
     public function render($contentFile , $data = array() ){
+        $context[] = "";
+
+        if (isset($_SESSION['rol'])){
+            $context['rol'] = $_SESSION['rol'];
+            $data = array_merge($data, $context);
+        } else {
+            header('Location: /login');
+            exit();
+        }
+
         echo  $this->generateHtml($contentFile, $data);
     }
 

@@ -16,6 +16,7 @@ class LoginController
 
     public function home()
     {
+
         if (!empty($_SESSION['rol'])){
             $this->sessionRedirect();
         }else{
@@ -36,6 +37,9 @@ class LoginController
                 $_SESSION['id'] = $result[0]['id'];
                 $_SESSION['rol'] = $result[0]['rol'];
 
+                $idUsuario = $_SESSION['id'];
+                $_SESSION['usuario']= $this->model->getUserDetails($idUsuario);
+
 //                var_dump($_SESSION['rol']);
 //                $rol = $_SESSION['rol'];
 //                $this->presenter->render("view/template/header.mustache", ['rol' => $rol]);
@@ -55,6 +59,7 @@ class LoginController
     public function logout(){
         unset($_SESSION['id']);
         unset($_SESSION['rol']);
+        session_destroy();
         $this->presenter->render("view/loginView.mustache");
     }
 
@@ -71,7 +76,7 @@ class LoginController
     private function sessionRedirect()
     {
         if ($_SESSION['rol'] === "usuario"){
-            header('Location:/user/lobby');
+            header('Location:/user');
             exit();
 
         }elseif ($_SESSION['rol'] === "editor"){

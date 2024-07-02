@@ -16,5 +16,11 @@ class LoginModel
         return $this->database->query($sql);
 
     }
+    public function getUserDetails($userId)
+    {
+        $sql = "SELECT * from usuario WHERE id = '$userId'";
+        return $this->database->query($sql);
+    }
+
 
 }

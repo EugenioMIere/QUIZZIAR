@@ -23,6 +23,7 @@ class PreguntaController
         }
 
         if($_SESSION['contadorDePreguntas'] >= 10){
+            unset($_SESSION['contadorDePreguntas']);
             header('Location:/user/redirigirAEstadisticasDePartida');
             exit();
         } else {
@@ -42,7 +43,7 @@ class PreguntaController
 
             $nivel = $this->model->getNivelDeJugador($_SESSION['id']);
 
-            $this->presenter->render("view/preguntasView.mustache", ["visibilidad" => $visibilidad, "opciones" => $opciones, "preguntas" => $preguntas, "nivel" => $nivel]);
+            $this->presenter->render("view/preguntasView.mustache", ["usuario" => $_SESSION['usuario'],"visibilidad" => $visibilidad, "opciones" => $opciones, "preguntas" => $preguntas, "nivel" => $nivel]);
         }
     }
 
