@@ -22,7 +22,7 @@ class RegistroModel
             $passwordEncriptada = md5($password);
 
             $sql = "INSERT INTO `usuario`(`nombreCompleto`, `email`, `fechaDeNacimiento`, `genero`, `pais`, `ciudad`, `nombreDeUsuario`, `password` ,`fotoDePerfil`, `rol`, `token`, `estado`)
-            VALUES ('$nombreCompleto','$email','$fechaDeNacimiento','$genero','$pais','$ciudad','$nombreDeUsuario','$passwordEncriptada','$fotoDePerfil','usuario','$token','inactivo')";
+            VALUES ('$nombreCompleto','$email','$fechaDeNacimiento','$genero','$pais','$ciudad','$nombreDeUsuario','$passwordEncriptada','$fotoDePerfil','user','$token','inactivo')";
             $this->database->execute($sql);
         } else {
 
