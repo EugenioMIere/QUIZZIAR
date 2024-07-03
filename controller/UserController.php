@@ -32,6 +32,10 @@ class UserController
         $this->presenter->render("view/miPerfilView.mustache", ["usuario" => $usuario]);
     }
 
+    public function irAPreguntasFrecuentes(){
+        $this->presenter->render("view/preguntasFrecuentes.mustache");
+    }
+
     public function redirigirRanking()
     {
         header('Location:/ranking/mostrarRanking');

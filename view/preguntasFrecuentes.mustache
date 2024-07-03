@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+        .content {
+            margin: 50px;
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        .question h4 {
+            cursor: pointer;
+        }
+        .question p {
+            display: none;
+            margin-top: 5px;
+        }
+        .question.active h4 {
+            color: white;
+        }
+
+        .text-center{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+
+<h2 class="my-4 text-center"> ¿Cómo podemos ayudarte? </h2>
+
+<p> No dejes que nada te impida disfrutar de Quizziar. Obtené las respuestas a tus
+    preguntas de forma rápida y sencilla en nuestro Centro de ayuda. </p>
+
+<div class="list-group">
+
+    <div class="question list-group-item">
+        <h4 class="mb-1">¿Qué es Quizziar?</h4>
+        <p>Quizziar es un juego de preguntas y respuestas en el que podrás poner
+            a prueba tus conocimientos en seis categorías de preguntas: Historia, Ciencia, Geografía, Arte,
+            Entretenimiento y Deporte. <br>
+            Podrás aumentar de nivel al jugar divertidos modos de juego y recibirás grandes recompensas que
+            te ayudarán a mejorar, mientras te diviertes y aprendes.</p>
+    </div>
+
+    <div class="question list-group-item">
+        <h4 class="mb-1">¿Cómo se determina el ranking de un jugador?</h4>
+        <p>El ranking de cada jugador estará determinado por la cantidad de partidas, la cantidad de respuestas
+            correctas e incorrectas.</p>
+    </div>
+
+    <div class="question list-group-item">
+        <h4 class="mb-1">¿Pierdo mi progreso al cerrar la sesión?</h4>
+        <p>En caso de que cierres sesión, no perderás tu progreso, ya que tus estadísticas de juego se encuentran directamente
+            ligadas a tu correo electrónico. Es por ello que, siempre y cuando inicies sesión con el mismo correo electrónico que
+            utilizaste para crear tu cuenta, tu progreso se mantendrá.</p>
+    </div>
+
+</div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.question h4').click(function() {
+            if ($(this).parent().hasClass('active')) {
+                $(this).next('p').slideUp();
+                $(this).parent().removeClass('active');
+            } else {
+                $('.question p').slideUp();
+                $('.question').removeClass('active');
+                $(this).next('p').slideDown();
+                $(this).parent().addClass('active');
+            }
+        });
+    });
+</script>
+</body>
+</html>
