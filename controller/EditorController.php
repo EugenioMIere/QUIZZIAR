@@ -20,6 +20,7 @@ class EditorController
     }
     public function eliminarPregunta(){
         $mensaje = "";
+        $error = "";
 
         if (isset($_POST['idPreguntaAEliminar'])){
             $id = $_POST['idPreguntaAEliminar'];
@@ -28,13 +29,13 @@ class EditorController
             if ($resultado){
                 $mensaje = "La pregunta ha sido eliminada exitosamente";
             } else {
-                $mensaje = "Hubo un error al intentar eliminar la pregunta";
+                $error = "Hubo un error al intentar eliminar la pregunta";
             }
         } else {
-            $mensaje = "No se recibió el ID de la pregunta para eliminar";
+            $error = "No se recibió el ID de la pregunta para eliminar";
         }
 
-        $this->presenter->render("view/editorView.mustache", ["mensaje" => $mensaje]);
+        $this->presenter->render("view/editorView.mustache", ["mensaje" => $mensaje, "error" => $error]);
     }
 
     public function editarPregunta(){
@@ -114,21 +115,40 @@ class EditorController
     public function quitarDeSugeridas(){
         $idPregunta = $_POST['idPregunta'];
 
-        $this->model->quitarSugerida($idPregunta);
+        $mensaje = "";
+        $error = "";
+
+        if ($this->model->quitarSugerida($idPregunta)){
+            $mensaje = "La pregunta sugerida ha sido borrada";
+        } else {
+            $error = "Lo siento. No hemos podido borrar la pregunta sugerida. Intenta nuevamente más tarde";
+        }
+
+
+        $this->presenter->render("view/preguntasSugeridasView.mustache", ["mensaje" => $mensaje, "error" => $error]);
     }
 
     public function quitarDeReportadas(){
         $idPregunta = $_POST['idPregunta'];
 
-        $this->model->quitarReportada($idPregunta);
+        $mensaje = "";
+        $error = "";
+
+        if ($this->model->quitarReportada($idPregunta)){
+            $mensaje = "La pregunta ha sido borrada de 'Reportadas' exitosamente";
+        } else {
+            $error = "Lo siento. No hemos podido borrar la pregunta reportada. Intenta nuevamente más tarde";
+        }
+
+        $this->presenter->render("view/preguntasReportadasView.mustache", ["mensaje" => $mensaje, "error" => $error]);
     }
 
     public function irACrearPregunta(){
         $this->presenter->render("view/crearPreguntaView.mustache");
     }
     public function crearPregunta(){
-        $pregunta = $_POST['preguntaTexto'];
-        $categoria = $_POST['categoriaC'];
+        $pregunta = $_POST['pregunta'];
+        $categoria = $_POST['categoria'];
 
         $respuestasI = [
             '0' => isset($_POST['respuestaCorrectaI']) ? $_POST['respuestaCorrectaI'] : '',
@@ -140,12 +160,10 @@ class EditorController
         $this->model->crearPregunta($pregunta, $categoria);
         $id = $this->model->lastInsertId();
         $this->model->crearRespuestas($id, $respuestasI);
-    }
-    public function redirigirDatosUsuario()
-    {
-        $idUsuario = $_SESSION['id'];
-        $usuario = $this->model->getUserDetails($idUsuario);
-        $this->presenter->render("view/miPerfilView.mustache", ["usuario" => $usuario]);
+
+        $mensaje = "La pregunta ha sido creada con éxito";
+
+        $this->presenter->render("view/crearPreguntaView.mustache", ["mensaje" => $mensaje]);
     }
 
 

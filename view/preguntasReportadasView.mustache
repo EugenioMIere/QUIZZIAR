@@ -11,18 +11,6 @@
 </head>
 <body>
 
-<div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Menú
-    </button>
-    <ul class="dropdown-menu">
-        <li><button class="dropdown-item" type="button"><a href="/editor/home">Listado de preguntas</a></button></li>
-        <li><button class="dropdown-item" type="button"><a href="/editor/verPreguntasReportadas">Preguntas reportadas</a></button></li>
-        <li><button class="dropdown-item" type="button"><a href="/editor/verPreguntasSugeridas">Preguntas sugeridas</a></button></li>
-        <li><button class="dropdown-item" type="button"><a href="/editor/irACrearPregunta">Crear pregunta</a></button></li>
-    </ul>
-</div>
-
 <h1> Listado de preguntas reportadas </h1>
 
 {{#error}}
@@ -30,6 +18,12 @@
         <p> {{error}} </p>
     </div>
 {{/error}}
+
+{{#mensaje}}
+    <div class="alert alert-success" role="alert">
+        <p> {{mensaje}} </p>
+    </div>
+{{/mensaje}}
 
 <div class="container">
     <table>

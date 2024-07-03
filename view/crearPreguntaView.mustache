@@ -12,32 +12,26 @@
 </head>
 <body>
 
-<div class="dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Menú
-    </button>
-    <ul class="dropdown-menu">
-        <li><button class="dropdown-item" type="button"><a href="/editor/home">Listado de preguntas</a></button></li>
-        <li><button class="dropdown-item" type="button"><a href="/editor/verPreguntasReportadas">Preguntas reportadas</a></button></li>
-        <li><button class="dropdown-item" type="button"><a href="/editor/verPreguntasSugeridas">Preguntas sugeridas</a></button></li>
-        <li><button class="dropdown-item" type="button"><a href="/editor/irACrearPregunta">Crear pregunta</a></button></li>
-    </ul>
-</div>
-
 <h1> Crear pregunta </h1>
+
+{{#mensaje}}
+    <div class="alert alert-success" role="alert">
+        <p> {{mensaje}} </p>
+    </div>
+{{/mensaje}}
 
 <div class="form">
     <form action="/editor/crearPregunta" method="POST">
 
         <div class="question-info">
-            <div class="preguntaTexto">
+            <div class="pregunta">
                 <label for="pregunta"> Pregunta: </label>
                 <input type="text" id="pregunta" name="pregunta">
             </div>
 
             <div class="preguntaCat">
-                <label for="categoriaC"> Categoría: </label>
-                <select id="categoriaC" name="categoriaC">
+                <label for="categoria"> Categoría: </label>
+                <select id="categoria" name="categoria">
                     <option value="1"> Arte </option>
                     <option value="2"> Ciencia </option>
                     <option value="3"> Deportes </option>

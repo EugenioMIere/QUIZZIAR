@@ -18,8 +18,14 @@ class EditorModel
         $sql = "DELETE FROM respuestas WHERE pregunta_id = '$id'";
         $this->database->execute($sql);
 
+        $sql = "DELETE FROM partidas_preguntas WHERE pregunta_id = '$id'";
+        $this->database->execute($sql);
+
+        $sql = "DELETE FROM preguntas_reportadas WHERE pregunta_reportada = '$id'";
+        $this->database->execute($sql);
+
         $sql = "DELETE FROM preguntas where id = '$id'";
-        return $this->database->query($sql);
+        return $this->database->execute($sql);
 
     }
 
@@ -70,12 +76,12 @@ class EditorModel
     }
 
     public function quitarSugerida($id){
-        $sql = "DELETE FROM preguntas_sugeridas WHERE pregunta_sugerida = '$id'";
+        $sql = "DELETE FROM preguntas_sugeridas WHERE id = '$id'";
         return $this->database->execute($sql);
     }
 
     public function quitarReportada($id){
-        $sql = "DELETE FROM preguntas_reportada WHERE pregunta_reportada = '$id'";
+        $sql = "DELETE FROM preguntas_reportadas WHERE pregunta_reportada = '$id'";
         return $this->database->execute($sql);
     }
 
@@ -86,14 +92,19 @@ class EditorModel
 
     public function crearRespuestas($id, $respuestas){
 
+        $sql = "INSERT INTO respuestas(pregunta_id, respuesta, es_correcta) VALUES (?, ?, ?)";
+
+        $stmt = $this->database->prepare($sql); // Prepare the statement
+
         foreach ($respuestas as $index => $respuesta) {
-            if( $index == 0 ) $correcta = 1;
-            else $correcta = 0;
-            $sqlRespuesta = "INSERT INTO respuestas(pregunta_id, respuesta, es_correcta) VALUES ('$id','$respuesta','$correcta')";
-            $this->database->execute($sqlRespuesta);
+            $correcta = ($index == 0) ? 1 : 0;
+            $stmt->bind_param("isi", $id, $respuesta, $correcta);
+            $stmt->execute();
         }
 
+        $stmt->close();
     }
+
     public function lastInsertId(){
         $sql = "SELECT MAX(id) FROM preguntas";
         return $this->database->query($sql);

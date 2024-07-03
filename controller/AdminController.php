@@ -214,14 +214,6 @@ class AdminController
         }
         return $auxiliar;
     }
-    public function redirigirDatosUsuario()
-    {
-        $idUsuario = $_SESSION['id'];
-        $usuario = $this->model->getUserDetails($idUsuario);
-        $this->presenter->render("view/miPerfilView.mustache", ["usuario" => $usuario]);
-    }
-
-
 
 
 }
