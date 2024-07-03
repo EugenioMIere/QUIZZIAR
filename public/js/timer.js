@@ -6,9 +6,6 @@ document.addEventListener("DOMContentLoaded", function() {
             enviarRespuesta();
         } else {
             document.getElementById("timer").innerHTML = timer;
-            timerElement.classList.remove("flip-in-x");
-            void timerElement.offsetWidth; // Reflow para reiniciar la animación
-            timerElement.classList.add("flip-in-x");
             timer--;
         }
     }, 1000);
