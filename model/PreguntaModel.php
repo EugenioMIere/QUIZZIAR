@@ -13,14 +13,16 @@ class PreguntaModel
 
         $preguntaPreguntada = [];
         $dificultad = $this->dificultadSegunNivel($id_usuario);
+        $idPregunta= '';
 
         while (empty($preguntaPreguntada)) {
 
             $query = "SELECT * FROM preguntas WHERE dificultad = '$dificultad' ORDER BY RAND() LIMIT 1";
             $result = $this->database->query($query);
+                /*si no existe pregunta del mismo nivel del jugador trae cualquiera*/
 
             if (empty($result)){
-                $dificultad = 'Facil';
+/*                $dificultad = 'Facil';
                 $query = "SELECT * FROM preguntas WHERE dificultad = '$dificultad' ORDER BY RAND() LIMIT 1";
                 $result = $this->database->query($query);
 
@@ -36,7 +38,9 @@ class PreguntaModel
 
                         }
 
-                }
+                }*/
+                $query = "SELECT * FROM preguntas ORDER BY RAND() LIMIT 1";
+                $result = $this->database->query($query);
             }
             $idPregunta = $result[0]['id'];
 
@@ -50,6 +54,7 @@ class PreguntaModel
             }
 
         }
+        $this->updateDificultad($idPregunta);
 
         return $preguntaPreguntada;
 
@@ -232,12 +237,18 @@ class PreguntaModel
     {
         $vecesPreguntada = $this->vecesPreguntada($pregunta_id);
         $vecesAcertada = $this->vecesAcertada($pregunta_id);
-
-        $ratioAciertos = $vecesAcertada / $vecesPreguntada * 100;
-
+        $ratioAciertos = '100';
         $dificultadPregunta = null;
 
-        if ($ratioAciertos >= 70) {
+        if ($vecesAcertada!=0&&$vecesPreguntada!=0){
+
+            $ratioAciertos = $vecesAcertada / $vecesPreguntada * 100;
+        }
+
+
+        if ($vecesPreguntada<=10) {
+            $dificultadPregunta = 'Facil';
+        }elseif ($ratioAciertos >= 70) {
             $dificultadPregunta = 'Facil';
         } elseif ($ratioAciertos < 30) {
             $dificultadPregunta = 'Dificil';
