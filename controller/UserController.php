@@ -13,7 +13,27 @@ class UserController
     public function home(){
         $idUsuario = $_SESSION['id'];
         $usuario = $this->model->getUserDetails($idUsuario);
-        $this->presenter->render("view/lobby.mustache", ["usuario" => $usuario,"rol"=> $_SESSION['rol']]);
+
+        // Generar la URL del perfil del usuario
+        $profileUrl = "https://miapp.com/user/profile?id=" . $idUsuario;
+
+        // Generar el QR Code
+        include($_SERVER['DOCUMENT_ROOT'] . '../phpqrcode/qrlib.php');
+
+        $qrDir = $_SERVER['DOCUMENT_ROOT'] . '/public/qrcodes/';
+        if (!is_dir($qrDir)) {
+            mkdir($qrDir, 0755, true);
+        }
+
+        $qrFilePath = $qrDir . 'user_' . $idUsuario . '.png';
+        QRcode::png($profileUrl, $qrFilePath);
+
+        // Pasar la URL del QR Code a la vista
+        $this->presenter->render("view/lobby.mustache", [
+            "usuario" => $usuario,
+            "rol" => $_SESSION['rol'],
+            "qr_url" => '/public/qrcodes/user_' . $idUsuario . '.png'
+        ]);
     }
 
     public function redirigirNuevaPartida()
