@@ -23,13 +23,13 @@ class PreguntaController
             $_SESSION['contadorDePreguntas']++;
         }
 
-        if($_SESSION['contadorDePreguntas'] >= 10){
+        if ($_SESSION['contadorDePreguntas'] >= 10) {
             unset($_SESSION['contadorDePreguntas']);
             header('Location:/user/redirigirAEstadisticasDePartida');
             exit();
         } else {
             // Verificar si hay una pregunta en la sesion y usarla
-            if (!empty($_SESSION['current_question_id'])){
+            if (!empty($_SESSION['current_question_id'])) {
                 $preguntas = $this->model->getPreguntaEspecifica($_SESSION['current_question_id']);
             } else {
                 // Si no hay ninguna, obtenerla:
@@ -43,18 +43,26 @@ class PreguntaController
             $this->registrarPreguntaEnPartida($preguntas[0]['id']);
 
             $nivel = $this->model->getNivelDeJugador($_SESSION['id']);
+            $categoria = $preguntas[0]['categoria_id']; // Obtener la categoría de la pregunta
 
-            $this->presenter->render("view/preguntasView.mustache", ["usuario" => $_SESSION['usuario'],"visibilidad" => $visibilidad, "opciones" => $opciones, "preguntas" => $preguntas, "nivel" => $nivel]);
+            // Pasar la categoría a la vista
+            $this->presenter->render("view/preguntasView.mustache", [
+                "usuario" => $_SESSION['usuario'],
+                "visibilidad" => $visibilidad,
+                "opciones" => $opciones,
+                "preguntas" => $preguntas,
+                "nivel" => $nivel,
+                "categoria" => $categoria
+            ]);
         }
     }
-
 
     private function registrarPreguntaEnPartida($idPregunta)
     {
         $id_usuario = $_SESSION['id'];
         $this->model->setPreguntaEnPartida($id_usuario, $idPregunta);
-
     }
+
     public function validarPregunta(){
         $temporizadorFin = time();
         $tiempo = $temporizadorFin - $_SESSION["temporizador-comienzo"];
@@ -95,13 +103,9 @@ class PreguntaController
             header('Location:/user/redirigirAPerdiste');
             exit();
         }
-
-
     }
 
-
     private function getRespuestaCorrecta($id){
-
         return $this->model->getRespuesta($id);
     }
 

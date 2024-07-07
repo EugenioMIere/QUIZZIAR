@@ -11,7 +11,7 @@ class UserModel
 
     public function logIn($email, $password)
     {
-        $query = $this->db->prepare("SELECT * FROM usuarios WHERE email = ? AND password = ?");
+        $query = $this->database->prepare("SELECT * FROM usuarios WHERE email = ? AND password = ?");
         $query->execute([$email, $password]);
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }

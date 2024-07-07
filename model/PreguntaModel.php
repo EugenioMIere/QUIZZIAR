@@ -57,7 +57,20 @@ class PreguntaModel
         $this->updateDificultad($idPregunta);
 
         return $preguntaPreguntada;
+    }
 
+    public function getUltimaPartida(){
+        $query = "SELECT correctas, incorrectas, fecha FROM partidas ORDER BY id DESC LIMIT 1;";
+        $result = $this->database->query($query);
+        if ($result && $result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $correctas = $row['correctas'];
+            $incorrectas = $row['incorrectas'];
+            $fecha = $row['fecha'];
+            return ['correctas' => $correctas, 'incorrectas' => $incorrectas, 'fecha' => $fecha];
+        } else{
+            return ['correctas' => null, 'incorrectas' => null, 'fecha' => null];
+        }
     }
 
     public function getPreguntaEspecifica($id){
@@ -117,14 +130,8 @@ class PreguntaModel
         $sql = "INSERT INTO partidas_preguntas (pregunta_id, partida_id) VALUES ('$idPregunta','$partida_id')";
         $this->database->execute($sql);
     }
-    public function getUltimaPartidaUsario($usuario_id)
-    {
-        $consulta = "SELECT *
-                    FROM partidas
-                    WHERE `usuario_id` = '$usuario_id'
-                    ORDER BY `id` DESC
-                    LIMIT 1";
-
+    public function getUltimaPartidaUsario($usuario_id)     {
+        $consulta = "SELECT * FROM partidas WHERE usuario_id = '$usuario_id' ORDER BY id DESC LIMIT 1";
         return $this->database->query($consulta);
     }
 

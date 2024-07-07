@@ -45,8 +45,6 @@ class UserController
         }
     }
 
-
-
     public function redirigirNuevaPartida()
     {
         $userId = $_SESSION['id'];
@@ -54,7 +52,6 @@ class UserController
         $this->model->registrarPartida($userId);
         $this->presenter->render("view/jugarPartidaInicio.mustache");
     }
-
 
     public function redirigirDatosUsuario()
     {
@@ -81,10 +78,10 @@ class UserController
         $this->presenter->render("view/perdisteView.mustache");
     }
 
-    public function redirigirAEstadisticasDePartida(){
+    public function redirigirAEstadisticasDePartida() {
+
         $this->presenter->render("view/resultadoPartida.mustache");
     }
-
     public function irASugerirPreguntas(){
         $this->presenter->render("view/sugerirPreguntaView.mustache");
     }
