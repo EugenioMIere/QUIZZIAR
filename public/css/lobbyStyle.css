@@ -70,3 +70,18 @@ a {
 #sugerirPregunta{
     background-image: url('/public/images/sugerir.png');
 }
+
+.org{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.qr-container{
+    padding: 2%;
+}
+.qr-container h2{
+    font-size: 1.5em;
+    text-decoration: underline;
+    font-weight: bold;
+}
