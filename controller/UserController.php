@@ -14,27 +14,38 @@ class UserController
         $idUsuario = $_SESSION['id'];
         $usuario = $this->model->getUserDetails($idUsuario);
 
-        // Generar la URL del perfil del usuario
-        $profileUrl = "https://miapp.com/user/profile?id=" . $idUsuario;
+        // Verificar si los datos del usuario son válidos
+        if ($usuario) {
+            // Crear el texto con la información del usuario
+            $userInfo = "Nombre: " . (isset($usuario['nombre']) ? $usuario['nombre'] : 'N/A') . "\n";
+            $userInfo .= "Email: " . (isset($usuario['email']) ? $usuario['email'] : 'N/A') . "\n";
+            $userInfo .= "Ciudad: " . (isset($usuario['ciudad']) ? $usuario['ciudad'] : 'N/A') . "\n";
+            $userInfo .= "Nombre de Usuario: " . (isset($usuario['nombreDeUsuario']) ? $usuario['nombreDeUsuario'] : 'N/A') . "\n";
+            $userInfo .= "Género: " . (isset($usuario['genero']) ? $usuario['genero'] : 'N/A') . "\n";
 
-        // Generar el QR Code
-        include($_SERVER['DOCUMENT_ROOT'] . '../phpqrcode/qrlib.php');
+            // Generar el QR Code
+            include($_SERVER['DOCUMENT_ROOT'] . '/phpqrcode/qrlib.php');
 
-        $qrDir = $_SERVER['DOCUMENT_ROOT'] . '/public/qrcodes/';
-        if (!is_dir($qrDir)) {
-            mkdir($qrDir, 0755, true);
+            $qrDir = $_SERVER['DOCUMENT_ROOT'] . '/public/qrcodes/';
+            if (!is_dir($qrDir)) {
+                mkdir($qrDir, 0755, true);
+            }
+
+            $qrFilePath = $qrDir . 'user_' . $idUsuario . '.png';
+            QRcode::png($userInfo, $qrFilePath);
+
+            // Pasar la URL del QR Code a la vista
+            $this->presenter->render("view/lobby.mustache", [
+                "usuario" => $usuario,
+                "rol" => $_SESSION['rol'],
+                "qr_url" => '/public/qrcodes/user_' . $idUsuario . '.png'
+            ]);
+        } else {
+            echo 'Error: Datos de usuario no encontrados';
         }
-
-        $qrFilePath = $qrDir . 'user_' . $idUsuario . '.png';
-        QRcode::png($profileUrl, $qrFilePath);
-
-        // Pasar la URL del QR Code a la vista
-        $this->presenter->render("view/lobby.mustache", [
-            "usuario" => $usuario,
-            "rol" => $_SESSION['rol'],
-            "qr_url" => '/public/qrcodes/user_' . $idUsuario . '.png'
-        ]);
     }
+
+
 
     public function redirigirNuevaPartida()
     {

@@ -16,6 +16,21 @@ class UserModel
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function obtenerDetallesUsuario($userId)
+    {
+        $sql = "SELECT nombre, email, ciudad, nombreDeUsuario, genero FROM usuario WHERE id = :userId";
+        $stmt = $this->database->prepare($sql);
+
+        if ($stmt) {
+            $stmt->bindParam(':userId', $userId, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } else {
+            throw new Exception("Error al preparar la consulta SQL");
+        }
+    }
+
+
     public function getUserDetails($userId)
     {
         $sql = "SELECT * from usuario WHERE id = '$userId'";

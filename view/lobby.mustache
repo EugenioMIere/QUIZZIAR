@@ -5,30 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title> Lobby </title>
     <link rel="stylesheet" type="text/css" href="/public/css/lobbyStyle.css">
+    <style>
+        .org{
+            display:flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+        .qr-container{
+            padding: 2%;
+        }
+        .qr-container h2{
+            font-size: 1.5em;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-
 <!-- Contenedor para el QR Code -->
-<div class="qr-container">
-    <h2>Escanea para ver tu perfil</h2>
-    <img src="{{qr_url}}" alt="QR Code para el perfil del usuario">
-</div>
-<div class="container">
-    <div class="event-button-container">
-        <div class="event-button" id="nuevaPartida" action="user/redirigirNuevaPartida">
-            <div class="event-title"><a href="/user/redirigirNuevaPartida">NUEVA PARTIDA</a></div>
-        </div>
-        <div class="event-button" id="verRanking" action="user/redirigirRanking">
-            <div class="event-title"><a href="/user/redirigirRanking">VER RANKING</a> </div>
-        </div>
-        <div class="event-button" id="misPartidas" action="user/verMisPartidas">
-            <div class="event-title"><a href="/user/getMisPartidas">MIS PARTIDAS</a> </div>
-        </div>
-        <div class="event-button" id="sugerirPregunta" action="user/irASugerirPregunta">
-            <div class="event-title"><a href="/user/irASugerirPreguntas">SUGERIR PREGUNTA</a> </div>
+<section class="org">
+    <div class="container">
+        <div class="event-button-container">
+            <div class="event-button" id="nuevaPartida" action="user/redirigirNuevaPartida">
+                <div class="event-title"><a href="/user/redirigirNuevaPartida">NUEVA PARTIDA</a></div>
+            </div>
+            <div class="event-button" id="verRanking" action="user/redirigirRanking">
+                <div class="event-title"><a href="/user/redirigirRanking">VER RANKING</a> </div>
+            </div>
+            <div class="event-button" id="misPartidas" action="user/verMisPartidas">
+                <div class="event-title"><a href="/user/getMisPartidas">MIS PARTIDAS</a> </div>
+            </div>
+            <div class="event-button" id="sugerirPregunta" action="user/irASugerirPregunta">
+                <div class="event-title"><a href="/user/irASugerirPreguntas">SUGERIR PREGUNTA</a> </div>
+            </div>
         </div>
     </div>
-</div>
+    <div class="qr-container">
+        <h2>Tu perfil</h2>
+        <img src="{{qr_url}}" alt="QR Code para el perfil del usuario">
+    </div>
+</section>
+
 
 </body>
 </html>
