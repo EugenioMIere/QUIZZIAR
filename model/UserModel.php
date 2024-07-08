@@ -18,7 +18,7 @@ class UserModel
 
     public function obtenerDetallesUsuario($userId)
     {
-        $sql = "SELECT nombre, email, ciudad, nombreDeUsuario, genero FROM usuario WHERE id = :userId";
+        $sql = "SELECT nombreCompleto, email, ciudad, nombreDeUsuario, genero FROM usuario WHERE id = :userId";
         $stmt = $this->database->prepare($sql);
 
         if ($stmt) {
@@ -30,6 +30,85 @@ class UserModel
         }
     }
 
+    public function obtenerNombreUsuario($userId)
+    {
+        $sql = "SELECT nombreCompleto FROM usuario WHERE id = ?";
+        $stmt = $this->database->prepare($sql);
+
+        if ($stmt) {
+            $stmt->bind_param('i', $userId); // 'i' indica que el parámetro es un entero
+            $nombreCompleto = $stmt->execute();
+            $stmt->bind_result($nombreCompleto);
+            $stmt->fetch();
+            return $nombreCompleto;
+        } else {
+            throw new Exception("Error al preparar la consulta SQL");
+        }
+    }
+
+    public function obtenerMailUsuario($userId)
+    {
+        $sql = "SELECT email FROM usuario WHERE id = ?";
+        $stmt = $this->database->prepare($sql);
+
+        if ($stmt) {
+            $stmt->bind_param('i', $userId); // 'i' indica que el parámetro es un entero
+            $email = $stmt->execute();
+            $stmt->bind_result($email);
+            $stmt->fetch();
+            return $email;
+        } else {
+            throw new Exception("Error al preparar la consulta SQL");
+        }
+    }
+
+    public function obtenerCiudadUsuario($userId)
+    {
+        $sql = "SELECT ciudad FROM usuario WHERE id = ?";
+        $stmt = $this->database->prepare($sql);
+
+        if ($stmt) {
+            $stmt->bind_param('i', $userId); // 'i' indica que el parámetro es un entero
+            $ciudad = $stmt->execute();
+            $stmt->bind_result($ciudad);
+            $stmt->fetch();
+            return $ciudad;
+        } else {
+            throw new Exception("Error al preparar la consulta SQL");
+        }
+    }
+
+    public function obtenerNombreUsuarioUsuario($userId)
+    {
+        $sql = "SELECT nombreDeUsuario FROM usuario WHERE id = ?";
+        $stmt = $this->database->prepare($sql);
+
+        if ($stmt) {
+            $stmt->bind_param('i', $userId); // 'i' indica que el parámetro es un entero
+            $nombreDeUsuario = $stmt->execute();
+            $stmt->bind_result($nombreDeUsuario);
+            $stmt->fetch();
+            return $nombreDeUsuario;
+        } else {
+            throw new Exception("Error al preparar la consulta SQL");
+        }
+    }
+
+    public function obtenerGeneroUsuario($userId)
+    {
+        $sql = "SELECT genero FROM usuario WHERE id = ?";
+        $stmt = $this->database->prepare($sql);
+
+        if ($stmt) {
+            $stmt->bind_param('i', $userId); // 'i' indica que el parámetro es un entero
+            $genero = $stmt->execute();
+            $stmt->bind_result($genero);
+            $stmt->fetch();
+            return $genero;
+        } else {
+            throw new Exception("Error al preparar la consulta SQL");
+        }
+    }
 
     public function getUserDetails($userId)
     {

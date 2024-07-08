@@ -13,15 +13,20 @@ class UserController
     public function home(){
         $idUsuario = $_SESSION['id'];
         $usuario = $this->model->getUserDetails($idUsuario);
+        $nombreUsuario = $this->model->obtenerNombreUsuario($idUsuario);
+        $emailUsuario = $this->model->obtenerMailUsuario($idUsuario);
+        $ciudadUsuario = $this->model->obtenerCiudadUsuario($idUsuario);
+        $nombreUsuarioUsuario = $this->model->obtenerNombreUsuarioUsuario($idUsuario);
+        $generoUsuario = $this->model->obtenerGeneroUsuario($idUsuario);
 
         // Verificar si los datos del usuario son válidos
         if ($usuario) {
             // Crear el texto con la información del usuario
-            $userInfo = "Nombre: " . (isset($usuario['nombre']) ? $usuario['nombre'] : 'N/A') . "\n";
-            $userInfo .= "Email: " . (isset($usuario['email']) ? $usuario['email'] : 'N/A') . "\n";
-            $userInfo .= "Ciudad: " . (isset($usuario['ciudad']) ? $usuario['ciudad'] : 'N/A') . "\n";
-            $userInfo .= "Nombre de Usuario: " . (isset($usuario['nombreDeUsuario']) ? $usuario['nombreDeUsuario'] : 'N/A') . "\n";
-            $userInfo .= "Género: " . (isset($usuario['genero']) ? $usuario['genero'] : 'N/A') . "\n";
+            $userInfo = "Nombre: " . $nombreUsuario . "\n";
+            $userInfo .= "Email: " . $emailUsuario . "\n";
+            $userInfo .= "Ciudad: " . $ciudadUsuario . "\n";
+            $userInfo .= "Nombre de Usuario: " . $nombreUsuarioUsuario . "\n";
+            $userInfo .= "Género: " . $generoUsuario . "\n";
 
             // Generar el QR Code
             include($_SERVER['DOCUMENT_ROOT'] . '/phpqrcode/qrlib.php');
