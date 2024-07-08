@@ -69,6 +69,10 @@ class UserController
         $this->presenter->render("view/preguntasFrecuentes.mustache");
     }
 
+    public function irASobreNosotros(){
+        $this->presenter->render("view/sobreNosotros.mustache");
+    }
+
     public function redirigirRanking()
     {
         header('Location:/ranking/mostrarRanking');

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sobre nosotros</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .enc {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .enc h1 {
+            color: #4caf50;
+            font-size: 2.5em;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h3 {
+            color: #ff5722;
+            font-size: 1.8em;
+            animation: slideIn 2s ease-in-out;
+        }
+
+
+        p, .unordered-list {
+            width: 80%;
+            line-height: 1.6;
+            animation: fadeInUp 2s ease-in-out;
+            margin: 0 auto 30px;
+        }
+
+        .unordered-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .unordered-list li {
+            background: #fff;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            animation: bounceIn 1s ease-in-out;
+        }
+
+        div {
+            margin-bottom: 40px;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes bounceIn {
+            0%, 20%, 40%, 60%, 80%, 100% {
+                transition-timing-function: cubic-bezier(0.8, 0, 1, 1);
+                transform: translateY(0);
+            }
+            50% {
+                transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+                transform: translateY(-30px);
+            }
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1 class="enc">¡Bienvenido a Quizziar!</h1>
+    <h3 class="enc">Tu portal de trivia para aprender y divertirte</h3>
+    <p>Quizziar es una plataforma de trivia educativa y entretenida, diseñada para que puedas poner a prueba tus conocimientos
+        y descubrir nuevos temas de interés. Con una variedad de categorías y niveles de dificultad, Quizziar te ofrece una experiencia
+        de aprendizaje interactiva y desafiante.</p>
+</div>
+
+<div>
+    <h4 class="enc">¿Qué puedo encontrar en Quizziar?</h4>
+    <div>
+        <ul class="unordered-list">
+            <li class="list-item">Preguntas de trivia en diversas categorías: Arte, Ciencia, Deportes, Entretenimiento, Geografía e Historia</li>
+            <li class="list-item">Niveles de dificultad: Desde principiantes hasta avanzados</li>
+            <li class="list-item">Sistema de puntos: Gana puntos por cada respuesta correcta</li>
+            <li class="list-item">Interfaz intuitiva y fácil de usar: Navega por la plataforma de manera sencilla y disfruta de una experiencia fluida.</li>
+        </ul>
+    </div>
+</div>
+
+<div>
+    <h4 class="enc">¿Quiénes somos?</h4>
+    <p>Somos Eugenio Miere, Yanina Domine y Bianca Leites, un equipo de estudiantes que desarrollaron este proyecto universitario bajo
+        el marco de la asignatura de Programación Web II. Implementamos diversas tecnologías siguiendo el patrón arquitectónico MVC
+        (Modelo-Vista-Controlador), además de incluir Bootstrap y JavaScript, entre otras herramientas.</p>
+</div>
+
+<h4 class="enc">¿Por qué elegir Quizziar?</h4>
+<div>
+    <ul class="unordered-list">
+        <li class="list-item">Aprenderás de forma divertida: La trivia te permite adquirir nuevos conocimientos mientras te diviertes y te desafías a ti mismo</li>
+        <li class="list-item">Mejorarás tu memoria y habilidades cognitivas: La trivia te ayuda a ejercitar tu mente y mantenerla activa.</li>
+        <li class="list-item">Aprenderás a tu ritmo: Quizziar te ofrece la libertad de aprender a tu propio ritmo</li>
+    </ul>
+</div>
+
+</body>
+</html>
