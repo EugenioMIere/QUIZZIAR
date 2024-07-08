@@ -166,7 +166,7 @@ class EditorController
 
         $mensaje = "La pregunta ha sido creada con éxito";
 
-        $this->presenter->render("redirect:/home", ["mensaje" => $mensaje]);
+        $this->presenter->render("view/editorView.mustache", ["mensaje" => $mensaje]);
     }
 
 
