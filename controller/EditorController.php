@@ -99,6 +99,9 @@ class EditorController
         $this->model->editarPregunta($id, $pregunta, $idCategoria);
         $this->model->editarRespuestas($id, $respuestas);
 
+        $mensaje = "La pregunta ha sido editada correctamente";
+            $this->presenter->render("view/editorView.mustache", ["mensaje" => $mensaje]);
+
     }
     public function verPreguntasReportadas(){
         $reportadas = $this->model->getAllReportadas();
