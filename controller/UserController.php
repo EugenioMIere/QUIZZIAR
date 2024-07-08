@@ -82,6 +82,10 @@ class UserController
 
         $this->presenter->render("view/resultadoPartida.mustache");
     }
+    public function redirigirALobby() {
+
+        $this->presenter->render("view/lobby.mustache");
+    }
     public function irASugerirPreguntas(){
         $this->presenter->render("view/sugerirPreguntaView.mustache");
     }
