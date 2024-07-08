@@ -5,14 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://kit.fontawesome.com/65c8bcbd9c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/public/css/agregarRed.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/verRanking.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <title> Agregar red social </title>
 </head>
 <body>
 
+
     <div>
+        <div class="w3-center">
         <h2>¡Perdiste!</h2>
         <p>Dejaste pasar mucho tiempo, por lo que perdiste.</p>
+        </div>
+        <div class="container">
+            <table>
+                <thead>
+                <tr>
+                    <th><p> Fecha </p></th>
+                    <th><p> Correctas </p></th>
+                    <th><p> Incorrectas </p></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#partidas}}
+                    <tr>
+                        <td>{{fecha}}</td>
+                        <td> {{correctas}}</td>
+                        <td>{{incorrectas}}</td>
+                    </tr>
+                {{/partidas}}
+                </tbody>
+            </table>
+        </div>
         <a href="/user/redirigirNuevaPartida">¡Intentalo nuevamente!</a>
+
     </div>
 
 </body>

@@ -74,14 +74,6 @@ class UserController
         $this->presenter->render("view/misPartidasView.mustache");
     }
 
-    public function redirigirAPerdiste(){
-        $this->presenter->render("view/perdisteView.mustache");
-    }
-
-    public function redirigirAEstadisticasDePartida() {
-
-        $this->presenter->render("view/resultadoPartida.mustache");
-    }
     public function irASugerirPreguntas(){
         $this->presenter->render("view/sugerirPreguntaView.mustache");
     }
@@ -211,6 +203,23 @@ class UserController
             $error = "Aún no tienes un historial de partidas";
             $this->presenter->render("view/misPartidasView.mustache", ["error" => $error]);
         }
+    }
+
+    public function redirigirAPerdiste(){
+        $idUsuario = $_SESSION['id'];
+        $partidas = $this->model->datosPartida($idUsuario);
+
+
+            $this->presenter->render("view/perdisteView.mustache", ["partidas" => $partidas]);
+
+    }
+
+    public function redirigirAEstadisticasDePartida() {
+
+        $idUsuario = $_SESSION['id'];
+        $partidas = $this->model->datosPartida($idUsuario);
+        $this->presenter->render("view/resultadoPartida.mustache", ["partidas" => $partidas]);
+
     }
     public function lobby(){
         $this->presenter->render("view/lobby.mustache");

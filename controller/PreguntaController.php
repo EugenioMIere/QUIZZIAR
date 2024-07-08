@@ -40,7 +40,6 @@ class PreguntaController
 
             $opciones = $this->model->getOpciones($preguntas[0]['id']);
             $visibilidad = "hidden";
-            $this->registrarPreguntaEnPartida($preguntas[0]['id']);
 
             $nivel = $this->model->getNivelDeJugador($_SESSION['id']);
             $categoria = $preguntas[0]['categoria_id']; // Obtener la categoría de la pregunta
@@ -122,4 +121,6 @@ class PreguntaController
             $this->presenter->render("view/preguntasView.mustache", ["error" => $error]);
         }
     }
+
+
 }

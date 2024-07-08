@@ -64,7 +64,7 @@ class RegistroController
                     if ($this->enviarEmailRegistro($email, $nombreCompleto, $token)) {
 
                         echo 'Se envió un correo de verificación.';
-                        $this->presenter->render("view/registroView.mustache"/*, [$error => $error]*/);
+                        $this->presenter->render("view/verificaTuCorreoView.mustache"/*, [$error => $error]*/);
                     }else {
                         echo 'ERROR.';
                         header('Location:/registro?error=ERROR-EMAIL');

@@ -130,5 +130,10 @@ class UserModel
         $sql = "SELECT TIMESTAMPDIFF(YEAR, fechaDeNacimiento, CURDATE()) AS edad FROM usuario WHERE id = '$idUsuario'";
         return $this->database->execute($sql);
     }
+    public function datosPartida($idUsuario){
+        $sql = "SELECT * FROM partidas WHERE usuario_id = '$idUsuario' ORDER BY id DESC limit 1 ";
+        return $this->database->execute($sql);
+    }
+
 
 }
