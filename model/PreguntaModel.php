@@ -17,7 +17,7 @@ class PreguntaModel
 
         while (empty($preguntaPreguntada)) {
 
-            $query = "SELECT * FROM preguntas WHERE dificultad = '$dificultad' ORDER BY RAND() LIMIT 1";
+            $query = "SELECT * FROM preguntas WHERE dificultad = '$dificultad' AND estado = 'activa' ORDER BY RAND() LIMIT 1";
             $result = $this->database->query($query);
                 /*si no existe pregunta del mismo nivel del jugador trae cualquiera*/
 
@@ -145,7 +145,7 @@ class PreguntaModel
     }
 
     public function reportarPregunta($id){
-        $sql = "INSERT INTO preguntas_reportadas(pregunta_reportada) VALUES ('$id')";
+        $sql = "UPDATE preguntas SET estado = 'reportada' WHERE id = '$id'";
         return $this->database->execute($sql);
     }
 

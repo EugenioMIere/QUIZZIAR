@@ -66,7 +66,7 @@ class EditorModel
     }
 
     public function getAllReportadas(){
-        $sql = "SELECT p.id, p.pregunta, c.nombre FROM preguntas_reportadas pr JOIN preguntas p ON p.id = pr.pregunta_reportada JOIN categoria c ON c.id = p.categoria_id";
+        $sql = "SELECT p.id, p.pregunta, c.nombre FROM preguntas p JOIN categoria c ON c.id = p.categoria_id WHERE p.estado = 'reportada'";
         return $this->database->execute($sql);
     }
 
@@ -81,7 +81,7 @@ class EditorModel
     }
 
     public function quitarReportada($id){
-        $sql = "DELETE FROM preguntas_reportadas WHERE pregunta_reportada = '$id'";
+        $sql = "UPDATE preguntas SET estado = 'activa' WHERE id = '$id' AND estado = 'reportada'";
         return $this->database->execute($sql);
     }
 

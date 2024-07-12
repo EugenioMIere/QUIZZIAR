@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/public/css/verRanking.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="/public/css/ranking.css">
     <title>Ranking de Usuarios</title>
 </head>
 <body>
@@ -26,15 +27,15 @@
             <th> <p> Puntaje</p></th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="ranking-body">
         {{#ranking}}
             <tr>
-                <td>{{{@index}}}</td>
+                <td class="ranking-position"></td>
                 <td>
                     <form action="/user/verPerfilAjeno" method="POST">
                         <input type="hidden" name="id" value="{{id}}">
                         <button type="submit" style="border: none;">
-                            <img src="/{{fotoDePerfil}}" alt="{{nombreDeUsuario}}" width="10px" height="10px" style="border-radius: 50%;">
+                            <img src="/{{fotoDePerfil}}" alt="{{nombreDeUsuario}}" class="profile-img">
                         </button>
                     </form>
                 </td>
@@ -45,5 +46,25 @@
         </tbody>
     </table>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const rows = document.querySelectorAll("#ranking-body tr");
+        rows.forEach((row, index) => {
+            const positionCell = row.querySelector(".ranking-position");
+            if (index === 0) {
+                positionCell.innerHTML = '<i class="fa fa-trophy ranking-icon gold"></i>';
+            } else if (index === 1) {
+                positionCell.innerHTML = '<i class="fa fa-trophy ranking-icon silver"></i>';
+            } else if (index === 2) {
+                positionCell.innerHTML = '<i class="fa fa-trophy ranking-icon bronze"></i>';
+            } else {
+                positionCell.textContent = index + 1;
+            }
+        });
+    });
+</script>
 </body>
 </html>
