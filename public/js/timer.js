@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
-    var timer = 10; // 10 segundos
+
+    var valorInicial = document.getElementById("contadorInicial").value;
+    var timer = parseInt(valorInicial); // Convertir a entero
     var interval = setInterval(function() {
         if (timer <= 0) {
             clearInterval(interval);
@@ -20,7 +22,7 @@ function enviarRespuesta() {
         if (xhr.readyState === 4 && xhr.status === 200){ // Códigos de estado 200 = éxito
             // manejar la rta del servidor
             console.log(xhr.responseText);
-            window.location.href = "perdisteView.mustache";
+            window.location.href = "/user/redirigirAPerdiste";
         }
     };
     xhr.send("idPregunta=" + idPregunta);

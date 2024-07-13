@@ -15,6 +15,7 @@ class PreguntaController
 
     public function getPregunta()
     {
+        $tiempoRestante = 0;
         // Verificar si se ha alcanzado el límite de preguntas
         if (!isset($_SESSION['contadorDePreguntas'])) {
             $_SESSION['contadorDePreguntas'] = 0;
@@ -30,10 +31,19 @@ class PreguntaController
         } else {
             // Verificar si hay una pregunta en la sesion y usarla
             if (!empty($_SESSION['current_question_id'])) {
+                if (10-(time()-$_SESSION["temporizador-comienzo"])>0){
+                    $tiempoRestante = 10-(time()-$_SESSION["temporizador-comienzo"]);
+                }else{
+                    $tiempoRestante = 0;
+                }
+
                 $preguntas = $this->model->getPreguntaEspecifica($_SESSION['current_question_id']);
+
             } else {
                 // Si no hay ninguna, obtenerla:
+                unset($_SESSION['temporizador-comienzo']);
                 $_SESSION["temporizador-comienzo"] = time();
+                $tiempoRestante = 10;
                 $preguntas = $this->model->getPreguntas($_SESSION['id']);
                 $_SESSION['current_question_id'] = $preguntas[0]['id'];
             }
@@ -51,7 +61,8 @@ class PreguntaController
                 "opciones" => $opciones,
                 "preguntas" => $preguntas,
                 "nivel" => $nivel,
-                "categoria" => $categoria
+                "categoria" => $categoria,
+                "tiempoRestante" => $tiempoRestante
             ]);
         }
     }
@@ -114,8 +125,12 @@ class PreguntaController
         $result = $this->model->reportarPregunta($id);
 
         if ($result){
+            /*que al reportar pregunta vacie el id de pregunta en session*/
+
+            unset($_SESSION['current_question_id']);
             $mensaje = "La pregunta fue reportada";
             $this->presenter->render("view/preguntasView.mustache", ["mensaje" => $mensaje]);
+
         } else {
             $error = "Hubo un error al reportar la pregunta";
             $this->presenter->render("view/preguntasView.mustache", ["error" => $error]);
