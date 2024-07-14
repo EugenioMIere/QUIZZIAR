@@ -23,6 +23,8 @@ include_once 'helper/Router.php';
 include_once 'helper/MustachePresenter.php';
 include_once 'helper/Presenter.php';
 include_once 'helper/PDFCreator.php';
+include_once 'helper/Mail.php';
+
 
 include_once('vendor/mustache/src/Mustache/Autoloader.php');
 include_once('vendor/PHPMailer-master/src/PHPMailer.php');
@@ -77,7 +79,7 @@ class Configuration {
     // MODELS
     private static function getRegistroModel(): RegistroModel
     {
-        return new RegistroModel(self::getDatabase());
+        return new RegistroModel(self::getDatabase(),self::getMailCreator());
     }
 
     private static function getLoginModel(): LoginModel
@@ -132,6 +134,12 @@ class Configuration {
     public static function getPDFCreator(): PDFCreator
     {
         return new PDFCreator();
+    }
+
+    public static function getMailCreator(): Mail
+    {
+        $config = self::getConfig();
+        return new Mail($config["mail"], $config["mail_password"]);
     }
 
 

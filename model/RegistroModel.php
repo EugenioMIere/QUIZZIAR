@@ -1,13 +1,22 @@
 <?php
 
 use exception\UsuarioExistente;
+use PHPMailer\PHPMailer\PHPMailer;
+
 require_once 'exception/UsuarioExistente.php';
 
 class RegistroModel
 {
     private $database;
-    public function __construct ($database){
+    /**
+     * @var mixed
+     */
+    private $mail;
+
+    public function __construct ($database, $mail){
         $this->database = $database;
+        $this->mail = $mail;
+            
     }
 
     /**
@@ -48,6 +57,15 @@ class RegistroModel
 
         $sql = "SELECT * from usuario WHERE email = '$email'";
         return $this->database->query($sql);
+
+    }
+
+    public function sendMail($correoReceptor, $nombreReceptor, $token){
+
+        $mail = 'preguntadosweb2@gmail.com';
+        $remitente = 'QUIZZIAR';
+
+        $this->mail->enviar($correoReceptor, $nombreReceptor, $token,$mail,$remitente);
 
     }
 

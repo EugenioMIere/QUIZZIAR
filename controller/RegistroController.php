@@ -1,20 +1,17 @@
 <?php
 
-/*namespace controller;*/
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-
 use exception\UsuarioExistente;
 
 class RegistroController
 {
     private $model;
     private $presenter;
+    private $mail;
 
     public function __construct ($model, $presenter){
         $this->model = $model;
         $this->presenter = $presenter;
+
     }
 
 
@@ -134,54 +131,10 @@ class RegistroController
      */
     public function enviarEmailRegistro($email, $nombreCompleto, $token)
     {
-
-        // Generar enlace verificacion
-        $enlaceVerificacion = 'http://localhost/registro/verificarUsuario?token=' . $token . '&email=' . $email;
-
-        $mailer = new PHPMailer(true);
-        /*try {*/
-            // Configuración del servidor SMTP
-
-            $mailer->SMTPDebug = SMTP::DEBUG_SERVER;
-            $mailer->isSMTP();
-            $mailer->Host = 'smtp.gmail.com';
-            $mailer->SMTPAuth = true;
-            $mailer->SMTPSecure = 'ssl';
-
-            $mailer->Port = 465;
-            $mailer->SMTPOptions = [
-                'ssl' => [
-                    'verify_peer' => false,
-                    'verify_peer_name' => false,
-                    'allow_self_signed' => true,
-                ]
-            ];
-            $mailer->Username = 'preguntadosweb2@gmail.com';
-            $mailer->Password = 'piva gvba qwnu orri';
-
-
-
-
-            // Configuración del remitente y destinatario
-            $mailer->setFrom('preguntadosweb2@gmail.com', 'Pregunta2');
-            $mailer->addAddress($email, $nombreCompleto);
-
-
-            // Contenido del correo
-            $mailer->isHTML(true);
-            $mailer->Subject = 'Verificacion de Registro en Pregunta2';
-            $mailer->Body = '<h1>¡Hola ' . $nombreCompleto . '!</h1><br> <h3>¡Gracias por registrarte! <br></br> Por favor, haz clic en el siguiente enlace para verificar tu cuenta: <a href="' . $enlaceVerificacion . '">Verificar cuenta</a></h3>';
-            $mailer->send();
-
-            // Redirigir a una vista de éxito
+            $this->model->sendMail($email,$nombreCompleto, $token);
             header('Location:/registro/pedirConfirmacionDeCorreo');
-
-
             exit();
-        /*} catch (Exception $e) {
-            header('Location:/autenticacion?mail=BAD');
-            exit();
-        }*/
+
     }
     public function verificarUsuario()
     {
