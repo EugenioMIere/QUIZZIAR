@@ -161,8 +161,7 @@ class EditorController
         ];
 
         $this->model->crearPregunta($pregunta, $categoria);
-        $id = $this->model->lastInsertId();
-        $this->model->crearRespuestas($id, $respuestasI);
+        $this->model->crearRespuestas( $respuestasI);
 
         $mensaje = "La pregunta ha sido creada con éxito";
 

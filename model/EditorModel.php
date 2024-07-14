@@ -90,11 +90,12 @@ class EditorModel
         return $this->database->execute($sql);
     }
 
-    public function crearRespuestas($id, $respuestas){
+    public function crearRespuestas( $respuestas){
 
         $sql = "INSERT INTO respuestas(pregunta_id, respuesta, es_correcta) VALUES (?, ?, ?)";
 
         $stmt = $this->database->prepare($sql); // Prepare the statement
+        $id= $this->lastInsertId();
 
         foreach ($respuestas as $index => $respuesta) {
             $correcta = ($index == 0) ? 1 : 0;
@@ -106,8 +107,10 @@ class EditorModel
     }
 
     public function lastInsertId(){
-        $sql = "SELECT MAX(id) FROM preguntas";
-        return $this->database->query($sql);
+
+        $sql="SELECT * FROM preguntas ORDER BY id DESC LIMIT 1";
+        $result = $this->database->query($sql);
+        return $result[0]['id'];
     }
     public function getUserDetails($userId)
     {
