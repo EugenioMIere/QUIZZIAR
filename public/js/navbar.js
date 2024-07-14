@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const logOutLi = document.createElement("li");
         logOutLi.classList.add("nav-item");
-        logOutLi.innerHTML = '<a href="/login/logout" class="nav-link">Cerrar sesión</a>';
+        logOutLi.innerHTML = '<a href="/login/logout" class="nav-link">Cerrar sesion</a>';
         navUl.appendChild(logOutLi);
 
     } else if (rol === "user") {
@@ -48,8 +48,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const logOutLi = document.createElement("li");
         logOutLi.classList.add("nav-item");
-        logOutLi.innerHTML = '<a href="/login/logout" class="nav-link">Cerrar sesión</a>';
+        logOutLi.innerHTML = '<a href="/login/logout" class="nav-link">Cerrar sesion</a>';
         navUl.appendChild(logOutLi);
 
+    }else if (rol === "admin"){
+        const logOutLi = document.createElement("li");
+        logOutLi.classList.add("nav-item");
+        logOutLi.innerHTML = '<a href="/login/logout" class="nav-link">Cerrar sesion</a>';
+        navUl.appendChild(logOutLi);
     }
 });
