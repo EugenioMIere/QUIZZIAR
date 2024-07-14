@@ -22,9 +22,9 @@ class AdminModel
         if(!empty($fechaDesde) && !empty($fechaHasta)){
             $whereClause = " WHERE fecha_creacion >= '" . $fechaDesde . "' 
             AND fecha_creacion <= '" . $fechaHasta . "'
-            AND rol = 'usuario'";
+            AND rol = 'user'";
         }else{
-            $whereClause = " WHERE rol = 'usuario'";
+            $whereClause = " WHERE rol = 'user'";
         }
 
         $sql = "SELECT COUNT(*) as cantidad_usuarios,rol

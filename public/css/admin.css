@@ -10,7 +10,7 @@ body {
 }
 
 /* Add padding to containers */
-.container {
+.container_admin {
     padding: 16px;
     background-color: white;
 }
