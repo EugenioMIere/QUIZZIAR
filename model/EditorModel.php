@@ -15,13 +15,10 @@ class EditorModel
     }
     public function eliminarPregunta($id){
 
-        $sql = "DELETE FROM respuestas WHERE pregunta_id = '$id'";
-        $this->database->execute($sql);
-
         $sql = "DELETE FROM partidas_preguntas WHERE pregunta_id = '$id'";
         $this->database->execute($sql);
 
-        $sql = "DELETE FROM preguntas_reportadas WHERE pregunta_reportada = '$id'";
+        $sql = "DELETE FROM respuestas WHERE pregunta_id = '$id'";
         $this->database->execute($sql);
 
         $sql = "DELETE FROM preguntas where id = '$id'";

@@ -15,46 +15,46 @@ class PreguntaController
 
     public function getPregunta()
     {
-        $tiempoRestante = 0;
-        // Verificar si se ha alcanzado el límite de preguntas
-        if (!isset($_SESSION['contadorDePreguntas'])) {
+
+
+        if (!isset($_SESSION['contadorDePreguntas'])) {// Verificar si se ha alcanzado el límite de preguntas
+
             $_SESSION['contadorDePreguntas'] = 0;
-        } else {
-            // Incrementar el contador de preguntas
+
+        } else {// Incrementar el contador de preguntas
+
             $_SESSION['contadorDePreguntas']++;
         }
 
         if ($_SESSION['contadorDePreguntas'] >= 10) {
+
             unset($_SESSION['contadorDePreguntas']);
             header('Location:/user/redirigirAEstadisticasDePartida');
             exit();
-        } else {
-            // Verificar si hay una pregunta en la sesion y usarla
-            if (!empty($_SESSION['current_question_id'])) {
-                if (10-(time()-$_SESSION["temporizador-comienzo"])>0){
-                    $tiempoRestante = 10-(time()-$_SESSION["temporizador-comienzo"]);
-                }else{
-                    $tiempoRestante = 0;
-                }
 
+        } else {
+
+            if (!empty($_SESSION['current_question_id'])) {// Verificar si hay una pregunta en la sesion y usarla
+
+                $tiempoRestante = $this->tiemporRestante();
                 $preguntas = $this->model->getPreguntaEspecifica($_SESSION['current_question_id']);
 
-            } else {
-                // Si no hay ninguna, obtenerla:
-                unset($_SESSION['temporizador-comienzo']);
-                $_SESSION["temporizador-comienzo"] = time();
-                $tiempoRestante = 10;
+            } else {// Si no hay ninguna, obtenerla:
+
+                $tiempoRestante = $this->tiempoIncial();
                 $preguntas = $this->model->getPreguntas($_SESSION['id']);
                 $_SESSION['current_question_id'] = $preguntas[0]['id'];
+
             }
 
             $opciones = $this->model->getOpciones($preguntas[0]['id']);
             $visibilidad = "hidden";
+            $this->registrarPreguntaEnPartida($preguntas[0]['id']);
 
             $nivel = $this->model->getNivelDeJugador($_SESSION['id']);
-            $categoria = $preguntas[0]['categoria_id']; // Obtener la categoría de la pregunta
+            $categoria = $preguntas[0]['categoria_id'];
 
-            // Pasar la categoría a la vista
+
             $this->presenter->render("view/preguntasView.mustache", [
                 "usuario" => $_SESSION['usuario'],
                 "visibilidad" => $visibilidad,
@@ -67,6 +67,7 @@ class PreguntaController
         }
     }
 
+
     private function registrarPreguntaEnPartida($idPregunta)
     {
         $id_usuario = $_SESSION['id'];
@@ -74,9 +75,10 @@ class PreguntaController
     }
 
     public function validarPregunta(){
-        $temporizadorFin = time();
-        $tiempo = $temporizadorFin - $_SESSION["temporizador-comienzo"];
-        if ($tiempo <= 10){
+
+        $tiempo = $this->tiemporRestante();
+
+        if ($tiempo > 0){
             if (isset($_POST["respuesta"]) && $_GET["idPregunta"]){
 
                 $idRespuestas = $_POST["respuesta"];
@@ -104,7 +106,10 @@ class PreguntaController
                     "opciones" => $opciones,
                     "preguntas" => $preguntas,
                     "estadoBoton" => $estadoBoton,
-                    "claseRespuesta" => $claseRespuesta
+                    "claseRespuesta" => $claseRespuesta,
+                    "visibilidadTiempo" => "hidden",
+                    "categoria" => $preguntas[0]['categoria_id']
+
                 ]);
             }
 
@@ -113,6 +118,22 @@ class PreguntaController
             header('Location:/user/redirigirAPerdiste');
             exit();
         }
+    }
+    private function tiemporRestante(){
+
+        $tiempoRestante = 0;
+
+        if (10-(time()-$_SESSION["temporizador-comienzo"])>0){
+            $tiempoRestante = 10-(time()-$_SESSION["temporizador-comienzo"]);
+        }
+        return $tiempoRestante;
+    }
+    private function tiempoIncial(){
+
+        unset($_SESSION['temporizador-comienzo']);
+        $_SESSION["temporizador-comienzo"] = time();
+        return 10;
+
     }
 
     private function getRespuestaCorrecta($id){
@@ -124,12 +145,12 @@ class PreguntaController
 
         $result = $this->model->reportarPregunta($id);
 
-        if ($result){
-            /*que al reportar pregunta vacie el id de pregunta en session*/
+        if ($result){/*que al reportar pregunta vacie el id de pregunta en session*/
+
 
             unset($_SESSION['current_question_id']);
             $mensaje = "La pregunta fue reportada";
-            $this->presenter->render("view/preguntasView.mustache", ["mensaje" => $mensaje]);
+            $this->presenter->render("view/preguntasView.mustache", ["mensaje" => $mensaje,"visibilidadReportar" => "hidden"]);
 
         } else {
             $error = "Hubo un error al reportar la pregunta";

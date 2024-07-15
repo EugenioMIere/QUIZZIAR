@@ -96,7 +96,7 @@ class AdminController
             $data[] = $fila['porcentaje'];
         }
 
-        $result = $this->generarGraficoDeBarras($labels, $data,'Cantidad de respuestas correctas por usuario '.$auxiliar['auxiliarA'].$filtros['fechaDesde'].$auxiliar['auxiliarB'].$filtros['fechaHasta'].'','Usuario', 'Cantidad respuestas correctas','getPorcentajeCorrectasPorUsuario' );
+        $result = $this->generarGraficoDeBarras($labels, $data,'Porcentaje de respuestas correctas por usuario '.$auxiliar['auxiliarA'].$filtros['fechaDesde'].$auxiliar['auxiliarB'].$filtros['fechaHasta'].'','Usuario', 'Porcentaje respuestas correctas','getPorcentajeCorrectasPorUsuario' );
         $this->presenter->render("view/adminView.mustache", ['resultado' => $result]);
     }
 

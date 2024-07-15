@@ -23,7 +23,7 @@
 </head>
 <body>
 
-<div class="container mt-5">
+<div class="container mt-5" {{ visibilidadTiempo }}{{visibilidadReportar}}>
     <div class="card text-center shadow-sm">
         <div class="card-header w3-teal">
             {{#preguntas}}
@@ -48,11 +48,10 @@
     </div>
 {{/mensaje}}
 
-<div class="card text-center">
+<div class="card text-center" >
     <div class="card-body mt-5">
         <h2 class="card-title text-white p-3 rounded categoria-{{categoria}}">
-            Pregunta: {{#preguntas}} {{ pregunta }} {{/preguntas}} <!--{{nivel}}-->
-        </h2>
+            Pregunta: {{#preguntas}} {{ pregunta }} {{/preguntas}}</h2>
         {{#opciones}}
             <form action="/pregunta/validarPregunta&idPregunta={{pregunta_id}}" method="post">
             <div class="d-grid gap-2 mt-3">
@@ -60,7 +59,7 @@
             </div>
             </form>
         {{/opciones}}
-        <p class="respuesta {{claseRespuesta}} text-center">Respuesta: {{result}}</p>
+        <p class="respuesta {{claseRespuesta}} text-center" {{visibilidadReportar}}>Respuesta: {{result}}</p>
         <div class="d-flex justify-content-center">
             <a href="/pregunta/getPregunta" {{visivilidad}} class="btn btn-dark mt-3">Siguiente</a>
         </div>
@@ -74,7 +73,7 @@
                 <input hidden value={{id}} id="questionId" name="questionId">
             </label>
         {{/preguntas}}
-        <button class="btn btn-danger reportar-btn" type="submit"> Reportar pregunta </button>
+        <button class="btn btn-danger reportar-btn" type="submit" {{visibilidadReportar}}> Reportar pregunta </button>
     </form>
 </div>
 
